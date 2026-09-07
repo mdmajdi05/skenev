@@ -1,0 +1,4451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>BEAUTIQ — AI Beauty & Skin Intelligence</title>
+
+  <meta
+    name="description"
+    content="AI-powered skin, scalp and beauty analysis platform for clinics, salons, dermatologists and beauty brands."
+  />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+
+    /* =========================================================
+       DESIGN SYSTEM
+    ========================================================= */
+
+    :root {
+
+      --beige: #F5F5DC;
+      --beige-light: #FAFAED;
+      --cream: #FFFDF4;
+      --cream-2: #F1EEDD;
+
+      --brown: #30261F;
+      --brown-2: #42352B;
+      --brown-3: #675648;
+
+      --black: #191613;
+      --white: #FFFFFF;
+
+      --muted: #776E65;
+      --muted-light: #A49A90;
+
+      --gold: #B89A68;
+      --gold-light: #D8C39D;
+
+      --line: rgba(48,38,31,.12);
+      --line-light: rgba(255,255,255,.12);
+
+      --shadow-sm:
+        0 10px 30px rgba(48,38,31,.06);
+
+      --shadow-md:
+        0 25px 70px rgba(48,38,31,.10);
+
+      --shadow-lg:
+        0 40px 100px rgba(48,38,31,.16);
+
+      --radius-xl: 38px;
+      --radius-lg: 28px;
+      --radius-md: 18px;
+
+      --container: 1240px;
+    }
+
+
+    /* =========================================================
+       RESET
+    ========================================================= */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      background: var(--beige);
+      color: var(--black);
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .container {
+      width: min(
+        var(--container),
+        calc(100% - 48px)
+      );
+
+      margin: auto;
+    }
+
+
+    /* =========================================================
+       PREMIUM FLOATING NAVBAR
+    ========================================================= */
+
+    .navbar {
+      position: fixed;
+
+      top: 18px;
+      left: 0;
+
+      width: 100%;
+
+      z-index: 1000;
+
+      pointer-events: none;
+
+      transition:
+        top .4s cubic-bezier(.22,1,.36,1);
+    }
+
+
+    .nav-inner {
+      position: relative;
+
+      width: min(
+        1180px,
+        calc(100% - 40px)
+      );
+
+      height: 72px;
+
+      margin: auto;
+
+      padding:
+        0 10px
+        0 18px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 20px;
+
+      pointer-events: auto;
+
+      background:
+        rgba(255,253,244,.72);
+
+      backdrop-filter:
+        blur(24px)
+        saturate(140%);
+
+      -webkit-backdrop-filter:
+        blur(24px)
+        saturate(140%);
+
+      border:
+        1px solid
+        rgba(255,255,255,.75);
+
+      border-radius: 999px;
+
+      box-shadow:
+        0 12px 35px
+        rgba(48,38,31,.07),
+
+        0 30px 80px
+        rgba(48,38,31,.08),
+
+        inset 0 1px 0
+        rgba(255,255,255,.8);
+
+      transition:
+        height .4s ease,
+        width .4s ease,
+        background .4s ease,
+        box-shadow .4s ease;
+    }
+
+
+    /* subtle top highlight */
+
+    .nav-inner::before {
+      content: "";
+
+      position: absolute;
+
+      left: 18%;
+      right: 18%;
+      top: 0;
+
+      height: 1px;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(255,255,255,.95),
+          transparent
+        );
+
+      pointer-events: none;
+    }
+
+
+    /* =========================================================
+       SCROLLED NAVBAR
+    ========================================================= */
+
+    .navbar.scrolled {
+      top: 10px;
+    }
+
+    .navbar.scrolled .nav-inner {
+      width: min(
+        1100px,
+        calc(100% - 32px)
+      );
+
+      height: 66px;
+
+      background:
+        rgba(245,245,220,.90);
+
+      box-shadow:
+        0 15px 45px
+        rgba(48,38,31,.11),
+
+        0 30px 90px
+        rgba(48,38,31,.08),
+
+        inset 0 1px 0
+        rgba(255,255,255,.8);
+    }
+
+
+    /* =========================================================
+       LOGO
+    ========================================================= */
+
+    .logo {
+      display: flex;
+
+      align-items: center;
+
+      gap: 9px;
+
+      font-family:
+        "Manrope",
+        sans-serif;
+
+      font-size: 21px;
+
+      font-weight: 800;
+
+      letter-spacing: -1.3px;
+
+      white-space: nowrap;
+
+      position: relative;
+
+      z-index: 3;
+    }
+
+
+    .logo-mark {
+      width: 39px;
+      height: 39px;
+
+      display: grid;
+
+      place-items: center;
+
+      border-radius: 50%;
+
+      background:
+        linear-gradient(
+          145deg,
+          #42352B,
+          #241C17
+        );
+
+      color: var(--beige);
+
+      font-family: "Manrope";
+
+      font-size: 13px;
+
+      font-weight: 800;
+
+      box-shadow:
+        0 7px 18px
+        rgba(48,38,31,.18);
+
+      position: relative;
+
+      overflow: hidden;
+    }
+
+
+    .logo-mark::before {
+      content: "";
+
+      position: absolute;
+
+      width: 18px;
+      height: 18px;
+
+      border-radius: 50%;
+
+      background:
+        rgba(255,255,255,.12);
+
+      top: -5px;
+      right: -4px;
+    }
+
+
+    .logo > span:not(.logo-mark) {
+      color: var(--gold);
+    }
+
+
+    /* =========================================================
+       CENTER NAVIGATION
+    ========================================================= */
+
+    nav {
+      position: absolute;
+
+      left: 50%;
+      top: 50%;
+
+      transform:
+        translate(-50%, -50%);
+
+      z-index: 2;
+    }
+
+
+    .nav-links {
+      display: flex;
+
+      align-items: center;
+
+      gap: 3px;
+
+      list-style: none;
+
+      padding: 5px;
+
+      border-radius: 999px;
+
+      background:
+        rgba(255,255,255,.28);
+
+      border:
+        1px solid
+        rgba(48,38,31,.045);
+    }
+
+
+    .nav-links li {
+      position: relative;
+    }
+
+
+    .nav-links a {
+      position: relative;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      padding:
+        10px 14px;
+
+      border-radius: 999px;
+
+      color:
+        var(--brown-2);
+
+      font-size: 12px;
+
+      font-weight: 600;
+
+      white-space: nowrap;
+
+      transition:
+        color .25s ease,
+        background .25s ease,
+        transform .25s ease,
+        box-shadow .25s ease;
+    }
+
+
+    .nav-links a::after {
+      display: none;
+    }
+
+
+    .nav-links a:hover {
+      color:
+        var(--brown);
+
+      background:
+        rgba(255,255,255,.78);
+
+      box-shadow:
+        0 5px 15px
+        rgba(48,38,31,.06);
+
+      transform:
+        translateY(-1px);
+    }
+
+
+    .nav-links a.active {
+      background:
+        var(--brown);
+
+      color:
+        var(--beige);
+
+      box-shadow:
+        0 7px 18px
+        rgba(48,38,31,.15);
+    }
+
+
+    /* =========================================================
+       NAV CTA
+    ========================================================= */
+
+    .nav-cta {
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 9px;
+
+      min-height: 45px;
+
+      padding:
+        0 18px;
+
+      border-radius: 999px;
+
+      background:
+        var(--brown);
+
+      color:
+        var(--beige);
+
+      font-size: 12px;
+
+      font-weight: 700;
+
+      box-shadow:
+        0 9px 22px
+        rgba(48,38,31,.15);
+
+      transition:
+        transform .3s ease,
+        box-shadow .3s ease,
+        background .3s ease;
+
+      white-space: nowrap;
+
+      position: relative;
+
+      z-index: 3;
+    }
+
+
+    .nav-cta span {
+      font-size: 16px;
+
+      transition:
+        transform .3s ease;
+    }
+
+
+    .nav-cta:hover {
+      transform:
+        translateY(-2px);
+
+      background:
+        var(--brown-2);
+
+      box-shadow:
+        0 14px 30px
+        rgba(48,38,31,.20);
+    }
+
+
+    .nav-cta:hover span {
+      transform:
+        translateX(3px);
+    }
+
+
+    /* =========================================================
+       MOBILE MENU BUTTON
+    ========================================================= */
+
+    .menu-btn {
+      display: none;
+
+      width: 44px;
+      height: 44px;
+
+      border:
+        1px solid
+        rgba(48,38,31,.10);
+
+      border-radius: 50%;
+
+      background:
+        rgba(255,255,255,.55);
+
+      color:
+        var(--brown);
+
+      cursor: pointer;
+
+      font-size: 18px;
+
+      transition:
+        transform .3s ease,
+        background .3s ease;
+    }
+
+
+    .menu-btn:hover {
+      background:
+        var(--cream);
+
+      transform:
+        rotate(5deg);
+    }
+
+
+    /* =========================================================
+       HERO
+    ========================================================= */
+
+    .hero {
+      min-height: 900px;
+
+      padding-top: 88px;
+
+      position: relative;
+
+      display: flex;
+
+      align-items: center;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 82% 25%,
+          rgba(216,195,157,.34),
+          transparent 30%
+        ),
+
+        var(--beige);
+    }
+
+
+    .hero::before {
+      content: "";
+
+      position: absolute;
+
+      width: 650px;
+      height: 650px;
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(184,154,104,.20),
+          transparent 68%
+        );
+
+      filter:
+        blur(20px);
+
+      top: 30px;
+
+      right: -230px;
+
+      pointer-events: none;
+    }
+
+
+    .hero::after {
+      content: "";
+
+      position: absolute;
+
+      width: 300px;
+      height: 300px;
+
+      border-radius: 50%;
+
+      background:
+        rgba(255,255,255,.5);
+
+      filter:
+        blur(80px);
+
+      left: -120px;
+
+      bottom: 50px;
+
+      pointer-events: none;
+    }
+
+
+    .hero-grid {
+      display: grid;
+
+      grid-template-columns:
+        minmax(0,.92fr)
+        minmax(0,1.08fr);
+
+      gap: 75px;
+
+      align-items: center;
+
+      position: relative;
+
+      z-index: 2;
+    }
+
+
+    /* =========================================================
+       EYEBROW
+    ========================================================= */
+
+    .eyebrow {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+      font-size: 11px;
+
+      font-weight: 700;
+
+      letter-spacing: 2px;
+
+      text-transform: uppercase;
+
+      color:
+        var(--gold);
+
+      margin-bottom: 25px;
+    }
+
+
+    .eyebrow::before {
+      content: "";
+
+      width: 28px;
+      height: 1px;
+
+      background:
+        var(--gold);
+    }
+
+
+    /* =========================================================
+       HERO CONTENT
+    ========================================================= */
+
+    .hero h1 {
+      font-family:
+        "Manrope",
+        sans-serif;
+
+      font-size:
+        clamp(55px,6.3vw,88px);
+
+      line-height: .96;
+
+      letter-spacing: -5px;
+
+      max-width: 700px;
+
+      margin-bottom: 30px;
+
+      color:
+        var(--brown);
+    }
+
+
+    .hero h1 span {
+      display: block;
+
+      color:
+        var(--gold);
+
+      font-style: italic;
+
+      font-weight: 600;
+    }
+
+
+    .hero-description {
+      max-width: 560px;
+
+      color:
+        var(--muted);
+
+      font-size: 17px;
+
+      line-height: 1.8;
+
+      margin-bottom: 38px;
+    }
+
+
+    /* =========================================================
+       BUTTONS
+    ========================================================= */
+
+    .hero-buttons {
+      display: flex;
+
+      gap: 12px;
+
+      flex-wrap: wrap;
+    }
+
+
+    .btn {
+      border: none;
+
+      cursor: pointer;
+
+      padding:
+        15px 24px;
+
+      border-radius: 100px;
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 10px;
+
+      font-weight: 600;
+
+      font-size: 13px;
+
+      transition:
+        .3s ease;
+    }
+
+
+    .btn-primary {
+      background:
+        var(--brown);
+
+      color:
+        var(--beige);
+
+      box-shadow:
+        0 15px 35px
+        rgba(48,38,31,.15);
+    }
+
+
+    .btn-primary:hover {
+      transform:
+        translateY(-3px);
+
+      background:
+        var(--brown-2);
+
+      box-shadow:
+        0 22px 45px
+        rgba(48,38,31,.20);
+    }
+
+
+    .btn-secondary {
+      background:
+        rgba(255,255,255,.48);
+
+      border:
+        1px solid
+        var(--line);
+
+      color:
+        var(--brown);
+
+      backdrop-filter:
+        blur(10px);
+    }
+
+
+    .btn-secondary:hover {
+      transform:
+        translateY(-3px);
+
+      background:
+        var(--cream);
+
+      border-color:
+        rgba(48,38,31,.22);
+    }
+
+
+    /* =========================================================
+       HERO VISUAL
+    ========================================================= */
+
+    .hero-visual {
+      position: relative;
+    }
+
+
+    .hero-image-wrap {
+      position: relative;
+
+      border-radius: 42px;
+
+      overflow: hidden;
+
+      min-height: 650px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #E7DFC7,
+          #CFC1A5
+        );
+
+      box-shadow:
+        var(--shadow-lg);
+
+      border:
+        8px solid
+        rgba(255,255,255,.35);
+    }
+
+
+    .hero-image {
+      height: 650px;
+
+      object-fit: cover;
+
+      transition:
+        transform 1s ease;
+    }
+
+
+    .hero-image-wrap:hover
+    .hero-image {
+      transform:
+        scale(1.025);
+    }
+
+
+    .hero-image-wrap::after {
+      content: "";
+
+      position: absolute;
+
+      inset: 0;
+
+      background:
+        linear-gradient(
+          125deg,
+          rgba(255,255,255,.22),
+          transparent 35%,
+          transparent 70%,
+          rgba(255,255,255,.10)
+        );
+
+      pointer-events: none;
+    }
+
+
+    /* =========================================================
+       FLOATING SCORE CARD
+    ========================================================= */
+
+    .floating-card {
+      position: absolute;
+
+      left: -38px;
+
+      bottom: 42px;
+
+      width: 245px;
+
+      padding: 22px;
+
+      border-radius: 23px;
+
+      background:
+        rgba(255,253,244,.88);
+
+      backdrop-filter:
+        blur(22px);
+
+      border:
+        1px solid
+        rgba(255,255,255,.65);
+
+      box-shadow:
+        0 25px 60px
+        rgba(48,38,31,.17);
+
+      animation:
+        floatCard 4s ease-in-out infinite;
+    }
+
+
+    @keyframes floatCard {
+
+      0%,
+      100% {
+        transform:
+          translateY(0);
+      }
+
+      50% {
+        transform:
+          translateY(-8px);
+      }
+
+    }
+
+
+    .floating-card small {
+      display: block;
+
+      color:
+        var(--muted);
+
+      font-size: 10px;
+
+      letter-spacing: 1px;
+
+      text-transform: uppercase;
+
+      margin-bottom: 8px;
+    }
+
+
+    .score {
+      font-family:
+        "Manrope";
+
+      font-size: 38px;
+
+      font-weight: 800;
+
+      color:
+        var(--brown);
+
+      margin-bottom: 5px;
+    }
+
+
+    .score span {
+      color:
+        var(--gold);
+    }
+
+
+    /* =========================================================
+       TRUST
+    ========================================================= */
+
+    .trust {
+      background:
+        var(--brown);
+
+      color:
+        var(--beige);
+
+      padding:
+        25px 0;
+
+      border-top:
+        1px solid
+        rgba(255,255,255,.05);
+
+      border-bottom:
+        1px solid
+        rgba(255,255,255,.05);
+    }
+
+
+    .trust-inner {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 25px;
+    }
+
+
+    .trust-text {
+      color:
+        rgba(245,245,220,.55);
+
+      font-size: 11px;
+
+      letter-spacing: 1px;
+
+      text-transform: uppercase;
+    }
+
+
+    .trust-logos {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: flex-end;
+
+      gap: 38px;
+
+      flex-wrap: wrap;
+
+      color:
+        rgba(245,245,220,.75);
+
+      font-weight: 700;
+
+      font-size: 12px;
+
+      letter-spacing: 1px;
+    }
+
+
+    /* =========================================================
+       GLOBAL SECTIONS
+    ========================================================= */
+
+    section {
+      padding:
+        135px 0;
+    }
+
+
+    .section-header {
+      max-width: 760px;
+
+      margin-bottom: 62px;
+    }
+
+
+    .section-header.center {
+      text-align: center;
+
+      margin-left: auto;
+
+      margin-right: auto;
+    }
+
+
+    .section-header h2 {
+      font-family:
+        "Manrope";
+
+      font-size:
+        clamp(42px,5vw,67px);
+
+      line-height: 1.01;
+
+      letter-spacing: -3.5px;
+
+      color:
+        var(--brown);
+
+      margin-bottom: 22px;
+    }
+
+
+    .section-header p {
+      color:
+        var(--muted);
+
+      font-size: 16px;
+
+      line-height: 1.8;
+    }
+
+
+    /* =========================================================
+       SOLUTIONS
+    ========================================================= */
+
+    .solutions {
+      background:
+        var(--cream);
+    }
+
+
+    .solution-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3,1fr);
+
+      gap: 18px;
+    }
+
+
+    .solution-card {
+      border-radius:
+        var(--radius-xl);
+
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          145deg,
+          #F3F0DD,
+          #EAE4CD
+        );
+
+      min-height: 590px;
+
+      position: relative;
+
+      border:
+        1px solid
+        rgba(48,38,31,.08);
+
+      transition:
+        transform .45s ease,
+        box-shadow .45s ease;
+    }
+
+
+    .solution-card:hover {
+      transform:
+        translateY(-9px);
+
+      box-shadow:
+        var(--shadow-md);
+    }
+
+
+    .solution-image {
+      height: 330px;
+
+      overflow: hidden;
+
+      background:
+        #D8CFB8;
+    }
+
+
+    .solution-image img {
+      height: 100%;
+
+      object-fit: cover;
+
+      transition:
+        .7s ease;
+    }
+
+
+    .solution-card:hover
+    .solution-image img {
+      transform:
+        scale(1.06);
+    }
+
+
+    .solution-content {
+      padding:
+        31px;
+    }
+
+
+    .solution-number {
+      color:
+        var(--gold);
+
+      font-size: 10px;
+
+      font-weight: 700;
+
+      letter-spacing: 1.8px;
+
+      margin-bottom: 14px;
+    }
+
+
+    .solution-content h3 {
+      font-family:
+        "Manrope";
+
+      font-size: 27px;
+
+      color:
+        var(--brown);
+
+      margin-bottom: 12px;
+    }
+
+
+    .solution-content p {
+      color:
+        var(--muted);
+
+      line-height: 1.7;
+
+      font-size: 14px;
+
+      margin-bottom: 22px;
+    }
+
+
+    .text-link {
+      font-weight: 700;
+
+      font-size: 13px;
+
+      color:
+        var(--brown);
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      transition:
+        .25s;
+    }
+
+
+    .text-link:hover {
+      color:
+        var(--gold);
+
+      gap: 12px;
+    }
+
+
+    /* =========================================================
+       TECHNOLOGY
+    ========================================================= */
+
+    .analysis {
+      background:
+        var(--beige);
+    }
+
+
+    .analysis-layout {
+      display: grid;
+
+      grid-template-columns:
+        .88fr 1.12fr;
+
+      gap: 85px;
+
+      align-items: center;
+    }
+
+
+    .analysis-visual {
+      border-radius: 40px;
+
+      overflow: hidden;
+
+      min-height: 650px;
+
+      background:
+        #DDD4BC;
+
+      box-shadow:
+        var(--shadow-md);
+
+      border:
+        8px solid
+        rgba(255,255,255,.35);
+    }
+
+
+    .analysis-visual img {
+      height: 650px;
+
+      object-fit: cover;
+    }
+
+
+    .parameter-list {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2,1fr);
+
+      gap: 10px;
+
+      margin-top: 35px;
+    }
+
+
+    .parameter {
+      padding:
+        18px 19px;
+
+      background:
+        rgba(255,255,255,.45);
+
+      border:
+        1px solid
+        rgba(48,38,31,.08);
+
+      border-radius: 15px;
+
+      font-size: 13px;
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      color:
+        var(--brown);
+
+      transition:
+        .3s ease;
+    }
+
+
+    .parameter:hover {
+      background:
+        var(--cream);
+
+      transform:
+        translateX(4px);
+
+      box-shadow:
+        0 10px 25px
+        rgba(48,38,31,.06);
+    }
+
+
+    .parameter span {
+      color:
+        var(--gold);
+
+      font-weight: 700;
+
+      font-size: 11px;
+
+      letter-spacing: 1px;
+    }
+
+
+    /* =========================================================
+       SCANNER
+    ========================================================= */
+
+    .scanner {
+      background:
+        radial-gradient(
+          circle at 85% 20%,
+          rgba(184,154,104,.16),
+          transparent 28%
+        ),
+
+        var(--brown);
+
+      color:
+        var(--beige);
+
+      overflow: hidden;
+
+      position: relative;
+    }
+
+
+    .scanner::before {
+      content: "";
+
+      position: absolute;
+
+      width: 500px;
+      height: 500px;
+
+      border-radius: 50%;
+
+      border:
+        1px solid
+        rgba(216,195,157,.10);
+
+      right: -200px;
+
+      top: -200px;
+    }
+
+
+    .scanner-layout {
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap: 80px;
+
+      align-items: center;
+
+      position: relative;
+
+      z-index: 2;
+    }
+
+
+    .scanner .eyebrow {
+      color:
+        var(--gold-light);
+    }
+
+
+    .scanner h2 {
+      font-family:
+        "Manrope";
+
+      font-size:
+        clamp(42px,5vw,68px);
+
+      line-height: 1;
+
+      letter-spacing: -3.5px;
+
+      margin-bottom: 25px;
+    }
+
+
+    .scanner p {
+      color:
+        rgba(245,245,220,.62);
+
+      font-size: 16px;
+
+      line-height: 1.8;
+
+      max-width: 560px;
+
+      margin-bottom: 35px;
+    }
+
+
+    .scanner .btn-secondary {
+      color:
+        var(--beige);
+
+      border-color:
+        rgba(245,245,220,.20);
+
+      background:
+        rgba(255,255,255,.07);
+    }
+
+
+    .scanner .btn-secondary:hover {
+      background:
+        rgba(255,255,255,.12);
+    }
+
+
+    .scanner-image {
+      position: relative;
+
+      border-radius: 40px;
+
+      overflow: hidden;
+
+      background:
+        #241D18;
+
+      border:
+        1px solid
+        rgba(255,255,255,.10);
+
+      box-shadow:
+        0 40px 90px
+        rgba(0,0,0,.25);
+    }
+
+
+    .scanner-image::after {
+      content: "";
+
+      position: absolute;
+
+      inset: 0;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(216,195,157,.10),
+          transparent 45%
+        );
+    }
+
+
+    .scanner-image img {
+      min-height: 620px;
+
+      object-fit: cover;
+    }
+
+
+    .scanner-specs {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3,1fr);
+
+      gap: 10px;
+
+      margin-top: 28px;
+    }
+
+
+    .spec {
+      padding: 19px;
+
+      border:
+        1px solid
+        rgba(245,245,220,.12);
+
+      border-radius: 15px;
+
+      background:
+        rgba(255,255,255,.035);
+    }
+
+
+    .spec strong {
+      display: block;
+
+      font-family:
+        "Manrope";
+
+      font-size: 23px;
+
+      color:
+        var(--beige);
+
+      margin-bottom: 4px;
+    }
+
+
+    .spec small {
+      color:
+        rgba(245,245,220,.45);
+
+      font-size: 11px;
+    }
+
+
+    /* =========================================================
+       HOW IT WORKS
+    ========================================================= */
+
+    .steps {
+      background:
+        var(--cream);
+    }
+
+
+    .steps-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4,1fr);
+
+      gap: 18px;
+    }
+
+
+    .step {
+      border-top:
+        1px solid
+        rgba(48,38,31,.15);
+
+      padding-top: 25px;
+    }
+
+
+    .step-number {
+      width: 44px;
+      height: 44px;
+
+      display: grid;
+
+      place-items: center;
+
+      border-radius: 50%;
+
+      background:
+        var(--brown);
+
+      color:
+        var(--beige);
+
+      margin-bottom: 25px;
+
+      font-weight: 700;
+
+      font-size: 11px;
+
+      box-shadow:
+        0 10px 20px
+        rgba(48,38,31,.12);
+    }
+
+
+    .step h3 {
+      font-family:
+        "Manrope";
+
+      font-size: 21px;
+
+      color:
+        var(--brown);
+
+      margin-bottom: 12px;
+    }
+
+
+    .step p {
+      color:
+        var(--muted);
+
+      font-size: 14px;
+
+      line-height: 1.7;
+    }
+
+
+    /* =========================================================
+       BUSINESS
+    ========================================================= */
+
+    #business {
+      background:
+        var(--beige);
+    }
+
+
+    .business-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4,1fr);
+
+      gap: 14px;
+    }
+
+
+    .business-card {
+      position: relative;
+
+      height: 410px;
+
+      border-radius: 27px;
+
+      overflow: hidden;
+
+      background:
+        #DDD3BB;
+
+      box-shadow:
+        0 15px 35px
+        rgba(48,38,31,.07);
+    }
+
+
+    .business-card img {
+      height: 100%;
+
+      object-fit: cover;
+
+      transition:
+        .7s ease;
+    }
+
+
+    .business-card:hover img {
+      transform:
+        scale(1.07);
+    }
+
+
+    .business-overlay {
+      position: absolute;
+
+      inset: 0;
+
+      background:
+        linear-gradient(
+          to top,
+          rgba(38,29,23,.88),
+          rgba(38,29,23,.05) 65%
+        );
+
+      display: flex;
+
+      align-items: flex-end;
+
+      padding: 26px;
+
+      color:
+        var(--beige);
+    }
+
+
+    .business-overlay h3 {
+      font-family:
+        "Manrope";
+
+      font-size: 22px;
+
+      letter-spacing:
+        -.5px;
+    }
+
+
+    /* =========================================================
+       STATS
+    ========================================================= */
+
+    .stats {
+      background:
+        linear-gradient(
+          135deg,
+          #E8DFC6,
+          #D8C9A8
+        );
+
+      padding:
+        95px 0;
+
+      border-top:
+        1px solid
+        rgba(48,38,31,.06);
+
+      border-bottom:
+        1px solid
+        rgba(48,38,31,.06);
+    }
+
+
+    .stats-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4,1fr);
+
+      gap: 30px;
+    }
+
+
+    .stat {
+      text-align:
+        center;
+
+      padding: 10px;
+    }
+
+
+    .stat strong {
+      display: block;
+
+      font-family:
+        "Manrope";
+
+      font-size: 55px;
+
+      letter-spacing: -4px;
+
+      color:
+        var(--brown);
+
+      margin-bottom: 4px;
+    }
+
+
+    .stat span {
+      font-size: 11px;
+
+      color:
+        var(--brown-3);
+
+      text-transform:
+        uppercase;
+
+      letter-spacing: 1px;
+    }
+
+
+    /* =========================================================
+       CASE STUDY
+    ========================================================= */
+
+    .case-study {
+      background:
+        var(--cream);
+    }
+
+
+    .case-layout {
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      border-radius: 40px;
+
+      overflow: hidden;
+
+      background:
+        var(--beige);
+
+      box-shadow:
+        var(--shadow-md);
+
+      border:
+        1px solid
+        rgba(48,38,31,.07);
+    }
+
+
+    .case-image {
+      min-height: 610px;
+
+      background:
+        #DDD4BC;
+    }
+
+
+    .case-image img {
+      height: 100%;
+
+      object-fit: cover;
+    }
+
+
+    .case-content {
+      padding: 75px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: center;
+    }
+
+
+    .case-content h2 {
+      font-family:
+        "Manrope";
+
+      font-size: 52px;
+
+      line-height: 1;
+
+      letter-spacing: -3px;
+
+      color:
+        var(--brown);
+
+      margin-bottom: 25px;
+    }
+
+
+    .case-content p {
+      color:
+        var(--muted);
+
+      line-height: 1.8;
+
+      font-size: 15px;
+
+      margin-bottom: 30px;
+
+      max-width: 470px;
+    }
+
+
+    /* =========================================================
+       CTA
+    ========================================================= */
+
+    .cta {
+      padding:
+        145px 0;
+
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(216,195,157,.20),
+          transparent 42%
+        ),
+
+        var(--brown);
+
+      color:
+        var(--beige);
+
+      text-align:
+        center;
+
+      position: relative;
+
+      overflow: hidden;
+    }
+
+
+    .cta::before {
+      content: "";
+
+      position: absolute;
+
+      width: 700px;
+      height: 700px;
+
+      border-radius: 50%;
+
+      border:
+        1px solid
+        rgba(216,195,157,.09);
+
+      left: 50%;
+      top: 50%;
+
+      transform:
+        translate(-50%,-50%);
+    }
+
+
+    .cta::after {
+      content: "";
+
+      position: absolute;
+
+      width: 450px;
+      height: 450px;
+
+      border-radius: 50%;
+
+      background:
+        rgba(184,154,104,.10);
+
+      filter:
+        blur(100px);
+
+      left: 50%;
+      top: 50%;
+
+      transform:
+        translate(-50%,-50%);
+    }
+
+
+    .cta-inner {
+      position: relative;
+
+      z-index: 2;
+    }
+
+
+    .cta .eyebrow {
+      color:
+        var(--gold-light);
+
+      justify-content:
+        center;
+    }
+
+
+    .cta h2 {
+      font-family:
+        "Manrope";
+
+      font-size:
+        clamp(45px,6vw,75px);
+
+      line-height: 1;
+
+      letter-spacing: -4px;
+
+      max-width: 850px;
+
+      margin:
+        auto auto 25px;
+    }
+
+
+    .cta p {
+      max-width: 600px;
+
+      margin:
+        auto auto 35px;
+
+      color:
+        rgba(245,245,220,.58);
+    }
+
+
+    .cta .btn-secondary {
+      background:
+        var(--beige);
+
+      border: none;
+
+      color:
+        var(--brown);
+    }
+
+
+    .cta .btn-secondary:hover {
+      background:
+        var(--cream);
+
+      transform:
+        translateY(-3px);
+    }
+
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+
+    footer {
+      background:
+        #211A15;
+
+      color:
+        var(--beige);
+
+      padding:
+        75px 0 30px;
+    }
+
+
+    .footer-grid {
+      display: grid;
+
+      grid-template-columns:
+        1.5fr repeat(3,1fr);
+
+      gap: 50px;
+
+      padding-bottom: 60px;
+
+      border-bottom:
+        1px solid
+        rgba(245,245,220,.09);
+    }
+
+
+    .footer-brand p {
+      max-width: 330px;
+
+      color:
+        rgba(245,245,220,.42);
+
+      margin-top: 20px;
+
+      line-height: 1.8;
+
+      font-size: 14px;
+    }
+
+
+    .footer-column h4 {
+      font-size: 10px;
+
+      color:
+        rgba(245,245,220,.45);
+
+      text-transform:
+        uppercase;
+
+      letter-spacing: 1.5px;
+
+      margin-bottom: 20px;
+    }
+
+
+    .footer-column a {
+      display: block;
+
+      color:
+        rgba(245,245,220,.75);
+
+      margin-bottom: 12px;
+
+      font-size: 13px;
+
+      transition:
+        .25s;
+    }
+
+
+    .footer-column a:hover {
+      color:
+        var(--gold-light);
+
+      transform:
+        translateX(3px);
+    }
+
+
+    .copyright {
+      padding-top: 25px;
+
+      display: flex;
+
+      justify-content:
+        space-between;
+
+      color:
+        rgba(245,245,220,.28);
+
+      font-size: 11px;
+    }
+
+
+    /* =========================================================
+       SCROLL REVEAL
+    ========================================================= */
+
+    .reveal {
+      opacity: 0;
+
+      transform:
+        translateY(35px);
+
+      transition:
+        opacity .8s ease,
+        transform .8s ease;
+    }
+
+
+    .reveal.visible {
+      opacity: 1;
+
+      transform:
+        translateY(0);
+    }
+
+
+    /* =========================================================
+       CUSTOM SCROLLBAR
+    ========================================================= */
+
+    ::-webkit-scrollbar {
+      width: 9px;
+    }
+
+
+    ::-webkit-scrollbar-track {
+      background:
+        var(--beige);
+    }
+
+
+    ::-webkit-scrollbar-thumb {
+      background:
+        #B7A88D;
+
+      border-radius: 20px;
+    }
+
+
+    ::-webkit-scrollbar-thumb:hover {
+      background:
+        var(--brown-3);
+    }
+
+
+    ::selection {
+      background:
+        var(--brown);
+
+      color:
+        var(--beige);
+    }
+
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1100px) {
+
+      .nav-links a {
+        padding:
+          9px 10px;
+
+        font-size: 11px;
+      }
+
+      .nav-inner {
+        width:
+          calc(100% - 30px);
+      }
+
+      .hero-grid {
+        gap: 45px;
+      }
+
+    }
+
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+
+      .navbar {
+        top: 12px;
+      }
+
+
+      .nav-inner {
+        width:
+          calc(100% - 28px);
+
+        height: 64px;
+
+        padding-left: 14px;
+
+        padding-right: 9px;
+      }
+
+
+      nav {
+        position:
+          static;
+
+        transform:
+          none;
+      }
+
+
+      .nav-links {
+        display:
+          none;
+      }
+
+
+      .nav-links.mobile-open {
+
+        display:
+          flex;
+
+        position:
+          absolute;
+
+        top:
+          82px;
+
+        left:
+          14px;
+
+        right:
+          14px;
+
+        padding:
+          12px;
+
+        flex-direction:
+          column;
+
+        align-items:
+          stretch;
+
+        gap:
+          4px;
+
+        border-radius:
+          28px;
+
+        background:
+          rgba(255,253,244,.95);
+
+        backdrop-filter:
+          blur(25px);
+
+        -webkit-backdrop-filter:
+          blur(25px);
+
+        border:
+          1px solid
+          rgba(255,255,255,.8);
+
+        box-shadow:
+          0 25px 70px
+          rgba(48,38,31,.15);
+
+        animation:
+          mobileMenuIn
+          .35s
+          cubic-bezier(.22,1,.36,1);
+      }
+
+
+      .nav-links.mobile-open a {
+
+        justify-content:
+          flex-start;
+
+        padding:
+          15px 17px;
+
+        font-size:
+          14px;
+
+        border-radius:
+          16px;
+      }
+
+
+      .nav-links.mobile-open a:hover {
+        transform:
+          none;
+      }
+
+
+      .nav-cta {
+        display:
+          none;
+      }
+
+
+      .menu-btn {
+        display:
+          grid;
+
+        place-items:
+          center;
+      }
+
+
+      .hero-grid,
+      .analysis-layout,
+      .scanner-layout,
+      .case-layout {
+        grid-template-columns:
+          1fr;
+      }
+
+
+      .hero {
+        padding-top:
+          125px;
+      }
+
+
+      .hero h1 {
+        max-width:
+          650px;
+      }
+
+
+      .hero-image-wrap {
+        min-height:
+          560px;
+      }
+
+
+      .hero-image {
+        height:
+          560px;
+      }
+
+
+      .solution-grid {
+        grid-template-columns:
+          1fr;
+      }
+
+
+      .solution-card {
+        min-height:
+          auto;
+      }
+
+
+      .solution-image {
+        height:
+          390px;
+      }
+
+
+      .steps-grid {
+        grid-template-columns:
+          repeat(2,1fr);
+
+        gap:
+          45px 25px;
+      }
+
+
+      .business-grid {
+        grid-template-columns:
+          repeat(2,1fr);
+      }
+
+
+      .stats-grid {
+        grid-template-columns:
+          repeat(2,1fr);
+
+        gap:
+          45px;
+      }
+
+
+      .footer-grid {
+        grid-template-columns:
+          1fr 1fr;
+      }
+
+    }
+
+
+    /* =========================================================
+       MOBILE MENU ANIMATION
+    ========================================================= */
+
+    @keyframes mobileMenuIn {
+
+      from {
+        opacity: 0;
+
+        transform:
+          translateY(-10px)
+          scale(.97);
+      }
+
+      to {
+        opacity: 1;
+
+        transform:
+          translateY(0)
+          scale(1);
+      }
+
+    }
+
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 650px) {
+
+      .container {
+        width:
+          min(
+            var(--container),
+            calc(100% - 30px)
+          );
+      }
+
+
+      .navbar {
+        top:
+          10px;
+      }
+
+
+      .nav-inner {
+        width:
+          calc(100% - 20px);
+
+        height:
+          60px;
+
+        padding-left:
+          12px;
+
+        padding-right:
+          8px;
+      }
+
+
+      .logo {
+        font-size:
+          19px;
+      }
+
+
+      .logo-mark {
+        width:
+          35px;
+
+        height:
+          35px;
+      }
+
+
+      .menu-btn {
+        width:
+          40px;
+
+        height:
+          40px;
+      }
+
+
+      section {
+        padding:
+          90px 0;
+      }
+
+
+      .hero {
+        min-height:
+          auto;
+
+        padding-top:
+          115px;
+
+        padding-bottom:
+          80px;
+      }
+
+
+      .hero h1 {
+        font-size:
+          51px;
+
+        letter-spacing:
+          -3px;
+      }
+
+
+      .hero-description {
+        font-size:
+          15px;
+      }
+
+
+      .hero-buttons {
+        width:
+          100%;
+      }
+
+
+      .hero-buttons .btn {
+        width:
+          100%;
+      }
+
+
+      .hero-image-wrap {
+        min-height:
+          470px;
+
+        border-radius:
+          28px;
+
+        border-width:
+          5px;
+      }
+
+
+      .hero-image {
+        height:
+          470px;
+      }
+
+
+      .floating-card {
+        left:
+          15px;
+
+        bottom:
+          20px;
+
+        width:
+          210px;
+
+        padding:
+          18px;
+      }
+
+
+      .score {
+        font-size:
+          32px;
+      }
+
+
+      .trust-inner {
+        flex-direction:
+          column;
+
+        align-items:
+          flex-start;
+      }
+
+
+      .trust-logos {
+        justify-content:
+          flex-start;
+
+        gap:
+          18px;
+      }
+
+
+      .section-header h2 {
+        font-size:
+          42px;
+
+        letter-spacing:
+          -2.5px;
+      }
+
+
+      .parameter-list,
+      .steps-grid,
+      .business-grid,
+      .stats-grid,
+      .footer-grid {
+        grid-template-columns:
+          1fr;
+      }
+
+
+      .analysis-visual {
+        min-height:
+          500px;
+
+        border-radius:
+          28px;
+      }
+
+
+      .analysis-visual img {
+        height:
+          500px;
+      }
+
+
+      .scanner-specs {
+        grid-template-columns:
+          1fr;
+      }
+
+
+      .scanner-image {
+        border-radius:
+          28px;
+      }
+
+
+      .scanner-image img {
+        min-height:
+          480px;
+      }
+
+
+      .business-card {
+        height:
+          360px;
+      }
+
+
+      .stat strong {
+        font-size:
+          48px;
+      }
+
+
+      .case-layout {
+        border-radius:
+          28px;
+      }
+
+
+      .case-image {
+        min-height:
+          430px;
+      }
+
+
+      .case-content {
+        padding:
+          45px 25px;
+      }
+
+
+      .case-content h2 {
+        font-size:
+          41px;
+
+        letter-spacing:
+          -2.5px;
+      }
+
+
+      .cta {
+        padding:
+          105px 0;
+      }
+
+
+      .cta h2 {
+        font-size:
+          46px;
+
+        letter-spacing:
+          -2.5px;
+      }
+
+
+      .copyright {
+        flex-direction:
+          column;
+
+        gap:
+          10px;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+
+  <!-- =========================================================
+       PREMIUM FLOATING NAVBAR
+  ========================================================= -->
+
+  <header
+    class="navbar"
+    id="navbar"
+  >
+
+    <div class="nav-inner">
+
+
+      <!-- LOGO -->
+
+      <a
+        href="#"
+        class="logo"
+      >
+
+        <span class="logo-mark">
+          S
+        </span>
+
+        SKENEV<span>IQ</span>
+
+      </a>
+
+
+      <!-- CENTER NAVIGATION -->
+
+      <nav>
+
+        <ul
+          class="nav-links"
+          id="navLinks"
+        >
+
+          <li>
+            <a
+              href="#solutions"
+              class="active"
+            >
+              Solutions
+            </a>
+          </li>
+
+          <li>
+            <a href="#technology">
+              Technology
+            </a>
+          </li>
+
+          <li>
+            <a href="#scanner">
+              Scanner
+            </a>
+          </li>
+
+          <li>
+            <a href="#business">
+              Business
+            </a>
+          </li>
+
+          <li>
+            <a href="#cases">
+              Case Studies
+            </a>
+          </li>
+
+        </ul>
+
+      </nav>
+
+
+      <!-- CTA -->
+
+      <a
+        href="#contact"
+        class="nav-cta"
+      >
+
+        Book a Demo
+
+        <span>
+          →
+        </span>
+
+      </a>
+
+
+      <!-- MOBILE -->
+
+      <button
+        class="menu-btn"
+        id="menuBtn"
+        aria-label="Open menu"
+        aria-expanded="false"
+      >
+        ☰
+      </button>
+
+
+    </div>
+
+  </header>
+
+
+
+  <!-- =========================================================
+       MAIN
+  ========================================================= -->
+
+  <main>
+
+
+    <!-- =======================================================
+         HERO
+    ======================================================== -->
+
+    <section class="hero">
+
+      <div class="container hero-grid">
+
+
+        <div class="hero-content reveal">
+
+
+          <div class="eyebrow">
+            AI BEAUTY INTELLIGENCE
+          </div>
+
+
+          <h1>
+
+            See beauty
+
+            <span>
+              differently.
+            </span>
+
+          </h1>
+
+
+          <p class="hero-description">
+
+            Next-generation AI technology for skin, scalp and beauty
+            analysis. Turn visual data into personalized insights,
+            recommendations and better customer experiences.
+
+          </p>
+
+
+          <div class="hero-buttons">
+
+
+            <a
+              href="#contact"
+              class="btn btn-primary"
+            >
+
+              Request a Demo
+
+              <span>
+                →
+              </span>
+
+            </a>
+
+
+            <a
+              href="#solutions"
+              class="btn btn-secondary"
+            >
+              Explore Solutions
+            </a>
+
+
+          </div>
+
+
+        </div>
+
+
+
+        <div class="hero-visual reveal">
+
+
+          <div class="hero-image-wrap">
+
+
+            <img
+              class="hero-image"
+              src="https://static.wixstatic.com/media/00ab9a_850aff63bd664fbab3a436f2f53d0afe~mv2.png/v1/fill/w_980,h_733,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/Group%202051.png"
+              alt="AI Beauty Analysis"
+            />
+
+
+          </div>
+
+
+          <div class="floating-card">
+
+
+            <small>
+              AI ANALYSIS SCORE
+            </small>
+
+
+            <div class="score">
+              94<span>%</span>
+            </div>
+
+
+            <small>
+              Personalized analysis completed
+            </small>
+
+
+          </div>
+
+
+        </div>
+
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =======================================================
+         TRUST
+    ======================================================== -->
+
+    <div class="trust">
+
+      <div class="container trust-inner">
+
+
+        <div class="trust-text">
+
+          Trusted by beauty, healthcare
+          & professional businesses
+
+        </div>
+
+
+        <div class="trust-logos">
+
+          <span>
+            WELLA
+          </span>
+
+          <span>
+            AVEDA
+          </span>
+
+          <span>
+            L'ORÉAL
+          </span>
+
+          <span>
+            OLIVE YOUNG
+          </span>
+
+          <span>
+            UNILEVER
+          </span>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+
+
+    <!-- =======================================================
+         SOLUTIONS
+    ======================================================== -->
+
+    <section
+      class="solutions"
+      id="solutions"
+    >
+
+      <div class="container">
+
+
+        <div class="section-header reveal">
+
+
+          <div class="eyebrow">
+            PROFESSIONAL SOLUTIONS
+          </div>
+
+
+          <h2>
+            Intelligence designed
+            for every beauty journey.
+          </h2>
+
+
+          <p>
+            Give professionals the technology they need to understand
+            skin, scalp and personal beauty needs with greater precision.
+          </p>
+
+
+        </div>
+
+
+
+        <div class="solution-grid">
+
+
+          <!-- CARD 01 -->
+
+          <article class="solution-card reveal">
+
+
+            <div class="solution-image">
+
+              <img
+                src="https://static.wixstatic.com/media/3e6c9c_075e05deba504a87b1117ef3d7fb2b74~mv2.png/v1/fit/w_486,h_700,q_90,enc_avif,quality_auto/3e6c9c_075e05deba504a87b1117ef3d7fb2b74~mv2.png"
+                alt="AI Skin Analysis"
+                loading="lazy"
+              />
+
+            </div>
+
+
+            <div class="solution-content">
+
+
+              <div class="solution-number">
+                01 / SKIN
+              </div>
+
+
+              <h3>
+                AI Skin Analysis
+              </h3>
+
+
+              <p>
+                Analyze multiple skin conditions and transform
+                visual information into clear, personalized insights.
+              </p>
+
+
+              <a
+                href="#"
+                class="text-link"
+              >
+                Explore Skin AI →
+              </a>
+
+
+            </div>
+
+
+          </article>
+
+
+
+          <!-- CARD 02 -->
+
+          <article class="solution-card reveal">
+
+
+            <div class="solution-image">
+
+              <img
+                src="https://static.wixstatic.com/media/00ab9a_cfc5dde2659d4100ba60c92b9053bd07~mv2.png/v1/crop/x_0,y_1271,w_2013,h_2261/fill/w_980,h_1101,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/Device_birdview-sand%20color-2.png"
+                alt="AI Scalp Analysis"
+                loading="lazy"
+              />
+
+            </div>
+
+
+            <div class="solution-content">
+
+
+              <div class="solution-number">
+                02 / SCALP
+              </div>
+
+
+              <h3>
+                AI Scalp Analysis
+              </h3>
+
+
+              <p>
+                Understand scalp condition, hair characteristics,
+                moisture, sebum and other key indicators.
+              </p>
+
+
+              <a
+                href="#"
+                class="text-link"
+              >
+                Explore Scalp AI →
+              </a>
+
+
+            </div>
+
+
+          </article>
+
+
+
+          <!-- CARD 03 -->
+
+          <article class="solution-card reveal">
+
+
+            <div class="solution-image">
+
+              <img
+                src="https://static.wixstatic.com/media/00ab9a_850aff63bd664fbab3a436f2f53d0afe~mv2.png/v1/fill/w_980,h_733,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/Group%202051.png"
+                alt="Beauty AI"
+                loading="lazy"
+              />
+
+            </div>
+
+
+            <div class="solution-content">
+
+
+              <div class="solution-number">
+                03 / BEAUTY
+              </div>
+
+
+              <h3>
+                Beauty Intelligence
+              </h3>
+
+
+              <p>
+                Build personalized beauty experiences using AI-powered
+                recommendations and visual intelligence.
+              </p>
+
+
+              <a
+                href="#"
+                class="text-link"
+              >
+                Explore Beauty AI →
+              </a>
+
+
+            </div>
+
+
+          </article>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =======================================================
+         TECHNOLOGY
+    ======================================================== -->
+
+    <section
+      class="analysis"
+      id="technology"
+    >
+
+      <div class="container analysis-layout">
+
+
+        <div class="analysis-visual reveal">
+
+
+          <img
+            src="https://static.wixstatic.com/media/3e6c9c_075e05deba504a87b1117ef3d7fb2b74~mv2.png/v1/fit/w_486,h_700,q_90,enc_avif,quality_auto/3e6c9c_075e05deba504a87b1117ef3d7fb2b74~mv2.png"
+            alt="AI skin analysis technology"
+            loading="lazy"
+          />
+
+
+        </div>
+
+
+
+        <div class="reveal">
+
+
+          <div class="eyebrow">
+            ADVANCED ANALYSIS
+          </div>
+
+
+          <div class="section-header">
+
+
+            <h2>
+              From an image
+              to intelligence.
+            </h2>
+
+
+            <p>
+              Our AI engine transforms visual information into
+              structured beauty intelligence that professionals
+              can actually use.
+            </p>
+
+
+          </div>
+
+
+
+          <div class="parameter-list">
+
+
+            <div class="parameter">
+              Acne
+              <span>AI</span>
+            </div>
+
+
+            <div class="parameter">
+              Hydration
+              <span>AI</span>
+            </div>
+
+
+            <div class="parameter">
+              Sebum
+              <span>AI</span>
+            </div>
+
+
+            <div class="parameter">
+              Redness
+              <span>AI</span>
+            </div>
+
+
+            <div class="parameter">
+              Pores
+              <span>AI</span>
+            </div>
+
+
+            <div class="parameter">
+              Wrinkles
+              <span>AI</span>
+            </div>
+
+
+            <div class="parameter">
+              Skin Tone
+              <span>AI</span>
+            </div>
+
+
+            <div class="parameter">
+              Moisture
+              <span>AI</span>
+            </div>
+
+
+          </div>
+
+
+        </div>
+
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =======================================================
+         SCANNER
+    ======================================================== -->
+
+    <section
+      class="scanner"
+      id="scanner"
+    >
+
+      <div class="container scanner-layout">
+
+
+        <div class="reveal">
+
+
+          <div class="eyebrow">
+            HARDWARE + AI
+          </div>
+
+
+          <h2>
+            A scanner built
+            for precision.
+          </h2>
+
+
+          <p>
+            Combine high-resolution imaging with intelligent
+            analysis to create a deeper understanding of skin
+            and scalp conditions.
+          </p>
+
+
+          <a
+            href="#contact"
+            class="btn btn-secondary"
+          >
+            Discover the Scanner →
+          </a>
+
+
+
+          <div class="scanner-specs">
+
+
+            <div class="spec">
+
+              <strong>
+                20×
+              </strong>
+
+              <small>
+                CMOS Camera
+              </small>
+
+            </div>
+
+
+            <div class="spec">
+
+              <strong>
+                IR
+              </strong>
+
+              <small>
+                Temperature
+              </small>
+
+            </div>
+
+
+            <div class="spec">
+
+              <strong>
+                VOC
+              </strong>
+
+              <small>
+                Sensor
+              </small>
+
+            </div>
+
+
+          </div>
+
+
+        </div>
+
+
+
+        <div class="scanner-image reveal">
+
+
+          <img
+            src="https://static.wixstatic.com/media/00ab9a_cfc5dde2659d4100ba60c92b9053bd07~mv2.png/v1/crop/x_0,y_1271,w_2013,h_2261/fill/w_980,h_1101,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/Device_birdview-sand%20color-2.png"
+            alt="AI Beauty Scanner"
+            loading="lazy"
+          />
+
+
+        </div>
+
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =======================================================
+         HOW IT WORKS
+    ======================================================== -->
+
+    <section class="steps">
+
+      <div class="container">
+
+
+        <div class="section-header center reveal">
+
+
+          <div class="eyebrow">
+            SIMPLE PROCESS
+          </div>
+
+
+          <h2>
+            Intelligence in four steps.
+          </h2>
+
+
+          <p>
+            Designed to make advanced beauty technology simple
+            for professionals and customers.
+          </p>
+
+
+        </div>
+
+
+
+        <div class="steps-grid">
+
+
+          <div class="step reveal">
+
+            <div class="step-number">
+              01
+            </div>
+
+            <h3>
+              Capture
+            </h3>
+
+            <p>
+              Capture high-quality visual information using
+              the AI scanner or supported camera system.
+            </p>
+
+          </div>
+
+
+
+          <div class="step reveal">
+
+            <div class="step-number">
+              02
+            </div>
+
+            <h3>
+              Analyze
+            </h3>
+
+            <p>
+              Our AI models process multiple visual and
+              environmental parameters.
+            </p>
+
+          </div>
+
+
+
+          <div class="step reveal">
+
+            <div class="step-number">
+              03
+            </div>
+
+            <h3>
+              Understand
+            </h3>
+
+            <p>
+              Turn raw analysis into easy-to-understand
+              insights and customer-friendly reports.
+            </p>
+
+          </div>
+
+
+
+          <div class="step reveal">
+
+            <div class="step-number">
+              04
+            </div>
+
+            <h3>
+              Personalize
+            </h3>
+
+            <p>
+              Deliver recommendations and services tailored
+              to individual customer needs.
+            </p>
+
+          </div>
+
+
+        </div>
+
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =======================================================
+         BUSINESS
+    ======================================================== -->
+
+    <section id="business">
+
+      <div class="container">
+
+
+        <div class="section-header reveal">
+
+
+          <div class="eyebrow">
+            BUILT FOR BUSINESS
+          </div>
+
+
+          <h2>
+            One technology.
+            Multiple industries.
+          </h2>
+
+
+          <p>
+            Bring AI-powered beauty intelligence into the places
+            where customers make decisions.
+          </p>
+
+
+        </div>
+
+
+
+        <div class="business-grid">
+
+
+          <div class="business-card reveal">
+
+
+            <img
+              src="https://static.wixstatic.com/media/3e6c9c_075e05deba504a87b1117ef3d7fb2b74~mv2.png/v1/fit/w_486,h_700,q_90,enc_avif,quality_auto/3e6c9c_075e05deba504a87b1117ef3d7fb2b74~mv2.png"
+              alt="Dermatology"
+              loading="lazy"
+            />
+
+
+            <div class="business-overlay">
+
+              <h3>
+                Dermatology
+              </h3>
+
+            </div>
+
+
+          </div>
+
+
+
+          <div class="business-card reveal">
+
+
+            <img
+              src="https://static.wixstatic.com/media/00ab9a_850aff63bd664fbab3a436f2f53d0afe~mv2.png/v1/fill/w_980,h_733,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/Group%202051.png"
+              alt="Beauty Salon"
+              loading="lazy"
+            />
+
+
+            <div class="business-overlay">
+
+              <h3>
+                Beauty Salons
+              </h3>
+
+            </div>
+
+
+          </div>
+
+
+
+          <div class="business-card reveal">
+
+
+            <img
+              src="https://static.wixstatic.com/media/00ab9a_cfc5dde2659d4100ba60c92b9053bd07~mv2.png/v1/crop/x_0,y_1271,w_2013,h_2261/fill/w_980,h_1101,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/Device_birdview-sand%20color-2.png"
+              alt="Beauty Brand"
+              loading="lazy"
+            />
+
+
+            <div class="business-overlay">
+
+              <h3>
+                Beauty Brands
+              </h3>
+
+            </div>
+
+
+          </div>
+
+
+
+          <div class="business-card reveal">
+
+
+            <img
+              src="https://static.wixstatic.com/media/3e6c9c_075e05deba504a87b1117ef3d7fb2b74~mv2.png/v1/fit/w_486,h_700,q_90,enc_avif,quality_auto/3e6c9c_075e05deba504a87b1117ef3d7fb2b74~mv2.png"
+              alt="Hair Clinic"
+              loading="lazy"
+            />
+
+
+            <div class="business-overlay">
+
+              <h3>
+                Hair Clinics
+              </h3>
+
+            </div>
+
+
+          </div>
+
+
+        </div>
+
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =======================================================
+         STATS
+    ======================================================== -->
+
+    <section class="stats">
+
+      <div class="container stats-grid">
+
+
+        <div class="stat reveal">
+
+          <strong
+            class="counter"
+            data-target="6100"
+          >
+            0
+          </strong>
+
+          <span>
+            Professional Businesses
+          </span>
+
+        </div>
+
+
+
+        <div class="stat reveal">
+
+          <strong
+            class="counter"
+            data-target="33"
+          >
+            0K+
+          </strong>
+
+          <span>
+            Ingredient Intelligence
+          </span>
+
+        </div>
+
+
+
+        <div class="stat reveal">
+
+          <strong
+            class="counter"
+            data-target="11"
+          >
+            0+
+          </strong>
+
+          <span>
+            Skin Parameters
+          </span>
+
+        </div>
+
+
+
+        <div class="stat reveal">
+
+          <strong>
+            24/7
+          </strong>
+
+          <span>
+            Cloud AI Platform
+          </span>
+
+        </div>
+
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =======================================================
+         CASE STUDY
+    ======================================================== -->
+
+    <section
+      class="case-study"
+      id="cases"
+    >
+
+      <div class="container">
+
+
+        <div class="case-layout reveal">
+
+
+          <div class="case-image">
+
+
+            <img
+              src="https://static.wixstatic.com/media/00ab9a_850aff63bd664fbab3a436f2f53d0afe~mv2.png/v1/fill/w_980,h_733,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/Group%202051.png"
+              alt="Beauty AI case study"
+              loading="lazy"
+            />
+
+
+          </div>
+
+
+
+          <div class="case-content">
+
+
+            <div class="eyebrow">
+              CASE STUDY
+            </div>
+
+
+            <h2>
+              Turn analysis
+              into action.
+            </h2>
+
+
+            <p>
+              Help your team deliver more meaningful consultations,
+              improve customer engagement and create a data-driven
+              beauty experience.
+            </p>
+
+
+            <a
+              href="#"
+              class="btn btn-primary"
+            >
+              View Case Studies →
+            </a>
+
+
+          </div>
+
+
+        </div>
+
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =======================================================
+         CTA
+    ======================================================== -->
+
+    <section
+      class="cta"
+      id="contact"
+    >
+
+      <div class="container cta-inner reveal">
+
+
+        <div class="eyebrow">
+          LET'S BUILD THE FUTURE
+        </div>
+
+
+        <h2>
+          Ready to make beauty
+          more intelligent?
+        </h2>
+
+
+        <p>
+          Talk to our team about bringing AI-powered skin,
+          scalp and beauty intelligence to your business.
+        </p>
+
+
+        <a
+          href="mailto:hello@example.com"
+          class="btn btn-secondary"
+        >
+          Talk to Our Team →
+        </a>
+
+
+      </div>
+
+    </section>
+
+
+  </main>
+
+
+
+  <!-- =========================================================
+       FOOTER
+  ========================================================= -->
+
+  <footer>
+
+    <div class="container">
+
+
+      <div class="footer-grid">
+
+
+        <div class="footer-brand">
+
+
+          <div class="logo">
+
+            <span class="logo-mark">
+              B
+            </span>
+
+            BEAUT<span>IQ</span>
+
+          </div>
+
+
+          <p>
+            AI-powered beauty intelligence for the next generation
+            of personalized skin, scalp and beauty experiences.
+          </p>
+
+
+        </div>
+
+
+
+        <div class="footer-column">
+
+          <h4>
+            Solutions
+          </h4>
+
+          <a href="#solutions">
+            Skin AI
+          </a>
+
+          <a href="#solutions">
+            Scalp AI
+          </a>
+
+          <a href="#solutions">
+            Beauty AI
+          </a>
+
+          <a href="#scanner">
+            AI Scanner
+          </a>
+
+        </div>
+
+
+
+        <div class="footer-column">
+
+          <h4>
+            Company
+          </h4>
+
+          <a href="#">
+            About
+          </a>
+
+          <a href="#cases">
+            Case Studies
+          </a>
+
+          <a href="#technology">
+            Technology
+          </a>
+
+          <a href="#contact">
+            Contact
+          </a>
+
+        </div>
+
+
+
+        <div class="footer-column">
+
+          <h4>
+            Support
+          </h4>
+
+          <a href="#">
+            FAQ
+          </a>
+
+          <a href="#">
+            Documentation
+          </a>
+
+          <a href="#">
+            Privacy
+          </a>
+
+          <a href="#">
+            Terms
+          </a>
+
+        </div>
+
+
+      </div>
+
+
+
+      <div class="copyright">
+
+        <span>
+          © 2026 BEAUTIQ. All rights reserved.
+        </span>
+
+        <span>
+          AI Beauty Intelligence Platform
+        </span>
+
+      </div>
+
+
+    </div>
+
+  </footer>
+
+
+
+  <!-- =========================================================
+       JAVASCRIPT
+  ========================================================= -->
+
+  <script>
+
+
+    /* =========================================================
+       NAVBAR
+    ========================================================= */
+
+    const navbar =
+      document.getElementById("navbar");
+
+
+    window.addEventListener(
+      "scroll",
+      () => {
+
+        if (window.scrollY > 25) {
+
+          navbar.classList.add(
+            "scrolled"
+          );
+
+        } else {
+
+          navbar.classList.remove(
+            "scrolled"
+          );
+
+        }
+
+      },
+      { passive: true }
+    );
+
+
+    /* =========================================================
+       MOBILE MENU
+    ========================================================= */
+
+    const menuBtn =
+      document.getElementById(
+        "menuBtn"
+      );
+
+    const navLinks =
+      document.getElementById(
+        "navLinks"
+      );
+
+
+    menuBtn.addEventListener(
+      "click",
+      () => {
+
+        const isOpen =
+          navLinks.classList.toggle(
+            "mobile-open"
+          );
+
+
+        menuBtn.setAttribute(
+          "aria-expanded",
+          isOpen
+        );
+
+
+        menuBtn.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close menu"
+            : "Open menu"
+        );
+
+
+        menuBtn.innerHTML =
+          isOpen
+            ? "×"
+            : "☰";
+
+      }
+    );
+
+
+    /* =========================================================
+       CLOSE MOBILE MENU
+    ========================================================= */
+
+    document
+      .querySelectorAll(
+        ".nav-links a"
+      )
+      .forEach(link => {
+
+        link.addEventListener(
+          "click",
+          () => {
+
+            navLinks.classList.remove(
+              "mobile-open"
+            );
+
+
+            menuBtn.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+
+            menuBtn.setAttribute(
+              "aria-label",
+              "Open menu"
+            );
+
+
+            menuBtn.innerHTML =
+              "☰";
+
+          }
+        );
+
+      });
+
+
+    /* =========================================================
+       ACTIVE NAV
+    ========================================================= */
+
+    const sections =
+      document.querySelectorAll(
+        "section[id]"
+      );
+
+
+    const navItems =
+      document.querySelectorAll(
+        ".nav-links a"
+      );
+
+
+    const sectionObserver =
+      new IntersectionObserver(
+        entries => {
+
+          entries.forEach(
+            entry => {
+
+              if (
+                entry.isIntersecting
+              ) {
+
+                navItems.forEach(
+                  link => {
+
+                    link.classList.remove(
+                      "active"
+                    );
+
+                  }
+                );
+
+
+                const activeLink =
+                  document.querySelector(
+                    `.nav-links a[href="#${entry.target.id}"]`
+                  );
+
+
+                if (activeLink) {
+
+                  activeLink.classList.add(
+                    "active"
+                  );
+
+                }
+
+              }
+
+            }
+          );
+
+        },
+        {
+          rootMargin:
+            "-35% 0px -55% 0px"
+        }
+      );
+
+
+    sections.forEach(
+      section => {
+
+        sectionObserver.observe(
+          section
+        );
+
+      }
+    );
+
+
+    /* =========================================================
+       SCROLL REVEAL
+    ========================================================= */
+
+    const revealElements =
+      document.querySelectorAll(
+        ".reveal"
+      );
+
+
+    const revealObserver =
+      new IntersectionObserver(
+        entries => {
+
+          entries.forEach(
+            entry => {
+
+              if (
+                entry.isIntersecting
+              ) {
+
+                entry.target.classList.add(
+                  "visible"
+                );
+
+
+                revealObserver.unobserve(
+                  entry.target
+                );
+
+              }
+
+            }
+          );
+
+        },
+        {
+          threshold:
+            0.12
+        }
+      );
+
+
+    revealElements.forEach(
+      element => {
+
+        revealObserver.observe(
+          element
+        );
+
+      }
+    );
+
+
+    /* =========================================================
+       COUNTERS
+    ========================================================= */
+
+    const counters =
+      document.querySelectorAll(
+        ".counter"
+      );
+
+
+    const counterObserver =
+      new IntersectionObserver(
+        entries => {
+
+          entries.forEach(
+            entry => {
+
+              if (
+                !entry.isIntersecting
+              ) {
+                return;
+              }
+
+
+              const counter =
+                entry.target;
+
+
+              const target =
+                Number(
+                  counter.dataset.target
+                );
+
+
+              const suffix =
+                target === 33
+                  ? "K+"
+                  : target === 11
+                    ? "+"
+                    : "";
+
+
+              const duration =
+                1500;
+
+
+              const start =
+                performance.now();
+
+
+              function animate(time) {
+
+                const progress =
+                  Math.min(
+                    (time - start) /
+                    duration,
+                    1
+                  );
+
+
+                const eased =
+                  1 -
+                  Math.pow(
+                    1 - progress,
+                    3
+                  );
+
+
+                const current =
+                  Math.floor(
+                    eased * target
+                  );
+
+
+                counter.textContent =
+                  current.toLocaleString()
+                  + suffix;
+
+
+                if (
+                  progress < 1
+                ) {
+
+                  requestAnimationFrame(
+                    animate
+                  );
+
+                }
+
+              }
+
+
+              requestAnimationFrame(
+                animate
+              );
+
+
+              counterObserver.unobserve(
+                counter
+              );
+
+            }
+          );
+
+        },
+        {
+          threshold:
+            0.6
+        }
+      );
+
+
+    counters.forEach(
+      counter => {
+
+        counterObserver.observe(
+          counter
+        );
+
+      }
+    );
+
+
+  </script>
+
+
+</body>
+</html>
+
