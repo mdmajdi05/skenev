@@ -2,16 +2,20 @@ import Link from "next/link";
 import styles from "@/styles/site.module.css";
 
 const COMPANY = [
-  { href: "/about", label: "About" },
-  { href: "/technology", label: "Technology" },
+  { href: "/about", label: "About Us" },
+  { href: "/products", label: "Product" },
   { href: "/solutions", label: "Solutions" },
   { href: "/contact", label: "Contact" },
 ];
 
 const SOLUTIONS = [
-  { href: "/solutions#dermatologists", label: "Dermatologists" },
-  { href: "/solutions#clinics", label: "Clinics & Salons" },
-  { href: "/solutions#brands", label: "Beauty Brands" },
+  { href: "/solutions/ai-skin-analysis", label: "AI Skin Analysis" },
+  { href: "/solutions/ai-scalp-analysis", label: "AI Scalp Analysis" },
+  { href: "/solutions/beauty-intelligence", label: "Beauty Intelligence" },
+  {
+    href: "/solutions/personalized-recommendations",
+    label: "Personalized Recommendations",
+  },
 ];
 
 export default function SiteFooter() {
