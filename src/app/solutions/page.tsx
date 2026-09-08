@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import SiteNav from "@/components/SiteNav";
-import SiteFooter from "@/components/SiteFooter";
 import AboutHero from "@/components/about/AboutHero";
 import AboutTechnology from "@/components/about/AboutTechnology";
 import SolutionCards from "@/components/about/SolutionCards";
@@ -30,7 +28,6 @@ export default function SolutionsPage() {
   return (
     <>
       <JsonLd data={breadcrumbSchema} />
-      <SiteNav />
       <main>
         <AboutHero
           eyebrow="Solutions"
@@ -63,7 +60,6 @@ export default function SolutionsPage() {
         <AboutTechnology />
         <AboutCTA />
       </main>
-      <SiteFooter />
     </>
   );
 }

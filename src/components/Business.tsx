@@ -1,31 +1,31 @@
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
-import { IMG_SKIN, IMG_BEAUTY, IMG_SCALP } from "@/lib/images";
+import { IMG_BEAUTY, IMG_SCALP, IMG_ACNE, IMG_PORE_DENSITY } from "@/lib/images";
 
 const BUSINESS_CARDS = [
   {
     title: "Dermatology Clinics",
     subtitle: "Objective analysis, lesion tracking & treatment reports",
-    image: IMG_SKIN,
-    alt: "Dermatology",
+    image: IMG_ACNE,
+    alt: "AI acne analysis for dermatology",
   },
   {
     title: "Beauty Salons",
     subtitle: "A 60-second scan that sells the experience",
     image: IMG_BEAUTY,
-    alt: "Beauty Salon",
+    alt: "AI beauty analysis for salons",
   },
   {
     title: "Hair Clinics",
     subtitle: "Scalp scoring, density maps & hair-care pairing",
     image: IMG_SCALP,
-    alt: "Hair Clinic",
+    alt: "SKENEV AI scanner for hair clinics",
   },
   {
     title: "Beauty Brands",
     subtitle: "Consumer-scale evidence for better formulations",
-    image: IMG_SKIN,
-    alt: "Beauty Brand",
+    image: IMG_PORE_DENSITY,
+    alt: "AI pore analysis for beauty brands",
   },
 ];
 

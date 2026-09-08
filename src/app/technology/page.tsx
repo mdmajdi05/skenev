@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import SiteNav from "@/components/SiteNav";
-import SiteFooter from "@/components/SiteFooter";
 import AboutHero from "@/components/about/AboutHero";
 import AboutTechnology from "@/components/about/AboutTechnology";
 import AboutCTA from "@/components/about/AboutCTA";
@@ -27,7 +25,6 @@ export default function TechnologyPage() {
   return (
     <>
       <JsonLd data={techSchema} />
-      <SiteNav />
       <main>
         <AboutHero
           eyebrow="Technology"
@@ -46,7 +43,6 @@ export default function TechnologyPage() {
         <AboutTechnology />
         <AboutCTA />
       </main>
-      <SiteFooter />
     </>
   );
 }

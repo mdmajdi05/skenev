@@ -558,6 +558,7 @@ button {
   position: relative;
   border-radius: 42px;
   overflow: hidden;
+  aspect-ratio: 4/5;
   min-height: 650px;
   background: linear-gradient(145deg, #e7dfc7, #cfc1a5);
   box-shadow: var(--shadow-lg);
@@ -1208,7 +1209,8 @@ button {
 }
 
 .solution-image {
-  height: 330px;
+  aspect-ratio: 3/4;
+  min-height: 330px;
   overflow: hidden;
   background: #d8cfb8;
   position: relative;
@@ -1273,6 +1275,7 @@ button {
 .analysis-visual {
   border-radius: 40px;
   overflow: hidden;
+  aspect-ratio: 4/5;
   min-height: 650px;
   background: #ddd4bc;
   box-shadow: var(--shadow-md);
@@ -1485,6 +1488,8 @@ button {
 .business-card {
   position: relative;
   height: 410px;
+  min-height: 410px;
+  aspect-ratio: 3/4;
   border-radius: 27px;
   overflow: hidden;
   background: #ddd3bb;
@@ -1570,6 +1575,7 @@ button {
 
 .case-image {
   min-height: 610px;
+  aspect-ratio: 3/4;
   background: #ddd4bc;
   position: relative;
 }

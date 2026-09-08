@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import SiteNav from "@/components/SiteNav";
-import SiteFooter from "@/components/SiteFooter";
 import AboutHero from "@/components/about/AboutHero";
 import AboutIntro from "@/components/about/AboutIntro";
 import ScannerStory from "@/components/about/ScannerStory";
@@ -31,7 +29,6 @@ export default function AboutPage() {
   return (
     <>
       <JsonLd data={aboutSchema} />
-      <SiteNav />
       <main>
         <AboutHero
           eyebrow="About SKENEV"
@@ -51,7 +48,6 @@ export default function AboutPage() {
         <AboutBelief />
         <AboutCTA />
       </main>
-      <SiteFooter />
     </>
   );
 }

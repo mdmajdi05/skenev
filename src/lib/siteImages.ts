@@ -1,23 +1,15 @@
-export const SCANNER_01 =
-  "https://static.wixstatic.com/media/00ab9a_6da39a6eeaa84497a153347cd5f0cf80~mv2.png/v1/fill/w_471,h_894,fp_0.68_0.31,q_90,usm_0.66_1.00_0.01,enc_webp,quality_auto/becon-AI%20Scanner-01.webp";
+export const SCANNER_01 = "/skenev-hero.webp";
 
-export const SCANNER_02 =
-  "https://static.wixstatic.com/media/00ab9a_34b8e86e13414fe7b49f033b437a6953~mv2.png/v1/fill/w_386,h_769,fp_0.34_0.52,q_85,usm_0.66_1.00_0.01,enc_webp,quality_auto/becon-AI%20Scanner-02.webp";
+export const SCANNER_02 = "/skenev-hero.webp";
 
-export const SCANNER_03 =
-  "https://static.wixstatic.com/media/00ab9a_96354a4ddd7b4aba890e0a90d716d1e9~mv2.png/v1/fill/w_353,h_703,al_c,q_85,usm_0.66_1.00_0.01,enc_webp,quality_auto/becon-AI%20Scanner-03.webp";
+export const SCANNER_03 = "/skenev-hero.webp";
 
-export const FEATURE_IMG =
-  "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=2200&q=90&fm=webp";
+export const FEATURE_IMG = "/skin.webp";
 
-export const HERO_IMG =
-  "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=1600&q=80&fm=webp";
+export const HERO_IMG = "/skenev-hero.webp";
 
-export const SOLUTION_IMG =
-  "https://images.unsplash.com/photo-1560750588-73207b1ef5b8?auto=format&fit=crop&w=1200&q=80&fm=webp";
+export const SOLUTION_IMG = "/skin-barrier-index.webp";
 
-export const SOLUTION_IMG_2 =
-  "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=80&fm=webp";
+export const SOLUTION_IMG_2 = "/temperature.webp";
 
-export const SOLUTION_IMG_3 =
-  "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=1200&q=80&fm=webp";
+export const SOLUTION_IMG_3 = "/dark-circle.webp";

@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import SiteNav from "@/components/SiteNav";
-import SiteFooter from "@/components/SiteFooter";
 import AboutHero from "@/components/about/AboutHero";
 import ContactForm from "@/components/about/ContactForm";
 import JsonLd from "@/components/JsonLd";
@@ -40,7 +38,6 @@ export default function ContactPage() {
   return (
     <>
       <JsonLd data={contactSchema} />
-      <SiteNav />
       <main>
         <AboutHero
           eyebrow="Contact"
@@ -107,7 +104,6 @@ export default function ContactPage() {
           </div>
         </section>
       </main>
-      <SiteFooter />
     </>
   );
 }

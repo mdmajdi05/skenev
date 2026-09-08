@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import SiteNav from "@/components/SiteNav";
-import SiteFooter from "@/components/SiteFooter";
 import AboutHero from "@/components/about/AboutHero";
 import AboutCTA from "@/components/about/AboutCTA";
 import Reveal from "@/components/Reveal";
@@ -73,7 +71,6 @@ export default function PersonalizedRecommendationsPage() {
   return (
     <>
       <JsonLd data={breadcrumbSchema} />
-      <SiteNav />
       <main>
         <AboutHero
           eyebrow="Solutions / Personalized Recommendations"
@@ -111,7 +108,6 @@ export default function PersonalizedRecommendationsPage() {
         </section>
         <AboutCTA />
       </main>
-      <SiteFooter />
     </>
   );
 }

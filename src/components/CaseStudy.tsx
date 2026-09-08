@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
-import { IMG_BEAUTY } from "@/lib/images";
+import { IMG_BLEMISH } from "@/lib/images";
 
 const METRICS = [
   { value: "+28%", label: "repeat visits" },
@@ -16,8 +16,8 @@ export default function CaseStudy() {
           <div className="case-image">
             <div className="case-image-badge">RESULTS AT A TOKYO CLINIC</div>
             <Image
-              src={IMG_BEAUTY}
-              alt="SKENEV case study"
+              src={IMG_BLEMISH}
+              alt="SKENEV blemish analysis case study"
               fill
               sizes="(min-width: 1000px) 50vw, 100vw"
               style={{ objectFit: "cover" }}

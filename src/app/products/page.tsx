@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import SiteNav from "@/components/SiteNav";
-import SiteFooter from "@/components/SiteFooter";
 import AboutHero from "@/components/about/AboutHero";
 import AboutCTA from "@/components/about/AboutCTA";
 import ProductShowcase from "@/components/about/ProductCards";
@@ -46,7 +44,6 @@ export default function ProductsPage() {
   return (
     <>
       <JsonLd data={productSchema} />
-      <SiteNav />
       <main>
         <AboutHero
           eyebrow="The Product"
@@ -65,7 +62,6 @@ export default function ProductsPage() {
         <ProductShowcase />
         <AboutCTA />
       </main>
-      <SiteFooter />
     </>
   );
 }

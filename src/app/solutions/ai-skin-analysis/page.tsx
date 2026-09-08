@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import SiteNav from "@/components/SiteNav";
-import SiteFooter from "@/components/SiteFooter";
 import AboutHero from "@/components/about/AboutHero";
 import AboutCTA from "@/components/about/AboutCTA";
 import Reveal from "@/components/Reveal";
@@ -74,7 +72,6 @@ export default function AISkinAnalysisPage() {
   return (
     <>
       <JsonLd data={breadcrumbSchema} />
-      <SiteNav />
       <main>
         <AboutHero
           eyebrow="Solutions / AI Skin Analysis"
@@ -112,7 +109,6 @@ export default function AISkinAnalysisPage() {
         </section>
         <AboutCTA />
       </main>
-      <SiteFooter />
     </>
   );
 }

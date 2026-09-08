@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 
 import { useEffect, useState } from "react";
 
@@ -65,8 +66,7 @@ export default function Navbar() {
     <header className={`navbar ${scrolled ? "scrolled" : ""}`} id="navbar">
       <div className="nav-inner">
         <a href="#" className="logo">
-          <span className="logo-mark">S</span>
-          SKENEV<span>ai</span>
+          <Image src="/logo.webp" alt="Skenev Logo" />
         </a>
 
         <nav className="site-nav">

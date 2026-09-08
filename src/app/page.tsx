@@ -10,8 +10,6 @@ import Testimonials from "@/components/Testimonials";
 import CaseStudy from "@/components/CaseStudy";
 import FAQ from "@/components/FAQ";
 import CTA from "@/components/CTA";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
 import { SITE_URL, site } from "@/lib/site";
 import { FAQS } from "@/lib/faqs";
@@ -39,7 +37,6 @@ export default function Home() {
     <>
       <JsonLd data={faqSchema} />
       <JsonLd data={aboutSchema} />
-      <Navbar />
       <main className="flex min-h-full flex-col">
         <Hero />
         <Trust />
@@ -54,7 +51,6 @@ export default function Home() {
         <FAQ />
         <CTA />
       </main>
-      <Footer />
     </>
   );
 }

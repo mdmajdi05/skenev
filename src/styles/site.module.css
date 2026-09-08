@@ -595,7 +595,7 @@
   inset: 0;
   background:
     linear-gradient(rgba(36, 29, 24, 0.3), rgba(36, 29, 24, 0.3)),
-    url("https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?auto=format&fit=crop&w=1800&q=85") center/cover no-repeat;
+    url("/temperature.webp") center/cover no-repeat;
 }
 
 .scannerNoise {
@@ -995,7 +995,7 @@
   padding: clamp(130px, 16vw, 220px) 7vw;
   background:
     linear-gradient(180deg, rgba(36, 29, 24, 0.98) 0%, rgba(36, 29, 24, 0.88) 100%),
-    url("https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?auto=format&fit=crop&w=1800&q=85") center/cover no-repeat;
+    url("/skin.webp") center/cover no-repeat;
   color: #fbfaed;
 }
 
@@ -1051,7 +1051,7 @@
   overflow: hidden;
   background:
     linear-gradient(135deg, rgba(36, 29, 24, 0.82) 0%, rgba(36, 29, 24, 0.55) 100%),
-    url("https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?auto=format&fit=crop&w=1800&q=85") center/cover no-repeat;
+    url("/skin.webp") center/cover no-repeat;
   color: #fbfaed;
 }
 
@@ -1130,7 +1130,8 @@
 
 .solutionTileImage {
   position: relative;
-  height: 260px;
+  aspect-ratio: 3/4;
+  min-height: 260px;
   overflow: hidden;
 }
 
@@ -1626,6 +1627,7 @@
 .productDevice {
   position: relative;
   min-height: 520px;
+  aspect-ratio: 4/5;
   border-radius: 40px;
   background:
     radial-gradient(circle at 50% 35%, rgba(200, 173, 123, 0.22), transparent 55%),
