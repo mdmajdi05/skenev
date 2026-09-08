@@ -13,18 +13,20 @@ export const site = {
   description:
     "SKENEV is an AI-powered skin, scalp and beauty analysis scanner built for dermatologists, clinics, salons and beauty brands in India.",
 
-  email: "hello@skenev.in",
+  /* TODO: Fill in your business email. */
+  email: "",
 
-  /* WhatsApp number in international format, digits only (91 = India). */
-  whatsappNumber: "919876543210",
+  /* TODO: Your WhatsApp number in international format, digits only (91 = India).
+     E.g. "919876543210"  */
+  whatsappNumber: "",
   get whatsappLink() {
     return `https://wa.me/${this.whatsappNumber}`;
   },
   get whatsappDisplay() {
-    return "+91 98765 43210";
+    return this.whatsappNumber ? this.whatsappNumber : "";
   },
 
-  phone: "+91 98765 43210",
+  phone: "",
 
   address: {
     street: "A-24/5 3rd Floor, NH-19",

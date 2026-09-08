@@ -7,9 +7,13 @@ const MESSAGE = encodeURIComponent(
 );
 
 export default function WhatsAppButton() {
+  const href = `${site.whatsappLink}?text=${MESSAGE}`;
+
+  if (!site.whatsappNumber) return null;
+
   return (
     <a
-      href={`${site.whatsappLink}?text=${MESSAGE}`}
+      href={href}
       target="_blank"
       rel="noopener noreferrer"
       className="whatsapp-float"
