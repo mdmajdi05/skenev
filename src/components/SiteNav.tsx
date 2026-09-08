@@ -18,6 +18,7 @@ const LINKS = [
   { href: "/solutions", label: "Solutions", dropdown: true },
   { href: "/products", label: "Product" },
   { href: "/about", label: "About Us" },
+  { href: "/careers", label: "Careers" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -156,6 +157,9 @@ export default function SiteNav() {
           </Link>
           <Link href="/about" className={isActive("/about") ? styles.active : undefined} onClick={() => setOpen(false)}>
             About Us
+          </Link>
+          <Link href="/careers" className={isActive("/careers") ? styles.active : undefined} onClick={() => setOpen(false)}>
+            Careers
           </Link>
           <Link href="/contact" className={isActive("/contact") ? styles.active : undefined} onClick={() => setOpen(false)}>
             Contact

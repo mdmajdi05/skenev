@@ -25,7 +25,6 @@ const contactSchema = {
     telephone: site.phone,
     address: {
       "@type": "PostalAddress",
-      streetAddress: site.address.street,
       addressLocality: site.address.area,
       addressRegion: site.address.state,
       postalCode: site.address.postalCode,

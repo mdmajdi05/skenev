@@ -41,7 +41,6 @@ const orgSchema = {
   foundingDate: site.foundedYear,
   address: {
     "@type": "PostalAddress",
-    streetAddress: site.address.street,
     addressLocality: site.address.area,
     addressRegion: site.address.state,
     postalCode: site.address.postalCode,

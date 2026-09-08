@@ -7,7 +7,8 @@ const COMPANY = [
   { href: "/about", label: "About Us" },
   { href: "/products", label: "Product" },
   { href: "/solutions", label: "Solutions" },
-  { href: "/contact", label: "Contact" },
+  { href: "/technology", label: "Technology" },
+  { href: "/careers", label: "Careers" },
 ];
 
 const SOLUTIONS = [
@@ -20,6 +21,18 @@ const SOLUTIONS = [
   },
 ];
 
+const SUPPORT = [
+  { href: "/contact", label: "Book a Demo" },
+  { href: "/contact", label: "Privacy Policy" },
+  { href: "/contact", label: "Terms & Conditions" },
+  { href: "/careers", label: "Join Our Team" },
+];
+
+const SOCIALS = [
+  { href: site.socials.instagram, label: "Instagram", handle: "@skenev" },
+  { href: site.socials.linkedin, label: "LinkedIn", handle: "SKENEV" },
+];
+
 export default function SiteFooter() {
   return (
     <footer className={styles.footer}>
@@ -30,11 +43,17 @@ export default function SiteFooter() {
           </Link>
           <p className={styles.footerDescription}>
             AI-powered skin, scalp and beauty analysis that makes every
-            consultation deeper, faster and more personal.
+            consultation deeper, faster and more personal. Proudly made in
+            India for the world.
           </p>
           <div className={styles.footerAddress}>
-            <strong>{site.name} — New Delhi</strong>
-            <span>{site.address.full}</span>
+            <strong>{site.name}</strong>
+            <span>{site.address.city}, {site.address.country}</span>
+            <span>
+              {site.whatsappDisplay
+                ? `WhatsApp ${site.whatsappDisplay}`
+                : "Mon – Sat, 10am – 7pm IST"}
+            </span>
           </div>
         </div>
         <div className={styles.footerLinks}>
@@ -59,13 +78,25 @@ export default function SiteFooter() {
             </ul>
           </div>
           <div className={styles.footerColumn}>
+            <h4>Support</h4>
+            <ul>
+              {SUPPORT.map((l) => (
+                <li key={l.href}>
+                  <Link href={l.href}>{l.label}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className={styles.footerColumn}>
             <h4>Contact</h4>
             <ul>
               <li>
                 <Link href="/contact">Book a Demo</Link>
               </li>
               <li>
-                <a href={`mailto:${site.email}`}>{site.email}</a>
+                <a href={`mailto:${site.email}`}>
+                  {site.email || "careers@skenev.in"}
+                </a>
               </li>
               <li>
                 <a href={site.whatsappLink} target="_blank" rel="noopener noreferrer">
@@ -73,7 +104,7 @@ export default function SiteFooter() {
                 </a>
               </li>
               <li>
-                <span>Privacy Policy</span>
+                <span>{site.address.city}, {site.address.country}</span>
               </li>
             </ul>
           </div>
@@ -82,6 +113,13 @@ export default function SiteFooter() {
       <div className={styles.footerBottom}>
         <div className={styles.footerBottomInner}>
           <span>&copy; 2026 {site.name}. All rights reserved.</span>
+          <div className={styles.footerSocials}>
+            {SOCIALS.map((s) => (
+              <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer">
+                {s.label}
+              </a>
+            ))}
+          </div>
           <span>Intelligent beauty technology · Made in India</span>
           <div className={styles.footerLegal}>
             <Link href="/contact">Privacy</Link>

@@ -21,6 +21,7 @@ const ROUTES: {
   { path: "/products", priority: 0.9, changeFrequency: "monthly" },
   { path: "/technology", priority: 0.7, changeFrequency: "monthly" },
   { path: "/about", priority: 0.7, changeFrequency: "monthly" },
+  { path: "/careers", priority: 0.6, changeFrequency: "weekly" },
   { path: "/contact", priority: 0.9, changeFrequency: "monthly" },
 ];
 

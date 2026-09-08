@@ -1461,8 +1461,10 @@
 
 .footerLinks {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(30px, 4vw, 70px);
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(26px, 3vw, 56px);
+  width: 100%;
+  max-width: 760px;
 }
 
 .footerColumn {
@@ -1529,6 +1531,22 @@
   color: #fbfaed;
 }
 
+.footerSocials {
+  display: flex;
+  gap: 18px;
+}
+
+.footerSocials a {
+  color: rgba(245, 245, 220, 0.68);
+  font-size: 0.82rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footerSocials a:hover {
+  color: #c8ad7b;
+}
+
 /* =========================================================
    ANIMATIONS
 ========================================================= */
@@ -1553,6 +1571,239 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* =========================================================
+   PRE-BOOKING OFFER
+========================================================= */
+
+.prebook {
+  background: #241d18;
+  padding: clamp(80px, 10vw, 130px) 7vw;
+}
+
+.prebookBanner {
+  position: relative;
+  width: min(1240px, 100%);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: clamp(320px, 42vw, 460px);
+  border-radius: 42px;
+  overflow: hidden;
+  padding: clamp(36px, 5vw, 70px);
+  margin-bottom: clamp(60px, 8vw, 90px);
+}
+
+.prebookOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(36, 29, 24, 0.55),
+    rgba(36, 29, 24, 0.84)
+  );
+}
+
+.prebookBanner h2,
+.prebookBanner p,
+.prebookBadge {
+  position: relative;
+  z-index: 1;
+}
+
+.prebookBadge {
+  display: inline-block;
+  background: #c8ad7b;
+  color: #241d18;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 9px 18px;
+  border-radius: 100px;
+  margin-bottom: 22px;
+}
+
+.prebookBanner h2 {
+  color: #fbfaed;
+  font-family: var(--font-manrope), sans-serif;
+  font-size: clamp(1.9rem, 4.4vw, 3.4rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  max-width: 720px;
+  margin: 0 0 18px;
+}
+
+.prebookBanner h2 em {
+  font-weight: 300;
+  font-style: italic;
+  color: #c8ad7b;
+}
+
+.prebookBanner p {
+  color: rgba(245, 245, 220, 0.8);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  max-width: 560px;
+  margin: 0;
+}
+
+.prebookInner {
+  width: min(1240px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: clamp(40px, 6vw, 90px);
+  align-items: start;
+}
+
+.prebookInfo {
+  display: grid;
+  gap: 30px;
+  padding-top: 10px;
+}
+
+.prebookSteps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 26px;
+}
+
+.prebookSteps li {
+  display: grid;
+  gap: 6px;
+  position: relative;
+  padding-left: 30px;
+}
+
+.prebookSteps li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #c8ad7b;
+}
+
+.prebookSteps strong {
+  color: #fbfaed;
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 1.05rem;
+}
+
+.prebookSteps span {
+  color: rgba(245, 245, 220, 0.62);
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+.prebookNote {
+  display: grid;
+  gap: 4px;
+  padding: 20px 24px;
+  border: 1px solid rgba(245, 245, 220, 0.14);
+  border-radius: 20px;
+}
+
+.prebookNote strong {
+  color: #c8ad7b;
+  font-size: 1rem;
+}
+
+.prebookNote span {
+  color: rgba(245, 245, 220, 0.6);
+  font-size: 0.9rem;
+}
+
+/* =========================================================
+   CAREERS
+========================================================= */
+
+.careerRoleType {
+  color: #a88a57 !important;
+  font-size: 0.8rem !important;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 14px !important;
+}
+
+.careerApply {
+  display: inline-block;
+  margin-top: auto;
+  padding-top: 24px;
+  color: #241d18;
+  font-weight: 700;
+  font-size: 0.92rem;
+  text-decoration: none;
+  transition: color 0.45s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.techCard:hover .careerApply {
+  color: #fbfaed;
+}
+
+.careerPerks {
+  position: relative;
+  padding: clamp(90px, 12vw, 150px) 7vw;
+}
+
+.careerPerksGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.careerPerk {
+  border-radius: 30px;
+  padding: 38px 34px;
+  background: #241d18;
+  border: 1px solid rgba(245, 245, 220, 0.08);
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.45s ease;
+}
+
+.careerPerk:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 30px 70px rgba(36, 29, 24, 0.35);
+}
+
+.careerPerk h3 {
+  color: #fbfaed;
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 14px;
+}
+
+.careerPerk h3::before {
+  content: "";
+  display: block;
+  width: 26px;
+  height: 3px;
+  border-radius: 3px;
+  background: #c8ad7b;
+  margin-bottom: 16px;
+}
+
+.careerPerk p {
+  color: rgba(245, 245, 220, 0.66);
+  font-size: 0.95rem;
+  line-height: 1.75;
+  margin: 0;
 }
 
 @keyframes fadeIn {
@@ -1743,6 +1994,15 @@
   .techGrid,
   .solutionsGrid {
     grid-template-columns: 1fr;
+  }
+
+  .careerPerksGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .prebookInner {
+    grid-template-columns: 1fr;
+    gap: 40px;
   }
 
   .productShowcase {

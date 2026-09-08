@@ -4,22 +4,22 @@ const TESTIMONIALS = [
   {
     quote:
       "SKENEV turned our consultations upside down. Clients now arrive already knowing what we found — visits feel deeper, and sales follow naturally.",
-    name: "Dr. Anika Sharma",
+    name: "Dr. Ananya Menon",
     role: "Dermatologist · Mumbai",
     highlight: "62% longer consultations",
   },
   {
     quote:
       "We scan every client in under a minute. It's the most professional 'wow' moment we've added to a salon floor in years.",
-    name: "Lena Moreau",
-    role: "Salon Director · Paris",
+    name: "Priya Kapoor",
+    role: "Salon Director · New Delhi",
     highlight: "90s average scan time",
   },
   {
     quote:
-      "Real numbers, real evidence. SKENEV gives us consumer-scale beauty intelligence we can actually build products on.",
-    name: "James Okafor",
-    role: "Head of R&D · Beauty brand",
+      "Real numbers, real evidence. SKENEV gives us consumer-scale beauty intelligence we can actually build products on — across Indian skin tones.",
+    name: "Rahul Deshmukh",
+    role: "Head of R&D · Beauty brand, Pune",
     highlight: "33K+ analyses analyzed",
   },
 ];

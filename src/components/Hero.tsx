@@ -9,8 +9,8 @@ export default function Hero() {
         <Reveal>
           <div className="eyebrow">MEET THE SKENEV SCANNER</div>
           <h1>
-            See what skin,
-            <span>scalp &amp; beauty</span>
+            See what
+            <span>skin,scalp &amp; beauty</span>
             can&rsquo;t hide.
           </h1>
           <p className="hero-description">

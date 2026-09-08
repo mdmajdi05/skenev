@@ -16,20 +16,20 @@ export const site = {
   /* TODO: Fill in your business email. */
   email: "",
 
-  /* TODO: Your WhatsApp number in international format, digits only (91 = India).
-     E.g. "919876543210"  */
-  whatsappNumber: "",
+  /* Your WhatsApp number in international format, digits only (91 = India). */
+  whatsappNumber: "917982498712",
   get whatsappLink() {
     return `https://wa.me/${this.whatsappNumber}`;
   },
   get whatsappDisplay() {
-    return this.whatsappNumber ? this.whatsappNumber : "";
+    return this.whatsappNumber
+      ? `+${this.whatsappNumber.replace(/(\d{2})(\d{5})(\d{5})/, "$1 $2 $3")}`
+      : "";
   },
 
   phone: "",
 
   address: {
-    street: "A-24/5 3rd Floor, NH-19",
     area: "Mohan Cooperative Industrial Estate",
     city: "New Delhi",
     state: "Delhi",
@@ -37,7 +37,7 @@ export const site = {
     country: "India",
     countryCode: "IN",
     get full() {
-      return `${this.street}, ${this.area}, ${this.city}, ${this.state} ${this.postalCode}`;
+      return `${this.area}, ${this.city}, ${this.state} ${this.postalCode}`;
     },
   },
 
