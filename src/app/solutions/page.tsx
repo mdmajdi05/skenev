@@ -5,17 +5,31 @@ import AboutHero from "@/components/about/AboutHero";
 import AboutTechnology from "@/components/about/AboutTechnology";
 import SolutionCards from "@/components/about/SolutionCards";
 import AboutCTA from "@/components/about/AboutCTA";
+import JsonLd from "@/components/JsonLd";
+import { buildMetadata } from "@/lib/seo";
+import { SITE_URL } from "@/lib/site";
 import styles from "@/styles/site.module.css";
 
-export const metadata: Metadata = {
-  title: "Solutions — SKENEV",
+export const metadata: Metadata = buildMetadata({
+  title: "Beauty Solutions — SKENEV AI Skin, Scalp & Scanner Technology",
   description:
-    "SKENEV intelligent beauty technology for dermatologists, clinics, salons and beauty brands.",
+    "SKENEV intelligent beauty technology for dermatologists, clinics, salons and beauty brands across India — AI skin analysis, scalp analysis and beauty intelligence.",
+  path: "/solutions",
+});
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+    { "@type": "ListItem", position: 2, name: "Solutions", item: `${SITE_URL}/solutions` },
+  ],
 };
 
 export default function SolutionsPage() {
   return (
     <>
+      <JsonLd data={breadcrumbSchema} />
       <SiteNav />
       <main>
         <AboutHero

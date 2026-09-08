@@ -5,25 +5,25 @@ const STEPS = [
     number: "01",
     title: "Capture",
     description:
-      "Capture high-quality visual information using the AI scanner or supported camera system.",
+      "Point SKENEV at the face or scalp. In seconds the scanner captures high-resolution visual and environmental data.",
   },
   {
     number: "02",
     title: "Analyze",
     description:
-      "Our AI models process multiple visual and environmental parameters.",
+      "Our AI models process 11+ parameters — from hydration and sebum to density and tone — in real time.",
   },
   {
     number: "03",
     title: "Understand",
     description:
-      "Turn raw analysis into easy-to-understand insights and customer-friendly reports.",
+      "Raw analysis becomes clear, honest insight and customer-ready reports — no medical degree needed.",
   },
   {
     number: "04",
     title: "Personalize",
     description:
-      "Deliver recommendations and services tailored to individual customer needs.",
+      "Turn insight into action: routines, products and treatments built for one unique beauty signature.",
   },
 ];
 
@@ -33,11 +33,11 @@ export default function Steps() {
       <div className="container">
         <Reveal>
           <div className="section-header center">
-            <div className="eyebrow">SIMPLE PROCESS</div>
-            <h2>Intelligence in four steps.</h2>
+            <div className="eyebrow">HOW IT WORKS</div>
+            <h2>From scan to personal plan in four steps.</h2>
             <p>
-              Designed to make advanced beauty technology simple for
-              professionals and customers.
+              Designed to make advanced beauty technology effortless for
+              professionals — and unforgettable for their customers.
             </p>
           </div>
         </Reveal>

@@ -8,16 +8,29 @@ import AboutTechnology from "@/components/about/AboutTechnology";
 import FeatureImage from "@/components/about/FeatureImage";
 import AboutBelief from "@/components/about/AboutBelief";
 import AboutCTA from "@/components/about/AboutCTA";
+import JsonLd from "@/components/JsonLd";
+import { buildMetadata } from "@/lib/seo";
+import { SITE_URL, site } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "About — SKENEV",
+export const metadata: Metadata = buildMetadata({
+  title: "About SKENEV — Intelligent Beauty Technology from India",
   description:
-    "The story behind SKENEV — intelligent beauty technology designed to make every consultation deeper, faster and more personal.",
+    "The story behind SKENEV — intelligent beauty technology made in India to make every consultation deeper, faster and more personal.",
+  path: "/about",
+});
+
+const aboutSchema = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  name: `About ${site.name}`,
+  description: site.description,
+  url: `${SITE_URL}/about`,
 };
 
 export default function AboutPage() {
   return (
     <>
+      <JsonLd data={aboutSchema} />
       <SiteNav />
       <main>
         <AboutHero

@@ -178,8 +178,10 @@
     opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1),
     transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
     visibility 0.35s ease;
+  z-index: 100;
 }
 
+.navDropdown:hover .dropdownMenu,
 .dropdownMenu.show {
   opacity: 1;
   visibility: visible;
@@ -1343,6 +1345,54 @@
   margin: 0;
 }
 
+.contactAddress {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-top: 30px;
+  padding: 22px 24px;
+  border-radius: 20px;
+  background: #f5f5dc;
+  border: 1px solid rgba(36, 29, 24, 0.08);
+}
+
+.contactAddress strong {
+  display: block;
+  color: #241d18;
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+}
+
+.contactAddress span {
+  color: #857a70;
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+
+.contactInfo a {
+  color: #a88a57;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.contactInfo a:hover {
+  color: #241d18;
+}
+
+.whatsappLinked {
+  display: inline-block;
+  justify-self: start;
+  color: #1f9d52;
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.whatsappLinked:hover {
+  color: #146b39;
+}
+
 /* =========================================================
    FOOTER
 ========================================================= */
@@ -1377,6 +1427,25 @@
   font-size: 0.96rem;
   line-height: 1.7;
   margin: 0;
+}
+
+.footerAddress {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(245, 245, 220, 0.1);
+  color: rgba(245, 245, 220, 0.5);
+  font-size: 0.85rem;
+  line-height: 1.7;
+}
+
+.footerAddress strong {
+  color: #c8ad7b;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
 }
 
 .footerLinks {
@@ -1544,6 +1613,97 @@
 }
 
 /* =========================================================
+   PRODUCT SHOWCASE
+========================================================= */
+
+.productShowcase {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(30px, 5vw, 70px);
+  align-items: center;
+}
+
+.productDevice {
+  position: relative;
+  min-height: 520px;
+  border-radius: 40px;
+  background:
+    radial-gradient(circle at 50% 35%, rgba(200, 173, 123, 0.22), transparent 55%),
+    #241d18;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.productDeviceGlow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(200, 173, 123, 0.3), transparent 70%);
+  transform: translate(-50%, -50%);
+  filter: blur(40px);
+  animation: glowDrift 8s ease-in-out infinite alternate;
+}
+
+.productBox {
+  display: grid;
+  gap: 14px;
+}
+
+.productBoxItem {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 24px 26px;
+  border-radius: 22px;
+  background: #f5f5dc;
+  border: 1px solid rgba(36, 29, 24, 0.06);
+  transition:
+    background 0.35s ease,
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.productBoxItem:hover {
+  background: #fbfaed;
+  transform: translateX(6px);
+  box-shadow: 0 16px 40px rgba(36, 29, 24, 0.1);
+}
+
+.productBoxNumber {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: #241d18;
+  color: #c8ad7b;
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.productBoxItem h3 {
+  color: #241d18;
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 6px;
+}
+
+.productBoxItem p {
+  color: #857a70;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* =========================================================
    RESPONSIVE
 ========================================================= */
 
@@ -1571,6 +1731,14 @@
   .techGrid,
   .solutionsGrid {
     grid-template-columns: 1fr;
+  }
+
+  .productShowcase {
+    grid-template-columns: 1fr;
+  }
+
+  .productDevice {
+    min-height: 380px;
   }
 
   .techCard {

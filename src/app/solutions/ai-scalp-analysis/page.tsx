@@ -4,12 +4,42 @@ import SiteFooter from "@/components/SiteFooter";
 import AboutHero from "@/components/about/AboutHero";
 import AboutCTA from "@/components/about/AboutCTA";
 import Reveal from "@/components/Reveal";
+import JsonLd from "@/components/JsonLd";
+import { buildMetadata } from "@/lib/seo";
+import { SITE_URL } from "@/lib/site";
 import styles from "@/styles/site.module.css";
 
-export const metadata: Metadata = {
-  title: "AI Scalp Analysis — SKENEV",
+export const metadata: Metadata = buildMetadata({
+  title: "AI Scalp Analysis — SKENEV Hair & Scalp Scanner India",
   description:
-    "SKENEV AI Scalp Analysis — understand scalp condition, hair characteristics, moisture, sebum and other key indicators.",
+    "SKENEV AI scalp analysis understands scalp condition, hair density, moisture, sebum and follicle health — for hair clinics across India.",
+  path: "/solutions/ai-scalp-analysis",
+  keywords: [
+    "AI scalp analysis India",
+    "scalp scanner for hair clinics",
+    "hair density mapping",
+    "scalp health analysis",
+  ],
+});
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Solutions",
+      item: `${SITE_URL}/solutions`,
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: "AI Scalp Analysis",
+      item: `${SITE_URL}/solutions/ai-scalp-analysis`,
+    },
+  ],
 };
 
 const FEATURES = [
@@ -42,6 +72,7 @@ const FEATURES = [
 export default function AIScalpAnalysisPage() {
   return (
     <>
+      <JsonLd data={breadcrumbSchema} />
       <SiteNav />
       <main>
         <AboutHero

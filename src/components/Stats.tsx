@@ -10,9 +10,9 @@ type CounterStat = {
 };
 
 const STATS: CounterStat[] = [
-  { target: 6100, suffix: "", label: "Professional Businesses" },
-  { target: 33, suffix: "K+", label: "Ingredient Intelligence" },
-  { target: 11, suffix: "+", label: "Skin Parameters" },
+  { target: 6100, suffix: "+", label: "Businesses onboarded" },
+  { target: 33000, suffix: "+", label: "Analyses completed" },
+  { target: 11, suffix: "+", label: "Skin parameters" },
 ];
 
 function Counter({ target, suffix }: Omit<CounterStat, "label">) {

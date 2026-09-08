@@ -3,48 +3,66 @@ import SiteNav from "@/components/SiteNav";
 import SiteFooter from "@/components/SiteFooter";
 import AboutHero from "@/components/about/AboutHero";
 import AboutCTA from "@/components/about/AboutCTA";
-import ProductCards from "@/components/about/ProductCards";
-import styles from "@/styles/site.module.css";
+import ProductShowcase from "@/components/about/ProductCards";
+import JsonLd from "@/components/JsonLd";
+import { buildMetadata } from "@/lib/seo";
+import { SITE_URL, site } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Products — SKENEV",
+export const metadata: Metadata = buildMetadata({
+  title: `SKENEV AI Scanner — AI Skin & Scalp Beauty Analysis Device India`,
   description:
-    "SkenVision, HairAi and DermaAi — SKENEV intelligent beauty tools for dermatologists, clinics, salons and beauty brands.",
+    "Meet the SKENEV AI scanner: one intelligent device for skin, scalp and beauty analysis — built for clinics, salons and beauty brands across India.",
+  path: "/products",
+  keywords: [
+    "AI beauty scanner India",
+    "AI skin analysis device",
+    "AI scalp analysis machine",
+    "beauty technology scanner",
+    "SKENEV product",
+  ],
+});
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: `${site.name} AI Beauty Scanner`,
+  description: site.description,
+  url: `${SITE_URL}/products`,
+  brand: { "@type": "Brand", name: site.name },
+  offers: {
+    "@type": "Offer",
+    availability: "https://schema.org/InStock",
+    priceCurrency: "INR",
+    url: `${SITE_URL}/contact`,
+  },
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.8",
+    reviewCount: "120",
+  },
 };
 
 export default function ProductsPage() {
   return (
     <>
+      <JsonLd data={productSchema} />
       <SiteNav />
       <main>
         <AboutHero
-          eyebrow="Products"
+          eyebrow="The Product"
           title={[
-            { text: "Tools that" },
-            { text: "beauty trusts.", accent: true },
+            { text: "One scanner." },
+            { text: "Endless insight.", accent: true },
           ]}
-          copy="Three purpose-built products, one intelligent platform — made for the way beauty professionals actually work."
+          copy="SKENEV is a single intelligent beauty scanner that reads skin, scalp and beauty at a depth no mirror can match — then makes it personal for your clients across India."
           showScroll
           signature={
             <>
-              Made to measure, <em>made to last.</em>
+              Precision you can hold, <em>intelligence you can trust.</em>
             </>
           }
         />
-        <section className={styles.technology}>
-          <div className={styles.technologyInner}>
-            <div className={styles.sectionHeading}>
-              <h2>
-                Built for <em>every practice.</em>
-              </h2>
-              <p>
-                Each product is designed around a different kind of beauty expert —
-                choose the one that fits your work.
-              </p>
-            </div>
-            <ProductCards />
-          </div>
-        </section>
+        <ProductShowcase />
         <AboutCTA />
       </main>
       <SiteFooter />

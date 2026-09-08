@@ -1,64 +1,54 @@
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
-import { SOLUTION_IMG, SOLUTION_IMG_2, SOLUTION_IMG_3 } from "@/lib/siteImages";
+import { SCANNER_02 } from "@/lib/siteImages";
 import styles from "@/styles/site.module.css";
 
-const PRODUCTS = [
-  {
-    id: "skenvision",
-    number: "01",
-    img: SOLUTION_IMG,
-    alt: "SkenVision AI scanner",
-    title: "SkenVision",
-    copy: "Our flagship smart scanner — a 60-second skin and scalp analysis that turns every consultation into a memorable experience.",
-    features: ["60-second scan", "Branded reports", "Progress tracking"],
-  },
-  {
-    id: "hairai",
-    number: "02",
-    img: SOLUTION_IMG_2,
-    alt: "HairAi scalp analysis",
-    title: "HairAi",
-    copy: "Dedicated scalp and hair intelligence for clinics and salons — density, moisture, sebum and follicle health in one pass.",
-    features: ["Scalp mapping", "Density metrics", "Treatment tracking"],
-  },
-  {
-    id: "dermaai",
-    number: "03",
-    img: SOLUTION_IMG_3,
-    alt: "DermaAi dermatology analysis",
-    title: "DermaAi",
-    copy: "Dermatologist-grade analysis built for diagnosis support, lesion tracking and evidence-backed treatment plans.",
-    features: ["Lesion tracking", "Full-face mapping", "Report builder"],
-  },
+const IN_THE_BOX = [
+  { label: "SKENEV AI Scanner", copy: "The precision imaging device reads skin and scalp in a single pass." },
+  { label: "Cloud AI Engine", copy: "11+ analysis parameters processed in real time on a secure platform." },
+  { label: "Analysis Suite", copy: "Skin, scalp and beauty intelligence — one subscription, three modes." },
+  { label: "Branded Reports", copy: "Professional, customizable reports ready for every consultation." },
 ];
 
-export default function ProductCards() {
+export default function ProductShowcase() {
   return (
-    <div className={styles.solutionsGrid}>
-      {PRODUCTS.map((p) => (
-        <Reveal key={p.id} className={styles.solutionTile}>
-          <div id={p.id} className={styles.solutionTileImage}>
+    <section className={styles.technology}>
+      <div className={styles.technologyInner}>
+        <div className={styles.sectionHeading}>
+          <h2>
+            Everything you need. <em>Nothing you don&rsquo;t.</em>
+          </h2>
+          <p>
+            One product. One subscription. Three intelligences. Designed to
+            make advanced beauty technology feel effortless.
+          </p>
+        </div>
+        <div className={styles.productShowcase}>
+          <Reveal className={styles.productDevice}>
+            <div className={styles.productDeviceGlow} />
             <Image
-              src={p.img}
-              alt={p.alt}
+              src={SCANNER_02}
+              alt="The SKENEV AI scanner"
               fill
-              sizes="(max-width: 800px) 100vw, 33vw"
-              style={{ objectFit: "cover" }}
+              sizes="(max-width: 1000px) 100vw, 45vw"
+              style={{ objectFit: "contain" }}
             />
+          </Reveal>
+          <div className={styles.productBox}>
+            {IN_THE_BOX.map((item, i) => (
+              <Reveal key={item.label} className={styles.productBoxItem}>
+                <span className={styles.productBoxNumber}>
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <div>
+                  <h3>{item.label}</h3>
+                  <p>{item.copy}</p>
+                </div>
+              </Reveal>
+            ))}
           </div>
-          <div className={styles.solutionTileContent}>
-            <span className={styles.solutionTileNumber}>{p.number}</span>
-            <h3>{p.title}</h3>
-            <p>{p.copy}</p>
-            <ul className={styles.solutionTileFeatures}>
-              {p.features.map((f) => (
-                <li key={f}>{f}</li>
-              ))}
-            </ul>
-          </div>
-        </Reveal>
-      ))}
-    </div>
+        </div>
+      </div>
+    </section>
   );
 }

@@ -1,11 +1,20 @@
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
+import Link from "next/link";
 import { IMG_SCALP } from "@/lib/images";
 
 const SCANNER_SPECS = [
   { value: "20×", label: "CMOS Camera" },
   { value: "IR", label: "Temperature" },
-  { value: "VOC", label: "Sensor" },
+  { value: "VOC", label: "Gas Sensor" },
+  { value: "0.7 AU", label: "Hydration" },
+];
+
+const SCANNER_FEATURES = [
+  "Hyperspectral capture",
+  "Dermatologist-grade models",
+  "Secure, private by design",
+  "Results in under a minute",
 ];
 
 export default function Scanner() {
@@ -14,14 +23,26 @@ export default function Scanner() {
       <div className="container scanner-layout">
         <Reveal>
           <div className="eyebrow">HARDWARE + AI</div>
-          <h2>A scanner built for precision.</h2>
+          <h2>Precision, engineered into a single device.</h2>
           <p>
-            Combine high-resolution imaging with intelligent analysis to
-            create a deeper understanding of skin and scalp conditions.
+            SKENEV combines high-resolution imaging with intelligent analysis —
+            so a 60-second scan becomes a deeper understanding of skin and
+            scalp. No guesswork, no waiting.
           </p>
-          <a href="#contact" className="btn btn-secondary">
-            Discover the Scanner →
-          </a>
+          <div className="scanner-actions">
+            <a href="#contact" className="btn btn-secondary">
+              Book a Demo →
+            </a>
+            <Link href="/products" className="btn btn-ghost">
+              View Product
+            </Link>
+          </div>
+
+          <ul className="scanner-features">
+            {SCANNER_FEATURES.map((feature) => (
+              <li key={feature}>{feature}</li>
+            ))}
+          </ul>
 
           <div className="scanner-specs">
             {SCANNER_SPECS.map((spec) => (
@@ -35,9 +56,12 @@ export default function Scanner() {
 
         <Reveal>
           <div className="scanner-image">
+            <div className="scanner-image-caption">
+              <span>SKENEV · AI SCANNER</span>
+            </div>
             <Image
               src={IMG_SCALP}
-              alt="AI Beauty Scanner"
+              alt="The SKENEV AI beauty scanner"
               fill
               sizes="(min-width: 1000px) 50vw, 100vw"
               style={{ objectFit: "cover" }}

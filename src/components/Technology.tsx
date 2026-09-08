@@ -3,14 +3,17 @@ import Reveal from "@/components/Reveal";
 import { IMG_SKIN } from "@/lib/images";
 
 const PARAMETERS = [
-  "Acne",
   "Hydration",
   "Sebum",
+  "Acne",
   "Redness",
   "Pores",
   "Wrinkles",
   "Skin Tone",
   "Moisture",
+  "Elasticity",
+  "Pigmentation",
+  "Smoothness",
 ];
 
 export default function Technology() {
@@ -19,6 +22,9 @@ export default function Technology() {
       <div className="container analysis-layout">
         <Reveal>
           <div className="analysis-visual">
+            <div className="analysis-visual-overlay">
+              <span>LIVE SCAN</span>
+            </div>
             <Image
               src={IMG_SKIN}
               alt="AI skin analysis technology"
@@ -30,12 +36,12 @@ export default function Technology() {
         </Reveal>
 
         <Reveal>
-          <div className="eyebrow">ADVANCED ANALYSIS</div>
+          <div className="eyebrow">THE AI ENGINE</div>
           <div className="section-header">
-            <h2>From an image to intelligence.</h2>
+            <h2>From a single image to deep intelligence.</h2>
             <p>
-              Our AI engine transforms visual information into structured
-              beauty intelligence that professionals can actually use.
+              The SKENEV AI engine transforms one scan into structured beauty
+              intelligence — measured, comparable and ready for real decisions.
             </p>
           </div>
 

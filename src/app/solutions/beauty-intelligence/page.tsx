@@ -4,12 +4,42 @@ import SiteFooter from "@/components/SiteFooter";
 import AboutHero from "@/components/about/AboutHero";
 import AboutCTA from "@/components/about/AboutCTA";
 import Reveal from "@/components/Reveal";
+import JsonLd from "@/components/JsonLd";
+import { buildMetadata } from "@/lib/seo";
+import { SITE_URL } from "@/lib/site";
 import styles from "@/styles/site.module.css";
 
-export const metadata: Metadata = {
-  title: "Beauty Intelligence — SKENEV",
+export const metadata: Metadata = buildMetadata({
+  title: "Beauty Intelligence — SKENEV AI Beauty Analytics for Brands",
   description:
-    "SKENEV Beauty Intelligence — build personalized beauty experiences using AI-powered recommendations and visual intelligence.",
+    "SKENEV beauty intelligence builds personalized beauty experiences with AI-powered recommendations and visual intelligence for Indian beauty brands.",
+  path: "/solutions/beauty-intelligence",
+  keywords: [
+    "beauty intelligence platform",
+    "AI beauty analytics brands",
+    "consumer-scale beauty studies",
+    "beauty trend analysis India",
+  ],
+});
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Solutions",
+      item: `${SITE_URL}/solutions`,
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: "Beauty Intelligence",
+      item: `${SITE_URL}/solutions/beauty-intelligence`,
+    },
+  ],
 };
 
 const FEATURES = [
@@ -42,6 +72,7 @@ const FEATURES = [
 export default function BeautyIntelligencePage() {
   return (
     <>
+      <JsonLd data={breadcrumbSchema} />
       <SiteNav />
       <main>
         <AboutHero

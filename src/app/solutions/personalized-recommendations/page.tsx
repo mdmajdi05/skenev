@@ -4,12 +4,42 @@ import SiteFooter from "@/components/SiteFooter";
 import AboutHero from "@/components/about/AboutHero";
 import AboutCTA from "@/components/about/AboutCTA";
 import Reveal from "@/components/Reveal";
+import JsonLd from "@/components/JsonLd";
+import { buildMetadata } from "@/lib/seo";
+import { SITE_URL } from "@/lib/site";
 import styles from "@/styles/site.module.css";
 
-export const metadata: Metadata = {
-  title: "Personalized Recommendations — SKENEV",
+export const metadata: Metadata = buildMetadata({
+  title: "Personalized Beauty Recommendations — SKENEV AI Routine Builder",
   description:
-    "SKENEV Personalized Recommendations — build bespoke beauty routines from AI analysis, matched to one unique beauty signature.",
+    "SKENEV personalized recommendations build bespoke beauty routines from AI analysis — matched to one unique beauty signature in India.",
+  path: "/solutions/personalized-recommendations",
+  keywords: [
+    "personalized skincare recommendations",
+    "AI beauty routine builder",
+    "skincare product pairing",
+    "bespoke beauty routine India",
+  ],
+});
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Solutions",
+      item: `${SITE_URL}/solutions`,
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: "Personalized Recommendations",
+      item: `${SITE_URL}/solutions/personalized-recommendations`,
+    },
+  ],
 };
 
 const FEATURES = [
@@ -42,6 +72,7 @@ const FEATURES = [
 export default function PersonalizedRecommendationsPage() {
   return (
     <>
+      <JsonLd data={breadcrumbSchema} />
       <SiteNav />
       <main>
         <AboutHero

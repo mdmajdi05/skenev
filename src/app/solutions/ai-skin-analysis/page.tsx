@@ -4,12 +4,43 @@ import SiteFooter from "@/components/SiteFooter";
 import AboutHero from "@/components/about/AboutHero";
 import AboutCTA from "@/components/about/AboutCTA";
 import Reveal from "@/components/Reveal";
+import JsonLd from "@/components/JsonLd";
+import { buildMetadata } from "@/lib/seo";
+import { SITE_URL } from "@/lib/site";
 import styles from "@/styles/site.module.css";
 
-export const metadata: Metadata = {
-  title: "AI Skin Analysis — SKENEV",
+export const metadata: Metadata = buildMetadata({
+  title:
+    "AI Skin Analysis in India — SKENEV Multi-Condition Skin Scanner",
   description:
-    "SKENEV AI Skin Analysis — analyze multiple skin conditions and transform visual information into clear, personalized insights.",
+    "SKENEV AI skin analysis scans 11+ conditions — moisture, oil, pigment, lesions and tone — for dermatologists and clinics across India.",
+  path: "/solutions/ai-skin-analysis",
+  keywords: [
+    "AI skin analysis India",
+    "skin scanner for dermatologists",
+    "skin condition detection",
+    "skin analysis device",
+  ],
+});
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Solutions",
+      item: `${SITE_URL}/solutions`,
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: "AI Skin Analysis",
+      item: `${SITE_URL}/solutions/ai-skin-analysis`,
+    },
+  ],
 };
 
 const FEATURES = [
@@ -42,6 +73,7 @@ const FEATURES = [
 export default function AISkinAnalysisPage() {
   return (
     <>
+      <JsonLd data={breadcrumbSchema} />
       <SiteNav />
       <main>
         <AboutHero

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { site } from "@/lib/site";
 import styles from "@/styles/site.module.css";
 
 const COMPANY = [
@@ -28,9 +29,13 @@ export default function SiteFooter() {
             SKENEV
           </Link>
           <p className={styles.footerDescription}>
-            AI-powered skin, scalp and beauty analysis that makes every consultation
-            deeper, faster and more personal.
+            AI-powered skin, scalp and beauty analysis that makes every
+            consultation deeper, faster and more personal.
           </p>
+          <div className={styles.footerAddress}>
+            <strong>{site.name} — New Delhi</strong>
+            <span>{site.address.full}</span>
+          </div>
         </div>
         <div className={styles.footerLinks}>
           <div className={styles.footerColumn}>
@@ -60,13 +65,15 @@ export default function SiteFooter() {
                 <Link href="/contact">Book a Demo</Link>
               </li>
               <li>
-                <span>hello@skeenev.com</span>
+                <a href={`mailto:${site.email}`}>{site.email}</a>
+              </li>
+              <li>
+                <a href={site.whatsappLink} target="_blank" rel="noopener noreferrer">
+                  WhatsApp {site.whatsappDisplay}
+                </a>
               </li>
               <li>
                 <span>Privacy Policy</span>
-              </li>
-              <li>
-                <span>Terms of Service</span>
               </li>
             </ul>
           </div>
@@ -74,8 +81,8 @@ export default function SiteFooter() {
       </div>
       <div className={styles.footerBottom}>
         <div className={styles.footerBottomInner}>
-          <span>&copy; 2026 SKENEV. All rights reserved.</span>
-          <span>Intelligent beauty technology.</span>
+          <span>&copy; 2026 {site.name}. All rights reserved.</span>
+          <span>Intelligent beauty technology · Made in India</span>
           <div className={styles.footerLegal}>
             <Link href="/contact">Privacy</Link>
             <Link href="/contact">Terms</Link>
