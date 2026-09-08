@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { site } from "@/lib/site";
 import styles from "@/styles/site.module.css";
 
@@ -25,8 +26,7 @@ export default function SiteFooter() {
       <div className={styles.footerTop}>
         <div className={styles.footerBrand}>
           <Link href="/" className={styles.brand} aria-label="SKENEV home">
-            <span className={styles.brandMark}>S</span>
-            SKENEV
+            <Image src="/logo.webp" alt="SKENEV" width={433} height={142} className={styles.brandLogo} />
           </Link>
           <p className={styles.footerDescription}>
             AI-powered skin, scalp and beauty analysis that makes every

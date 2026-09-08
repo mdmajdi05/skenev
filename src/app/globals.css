@@ -407,7 +407,7 @@ button {
   overflow: hidden;
   background:
     radial-gradient(circle at 82% 25%, rgba(216, 195, 157, 0.34), transparent 30%),
-    var(--beige);
+    #fafaf4;
 }
 
 .hero::before {

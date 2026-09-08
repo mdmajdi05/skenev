@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import styles from "@/styles/site.module.css";
@@ -61,8 +62,7 @@ export default function SiteNav() {
       <div className={styles.navWrap}>
         <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ""}`}>
           <Link href="/" className={styles.brand} aria-label="SKENEV home">
-            <span className={styles.brandMark}>S</span>
-            SKENEV
+            <Image src="/logo.webp" alt="SKENEV" width={433} height={142} className={styles.brandLogo} />
           </Link>
           <div className={styles.navLinks}>
             {LINKS.map((l) =>

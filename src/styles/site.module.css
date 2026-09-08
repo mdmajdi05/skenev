@@ -57,6 +57,12 @@
   white-space: nowrap;
 }
 
+.brandLogo {
+  height: 30px;
+  width: auto;
+  object-fit: contain;
+}
+
 .brandMark {
   display: flex;
   align-items: center;
@@ -1421,6 +1427,10 @@
 .footerBrand .brand {
   color: #fbfaed;
   margin-bottom: 22px;
+}
+
+.footerBrand .brandLogo {
+  height: 40px;
 }
 
 .footerDescription {
