@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import AboutHero from "@/components/about/AboutHero";
 import AboutCTA from "@/components/about/AboutCTA";
+import AudienceSection from "@/components/AudienceSection";
+import SeoFaqSection from "@/components/SeoFaqSection";
 import Reveal from "@/components/Reveal";
 import JsonLd from "@/components/JsonLd";
 import { buildMetadata } from "@/lib/seo";
@@ -67,6 +69,53 @@ const FEATURES = [
   },
 ];
 
+const FAQS = [
+  {
+    question: "What does AI scalp analysis measure?",
+    answer:
+      "SKENEV measures scalp condition, hair density, moisture, sebum, follicle activity, flaking and irritation — delivering a complete scalp health profile in under 60 seconds.",
+  },
+  {
+    question: "Can hair clinics use SKENEV for diagnosis?",
+    answer:
+      "Many hair clinics and trichology practices use SKENEV for objective documentation, thinning detection and treatment validation, with branded reports for each client.",
+  },
+  {
+    question: "Does it work for all hair types?",
+    answer:
+      "Yes. The scalp engine is calibrated across straight, wavy, curly and coily hair textures and Indian hair profiles.",
+  },
+  {
+    question: "How does follicle tracking help treatments?",
+    answer:
+      "Follicle activity is re-measured at follow-up visits, giving clinics comparable numbers that show whether a protocol is working — or should change.",
+  },
+  {
+    question: "Is scalp analysis linked to product recommendations?",
+    answer:
+      "Yes. Scalp findings feed the routine builder, pairing each client with shampoos, serums and treatments matched to their measured condition.",
+  },
+];
+
+const AUDIENCE = [
+  {
+    title: "Hair Clinics",
+    copy: "Objective density and follicle data that make every consultation and follow-up more credible.",
+  },
+  {
+    title: "Trichologists",
+    copy: "Quantified scalp scoring and progress tracking that supports diagnosis and treatment planning.",
+  },
+  {
+    title: "Salons & Barber Studios",
+    copy: "A premium scalp check-up that drives retail sales and long-term client loyalty.",
+  },
+  {
+    title: "Hair Care Brands",
+    copy: "Scalp-level efficacy data for claims, product development and personalized routines.",
+  },
+];
+
 export default function AIScalpAnalysisPage() {
   return (
     <>
@@ -106,6 +155,18 @@ export default function AIScalpAnalysisPage() {
             </div>
           </div>
         </section>
+        <AudienceSection
+          heading="Scalp insight,"
+          accent="for hair health professionals."
+          intro="Built for the clinics, studios and brands trusted with the hair people care about most."
+          items={AUDIENCE}
+        />
+        <SeoFaqSection
+          items={FAQS}
+          heading="Scalp analysis,"
+          accent="questions answered."
+          intro="What hair clinics and salons ask before bringing SKENEV on board."
+        />
         <AboutCTA />
       </main>
     </>

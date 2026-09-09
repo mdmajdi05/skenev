@@ -3,6 +3,7 @@ import AboutHero from "@/components/about/AboutHero";
 import AboutTechnology from "@/components/about/AboutTechnology";
 import SolutionCards from "@/components/about/SolutionCards";
 import AboutCTA from "@/components/about/AboutCTA";
+import SeoFaqSection from "@/components/SeoFaqSection";
 import JsonLd from "@/components/JsonLd";
 import { buildMetadata } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";
@@ -23,6 +24,34 @@ const breadcrumbSchema = {
     { "@type": "ListItem", position: 2, name: "Solutions", item: `${SITE_URL}/solutions` },
   ],
 };
+
+const SOLUTIONS_FAQ = [
+  {
+    question: "What can SKENEV analyze?",
+    answer:
+      "SKENEV analyzes the skin and scalp in depth — moisture, oil, tone, pigmentation, lesions, follicles, density and more — and turns the findings into personalized beauty intelligence.",
+  },
+  {
+    question: "Who is SKENEV for?",
+    answer:
+      "Dermatologists, hair clinics, salons, medispas and beauty brands across India who want objective, personal beauty intelligence in their work every day.",
+  },
+  {
+    question: "How do the solutions work together?",
+    answer:
+      "One scanner powers all three: AI skin analysis, AI scalp analysis and beauty intelligence. Data flows into a single platform linked to personalized recommendations.",
+  },
+  {
+    question: "Do I need multiple devices?",
+    answer:
+      "No. A single SKENEV device covers skin, scalp and beauty intelligence — one product, one subscription, three modes.",
+  },
+  {
+    question: "Can you help us get started?",
+    answer:
+      "Yes. Our New Delhi team offers demos, onboarding and ongoing support for clinics, salons and beauty brands anywhere in India.",
+  },
+];
 
 export default function SolutionsPage() {
   return (
@@ -58,6 +87,12 @@ export default function SolutionsPage() {
           </div>
         </section>
         <AboutTechnology />
+        <SeoFaqSection
+          items={SOLUTIONS_FAQ}
+          heading="Solutions,"
+          accent="questions answered."
+          intro="How clinics, salons and brands bring SKENEV into their work."
+        />
         <AboutCTA />
       </main>
     </>

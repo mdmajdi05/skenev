@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/site";
 
-type Frequency = "weekly" | "monthly" | "daily";
+type Frequency = "weekly" | "monthly" | "daily" | "yearly";
 
 const ROUTES: {
   path: string;
@@ -23,6 +23,8 @@ const ROUTES: {
   { path: "/about", priority: 0.7, changeFrequency: "monthly" },
   { path: "/careers", priority: 0.6, changeFrequency: "weekly" },
   { path: "/contact", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/privacy", priority: 0.3, changeFrequency: "yearly" },
+  { path: "/terms", priority: 0.3, changeFrequency: "yearly" },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import AboutHero from "@/components/about/AboutHero";
 import AboutCTA from "@/components/about/AboutCTA";
+import AudienceSection from "@/components/AudienceSection";
+import SeoFaqSection from "@/components/SeoFaqSection";
 import Reveal from "@/components/Reveal";
 import JsonLd from "@/components/JsonLd";
 import { buildMetadata } from "@/lib/seo";
@@ -68,6 +70,53 @@ const FEATURES = [
   },
 ];
 
+const FAQS = [
+  {
+    question: "How does AI skin analysis work?",
+    answer:
+      "SKENEV scans the face with precision imaging and our AI engine reads 11+ skin parameters — moisture, oil, pigmentation, texture, tone and lesions. A full report is ready in about 60 seconds.",
+  },
+  {
+    question: "Is SKENEV skin analysis suitable for all skin tones?",
+    answer:
+      "Yes. The models are trained on diverse skin tones and Indian skin types, so results stay accurate and inclusive across melanin levels.",
+  },
+  {
+    question: "Can dermatologists use SKENEV in clinical practice?",
+    answer:
+      "Absolutely. Dermatologists and clinics use SKENEV for objective documentation, lesion tracking, treatment validation and client-friendly branded reports.",
+  },
+  {
+    question: "Does SKENEV need special lighting?",
+    answer:
+      "No. SKENEV is calibrated for normal clinic and salon lighting, so setup takes minutes and scans stay consistent across environments.",
+  },
+  {
+    question: "How long does a full skin scan take?",
+    answer:
+      "Under 60 seconds. The report is generated in real time, so you can discuss findings with the client during the same appointment.",
+  },
+];
+
+const AUDIENCE = [
+  {
+    title: "Dermatologists",
+    copy: "Objective documentation, lesion tracking and progress data that strengthen every consultation.",
+  },
+  {
+    title: "Skin Clinics & Salons",
+    copy: "A premium analysis add-on that builds trust, engagement and repeat visits from existing clients.",
+  },
+  {
+    title: "Beauty Brands",
+    copy: "Repeated, measurable skin data for efficacy studies, claims and product personalization.",
+  },
+  {
+    title: "Medispas & Aestheticians",
+    copy: "Before-and-after scans that validate treatments with numbers clients can see and share.",
+  },
+];
+
 export default function AISkinAnalysisPage() {
   return (
     <>
@@ -107,6 +156,18 @@ export default function AISkinAnalysisPage() {
             </div>
           </div>
         </section>
+        <AudienceSection
+          heading="Skin analysis,"
+          accent="for everyone who cares."
+          intro="Designed for the professionals who counsel, treat and enhance skin every single day."
+          items={AUDIENCE}
+        />
+        <SeoFaqSection
+          items={FAQS}
+          heading="Skin analysis,"
+          accent="questions answered."
+          intro="Everything clinics, dermatologists and salons ask before going live with SKENEV."
+        />
         <AboutCTA />
       </main>
     </>

@@ -10,12 +10,13 @@
 
 .navWrap {
   position: fixed;
-  top: 0;
+  top: var(--nav-offset, 0px);
   left: 0;
   width: 100%;
   z-index: 1000;
   pointer-events: none;
-  padding-top: 16px;
+  padding-top: 12px;
+  transition: top 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .navbar {
@@ -25,7 +26,7 @@
   width: calc(100% - 7vw * 2);
   max-width: 1300px;
   margin: 0 auto;
-  padding: 15px clamp(22px, 3vw, 42px);
+  padding: 11px clamp(22px, 3vw, 42px);
   background: rgba(255, 253, 244, 0.88);
   border: 1px solid rgba(36, 29, 24, 0.08);
   border-radius: 100px;
@@ -58,7 +59,7 @@
 }
 
 .brandLogo {
-  height: 30px;
+  height: 26px;
   width: auto;
   object-fit: contain;
 }
@@ -85,16 +86,17 @@
 .navLinks {
   display: flex;
   align-items: center;
-  gap: 34px;
+  gap: 26px;
 }
 
 .navLinks a {
   position: relative;
   color: #5c5148;
-  font-size: 14px;
+  font-size: 13.5px;
   font-weight: 500;
   letter-spacing: 0.03em;
   text-decoration: none;
+  white-space: nowrap;
   transition: color 0.3s ease;
 }
 
@@ -125,11 +127,11 @@
 .navCta {
   display: inline-flex;
   align-items: center;
-  padding: 11px 26px;
+  padding: 9px 20px;
   background: #241d18;
   color: #fbfaed;
   border-radius: 100px;
-  font-size: 14px;
+  font-size: 13.5px;
   font-weight: 600;
   text-decoration: none;
   white-space: nowrap;
@@ -1400,6 +1402,34 @@
   color: #146b39;
 }
 
+.inputError {
+  border-color: #d45c5c !important;
+  box-shadow: 0 0 0 4px rgba(212, 92, 92, 0.14) !important;
+}
+
+.inputError:focus {
+  border-color: #d45c5c !important;
+  box-shadow: 0 0 0 4px rgba(212, 92, 92, 0.18) !important;
+}
+
+.fieldError {
+  color: #d45c5c;
+  font-size: 0.8rem;
+  margin: 4px 0 0;
+  font-weight: 500;
+}
+
+.contactSubmit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.contactSubmit:disabled:hover {
+  background: #241d18;
+  box-shadow: none;
+}
+
 /* =========================================================
    FOOTER
 ========================================================= */
@@ -1628,6 +1658,104 @@
   margin-bottom: 22px;
 }
 
+/* Offer Ribbon */
+.prebookRibbon {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 14px 18px;
+  background: linear-gradient(135deg, #c8ad7b 0%, #a88a57 100%);
+  border-radius: 16px;
+  box-shadow:
+    0 8px 25px rgba(200, 173, 123, 0.35),
+    0 0 0 1px rgba(200, 173, 123, 0.2);
+  animation: prebookRibbonIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both,
+             prebookRibbonPulse 3s ease-in-out infinite 1s;
+}
+
+@keyframes prebookRibbonIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes prebookRibbonPulse {
+  0%, 100% { box-shadow: 0 8px 25px rgba(200, 173, 123, 0.35), 0 0 0 1px rgba(200, 173, 123, 0.2); }
+  50% { box-shadow: 0 12px 35px rgba(200, 173, 123, 0.5), 0 0 0 2px rgba(200, 173, 123, 0.3); }
+}
+
+.prebookRibbonText {
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #241d18;
+  white-space: nowrap;
+}
+
+.prebookRibbonPercent {
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: #241d18;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+/* Urgency indicator */
+.prebookUrgency {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  padding: 10px 16px;
+  background: rgba(245, 245, 220, 0.1);
+  border: 1px solid rgba(245, 245, 220, 0.15);
+  border-radius: 100px;
+  font-size: 0.85rem;
+  color: rgba(245, 245, 220, 0.9);
+  animation: prebookUrgencyIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.6s both;
+}
+
+@keyframes prebookUrgencyIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.prebookUrgencyIcon {
+  font-size: 0.9rem;
+  animation: prebookHourglass 2s ease-in-out infinite;
+}
+
+@keyframes prebookHourglass {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(180deg); }
+}
+
+.prebookUrgency strong {
+  color: #c8ad7b;
+  font-weight: 700;
+}
+
 .prebookBanner h2 {
   color: #fbfaed;
   font-family: var(--font-manrope), sans-serif;
@@ -1722,6 +1850,282 @@
 .prebookNote span {
   color: rgba(245, 245, 220, 0.6);
   font-size: 0.9rem;
+}
+
+/* =========================================================
+   PRE-BOOKING BANNER & FLOAT CTA
+========================================================= */
+
+.prebookBannerWrap {
+  position: sticky;
+  top: 0;
+  z-index: 1001;
+  background: linear-gradient(90deg, #241d18 0%, #3d3026 100%);
+  border-bottom: 1px solid rgba(200, 173, 123, 0.3);
+  box-shadow: 0 8px 30px rgba(36, 29, 24, 0.15);
+  animation: prebookBannerSlide 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes prebookBannerSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.prebookBannerInner {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 10px clamp(16px, 3vw, 42px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.prebookTicker {
+  flex: 1;
+  min-width: 280px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+}
+
+.prebookTickerTrack {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: prebookTickerScroll 40s linear infinite;
+}
+
+.prebookTicker:hover .prebookTickerTrack {
+  animation-play-state: paused;
+}
+
+.prebookTickerItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #fbfaed;
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1.4;
+  white-space: nowrap;
+  padding-right: 64px;
+  font-family: var(--font-dm-sans), sans-serif;
+}
+
+.prebookTickerItem em {
+  font-style: normal;
+  font-weight: 700;
+  color: #c8ad7b;
+  background: linear-gradient(180deg, #c8ad7b 0%, #f5f5dc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.prebookTickerIcon {
+  font-size: 1.15rem;
+  animation: prebookIconBounce 2s ease-in-out infinite;
+}
+
+@keyframes prebookTickerScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.prebookBannerActions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.prebookBannerCta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 22px;
+  background: #c8ad7b;
+  color: #241d18;
+  border-radius: 100px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  font-family: var(--font-manrope), sans-serif;
+  letter-spacing: 0.02em;
+  border: none;
+  cursor: pointer;
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  white-space: nowrap;
+}
+
+.prebookBannerCta:hover {
+  background: #f5f5dc;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(200, 173, 123, 0.4);
+}
+
+.prebookBannerDismiss {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: rgba(245, 245, 220, 0.1);
+  border: 1px solid rgba(245, 245, 220, 0.2);
+  border-radius: 10px;
+  color: rgba(245, 245, 220, 0.7);
+  cursor: pointer;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.prebookBannerDismiss:hover {
+  background: rgba(245, 245, 220, 0.2);
+  color: #fbfaed;
+  border-color: rgba(245, 245, 220, 0.4);
+  transform: rotate(90deg);
+}
+
+/* Floating Pre-book CTA */
+.prebookFloatCta {
+  position: fixed;
+  right: 24px;
+  bottom: 100px;
+  z-index: 1400;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px 12px 14px;
+  background: linear-gradient(135deg, #241d18 0%, #3d3026 100%);
+  color: #fbfaed;
+  border-radius: 100px;
+  border: 1px solid rgba(200, 173, 123, 0.3);
+  box-shadow:
+    0 12px 35px rgba(36, 29, 24, 0.3),
+    0 0 0 1px rgba(200, 173, 123, 0.1);
+  text-decoration: none;
+  font-family: var(--font-dm-sans), sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  line-height: 1.2;
+  cursor: pointer;
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+  animation: prebookFloatIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.8s both;
+}
+
+@keyframes prebookFloatIn {
+  from {
+    opacity: 0;
+    transform: translateX(40px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+.prebookFloatCta::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 100px;
+  background: linear-gradient(135deg, rgba(200, 173, 123, 0.4), transparent);
+  filter: blur(8px);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  z-index: -1;
+}
+
+.prebookFloatCta:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow:
+    0 20px 50px rgba(36, 29, 24, 0.4),
+    0 0 0 1px rgba(200, 173, 123, 0.3);
+  border-color: #c8ad7b;
+}
+
+.prebookFloatCta:hover::before {
+  opacity: 1;
+}
+
+.prebookFloatPulse {
+  position: absolute;
+  inset: -4px;
+  border-radius: 100px;
+  border: 2px solid #c8ad7b;
+  opacity: 0;
+  animation: prebookFloatPulse 2.5s ease-out infinite;
+  pointer-events: none;
+}
+
+@keyframes prebookFloatPulse {
+  0% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  70% {
+    opacity: 0;
+    transform: scale(1.4);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.4);
+  }
+}
+
+.prebookFloatIcon {
+  font-size: 1.1rem;
+  animation: prebookIconWiggle 3s ease-in-out infinite;
+}
+
+@keyframes prebookIconWiggle {
+  0%, 100% { transform: rotate(0deg); }
+  20% { transform: rotate(-8deg); }
+  40% { transform: rotate(8deg); }
+  60% { transform: rotate(-4deg); }
+  80% { transform: rotate(4deg); }
+}
+
+.prebookFloatLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.prebookFloatLabel strong {
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #fbfaed;
+  line-height: 1.1;
+}
+
+.prebookFloatLabel em {
+  font-style: normal;
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #c8ad7b;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 /* =========================================================
@@ -1862,6 +2266,72 @@
   color: #241d18;
 }
 
+/* =========================================================
+   LEGAL PAGES (Privacy / Terms)
+========================================================= */
+
+.legalDoc {
+  max-width: 880px;
+  margin: 0 auto;
+  display: grid;
+  gap: 22px;
+}
+
+.legalSection {
+  background: #fbfaed;
+  border: 1px solid rgba(36, 29, 24, 0.07);
+  border-left: 3px solid #c8ad7b;
+  border-radius: 20px;
+  padding: 34px 38px;
+}
+
+.legalSection h3 {
+  color: #241d18;
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 14px;
+}
+
+.legalSection p {
+  color: rgba(36, 29, 24, 0.72);
+  font-size: 0.98rem;
+  line-height: 1.75;
+  margin: 0 0 12px;
+}
+
+.legalSection p:last-child {
+  margin-bottom: 0;
+}
+
+.legalList {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.legalList li {
+  position: relative;
+  color: rgba(36, 29, 24, 0.72);
+  font-size: 0.96rem;
+  line-height: 1.65;
+  padding-left: 26px;
+}
+
+.legalList li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 0.58em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #c8ad7b;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .navbar,
   .eyebrow,
@@ -2000,6 +2470,14 @@
     grid-template-columns: 1fr;
   }
 
+  .legalSection {
+    padding: 26px 24px;
+  }
+
+  .legalSection h3 {
+    font-size: 1.18rem;
+  }
+
   .prebookInner {
     grid-template-columns: 1fr;
     gap: 40px;
@@ -2071,17 +2549,21 @@
   }
 
   .navWrap {
-    padding-top: 10px;
+    padding-top: 8px;
   }
 
   .navbar {
     width: calc(100% - 24px);
-    padding: 12px 18px;
+    padding: 10px 16px;
     border-radius: 18px;
   }
 
   .navbar.scrolled {
     width: calc(100% - 24px);
+  }
+
+  .brandLogo {
+    height: 24px;
   }
 
   .navLinks,
@@ -2119,6 +2601,112 @@
     font-size: clamp(2rem, 9vw, 3.2rem);
   }
 
+  /* Form responsiveness */
+  .contactForm {
+    padding: 24px;
+  }
+
+  .contactInput,
+  .contactTextarea {
+    padding: 15px 16px;
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+
+  .contactSubmit {
+    width: 100%;
+    padding: 16px;
+    font-size: 15px;
+  }
+
+  .prebookBanner {
+    min-height: 280px;
+    padding: 24px;
+  }
+
+  .prebookSteps li {
+    padding-left: 26px;
+  }
+
+  .prebookRibbon {
+    top: 16px;
+    left: 16px;
+    padding: 10px 14px;
+    gap: 4px;
+  }
+
+  .prebookRibbonText {
+    font-size: 0.55rem;
+  }
+
+  .prebookRibbonPercent {
+    font-size: 1rem;
+  }
+
+  .prebookUrgency {
+    margin-top: 14px;
+    padding: 8px 12px;
+    font-size: 0.75rem;
+  }
+
+  .prebookBannerInner {
+    padding: 8px 14px;
+    gap: 8px;
+  }
+
+  .prebookTicker {
+    order: 2;
+    flex: 1 1 100%;
+    min-width: 0;
+    padding: 8px 0 2px;
+  }
+
+  .prebookTickerItem {
+    font-size: 0.8rem;
+    padding-right: 40px;
+  }
+
+  .prebookBannerActions {
+    order: 1;
+    flex-shrink: 0;
+  }
+
+  .prebookBannerCta {
+    padding: 8px 14px;
+    font-size: 0.75rem;
+  }
+
+  .prebookFloatCta {
+    right: 12px;
+    left: 12px;
+    bottom: 12px;
+    padding: 10px 14px;
+    border-radius: 16px;
+    justify-content: center;
+    text-align: center;
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .prebookFloatPulse {
+    display: none;
+  }
+
+  .prebookFloatLabel {
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+    text-align: left;
+  }
+
+  .prebookFloatLabel strong {
+    font-size: 0.85rem;
+  }
+
+  .prebookFloatLabel em {
+    font-size: 0.85rem;
+  }
+
   .footerTop {
     flex-direction: column;
     gap: 44px;
@@ -2133,5 +2721,258 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
+  }
+}
+
+/* =========================================================
+   PRE-BOOKING DIALOG
+========================================================= */
+
+.prebookDialogOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  background: rgba(36, 29, 24, 0.4);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: clamp(16px, 4vw, 40px);
+  animation: prebookDialogOverlayIn 0.3s ease-out both;
+}
+
+@keyframes prebookDialogOverlayIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.prebookDialog {
+  position: relative;
+  width: 100%;
+  max-width: 430px;
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+  margin: auto 0;
+  background: #fbfaed;
+  border: 1px solid rgba(36, 29, 24, 0.08);
+  border-radius: 28px;
+  box-shadow: 0 30px 90px rgba(36, 29, 24, 0.25);
+  animation: prebookDialogSlideIn 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes prebookDialogSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(60px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+.prebookDialogHeader {
+  position: relative;
+  padding: clamp(24px, 4vw, 36px) clamp(24px, 4vw, 36px) 0;
+  text-align: center;
+}
+
+.prebookDialogClose {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(36, 29, 24, 0.05);
+  border: 1px solid rgba(36, 29, 24, 0.1);
+  border-radius: 12px;
+  color: #5c5148;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.prebookDialogClose:hover {
+  background: rgba(36, 29, 24, 0.1);
+  color: #241d18;
+  border-color: rgba(36, 29, 24, 0.2);
+}
+
+.prebookDialogClose svg {
+  width: 20px;
+  height: 20px;
+}
+
+.prebookDialogRibbon {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 16px;
+  background: linear-gradient(135deg, #c8ad7b 0%, #a88a57 100%);
+  border-radius: 100px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 15px rgba(200, 173, 123, 0.3);
+}
+
+.prebookDialogRibbonText {
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #241d18;
+  white-space: nowrap;
+}
+
+.prebookDialogRibbonPercent {
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: #241d18;
+  line-height: 1;
+}
+
+.prebookDialogHeader h2 {
+  color: #241d18;
+  font-family: var(--font-manrope), sans-serif;
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin: 0 0 8px;
+}
+
+.prebookDialogHeader h2 em {
+  font-weight: 300;
+  font-style: italic;
+  color: #a88a57;
+}
+
+.prebookDialogHeader p {
+  color: #857a70;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.prebookDialogForm {
+  padding: 0 clamp(24px, 4vw, 36px) clamp(24px, 4vw, 36px);
+  display: grid;
+  gap: 18px;
+}
+
+.prebookDialogField {
+  display: grid;
+  gap: 8px;
+}
+
+.prebookDialogField label {
+  color: #5c5148;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.prebookDialogInput,
+.prebookDialogSelect,
+.prebookDialogTextarea {
+  width: 100%;
+  border: 1px solid rgba(36, 29, 24, 0.12);
+  border-radius: 14px;
+  padding: 14px 16px;
+  background: #fff;
+  color: #241d18;
+  font-family: var(--font-dm-sans), sans-serif;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.prebookDialogInput:focus,
+.prebookDialogSelect:focus,
+.prebookDialogTextarea:focus {
+  border-color: #a88a57;
+  box-shadow: 0 0 0 4px rgba(168, 138, 87, 0.14);
+}
+
+.prebookDialogInput.inputError,
+.prebookDialogSelect.inputError,
+.prebookDialogTextarea.inputError {
+  border-color: #d45c5c;
+  box-shadow: 0 0 0 4px rgba(212, 92, 92, 0.14);
+}
+
+.prebookDialogTextarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.prebookDialogFieldError {
+  color: #d45c5c;
+  font-size: 0.8rem;
+  margin: 4px 0 0;
+  font-weight: 500;
+}
+
+.prebookDialogSubmit {
+  margin-top: 8px;
+  padding: 16px 24px;
+  background: #241d18;
+  color: #fbfaed;
+  border: none;
+  border-radius: 100px;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: var(--font-dm-sans), sans-serif;
+  cursor: pointer;
+  transition: background 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease;
+  width: 100%;
+}
+
+.prebookDialogSubmit:hover:not(:disabled) {
+  background: #a88a57;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px rgba(168, 138, 87, 0.3);
+}
+
+.prebookDialogSubmit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.prebookDialogStatus {
+  color: #a88a57;
+  font-size: 0.85rem;
+  text-align: center;
+  padding: 8px;
+  background: rgba(200, 173, 123, 0.1);
+  border-radius: 12px;
+}
+
+@media (max-width: 480px) {
+  .prebookDialog {
+    max-height: 95vh;
+    border-radius: 20px;
+    margin: 12px;
+  }
+
+  .prebookDialogHeader {
+    padding: 20px 20px 0;
+  }
+
+  .prebookDialogForm {
+    padding: 0 20px 20px;
+    gap: 16px;
+  }
+
+  .prebookDialogClose {
+    top: 8px;
+    right: 8px;
+    width: 36px;
+    height: 36px;
   }
 }

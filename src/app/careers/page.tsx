@@ -3,6 +3,7 @@ import Link from "next/link";
 import AboutHero from "@/components/about/AboutHero";
 import AboutCTA from "@/components/about/AboutCTA";
 import Reveal from "@/components/Reveal";
+import JsonLd from "@/components/JsonLd";
 import { buildMetadata } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";
 import styles from "@/styles/site.module.css";
@@ -72,6 +73,7 @@ const PERKS = [
 export default function CareersPage() {
   return (
     <>
+      <JsonLd data={breadcrumbSchema} />
       <main>
         <AboutHero
           eyebrow="Careers at SKENEV"

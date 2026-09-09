@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import AboutHero from "@/components/about/AboutHero";
 import AboutCTA from "@/components/about/AboutCTA";
+import AudienceSection from "@/components/AudienceSection";
+import SeoFaqSection from "@/components/SeoFaqSection";
 import Reveal from "@/components/Reveal";
 import JsonLd from "@/components/JsonLd";
 import { buildMetadata } from "@/lib/seo";
@@ -67,6 +69,53 @@ const FEATURES = [
   },
 ];
 
+const FAQS = [
+  {
+    question: "What is beauty intelligence?",
+    answer:
+      "Beauty intelligence is the practice of turning measured skin, scalp and hair data into product, claims and marketing decisions — at a scale traditional panels cannot reach.",
+  },
+  {
+    question: "How do consumer-scale studies work?",
+    answer:
+      "Thousands of real faces are scanned with SKENEV devices, and the aggregated results are analyzed to understand how products perform across skin types, regions and conditions.",
+  },
+  {
+    question: "Can brands use SKENEV for product claims?",
+    answer:
+      "Yes. Measurable scan data supports efficacy studies and claims, giving marketing and R&D teams evidence rather than anecdote.",
+  },
+  {
+    question: "Is individual data kept private?",
+    answer:
+      "Always. Beauty intelligence uses aggregated, de-identified data — individual scans remain private to the person who owns them.",
+  },
+  {
+    question: "What kind of trends can SKENEV detect?",
+    answer:
+      "Rising skin concerns, changing ingredient preferences and regional differences — signals that help brands time launches and messages earlier.",
+  },
+];
+
+const AUDIENCE = [
+  {
+    title: "Beauty Brands",
+    copy: "Consumer-scale studies and claim-supporting data for formulation, packaging and launch decisions.",
+  },
+  {
+    title: "Research Teams",
+    copy: "Real-world, repeatable measurement that connects ingredient science to human skin outcomes.",
+  },
+  {
+    title: "Retailers & Marketplaces",
+    copy: "Category-level insight that informs assortment, merchandising and shopper personalization.",
+  },
+  {
+    title: "Marketing Teams",
+    copy: "Early trend signals that keep campaigns relevant and storytelling anchored in real behavior.",
+  },
+];
+
 export default function BeautyIntelligencePage() {
   return (
     <>
@@ -106,6 +155,18 @@ export default function BeautyIntelligencePage() {
             </div>
           </div>
         </section>
+        <AudienceSection
+          heading="Beauty intelligence,"
+          accent="for brands that move first."
+          intro="Whatever you build, measure or market — SKENEV turns real people into your most honest research panel."
+          items={AUDIENCE}
+        />
+        <SeoFaqSection
+          items={FAQS}
+          heading="Beauty intelligence,"
+          accent="questions answered."
+          intro="What R&D, brand and retail teams ask before going all-in on beauty data."
+        />
         <AboutCTA />
       </main>
     </>

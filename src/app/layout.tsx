@@ -4,6 +4,7 @@ import JsonLd from "@/components/JsonLd";
 import SiteNav from "@/components/SiteNav";
 import SiteFooter from "@/components/SiteFooter";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import PreBookingWidgets from "@/components/PreBookingWidgets";
 import { buildMetadata } from "@/lib/seo";
 import { SITE_URL, site } from "@/lib/site";
 import "./globals.css";
@@ -75,6 +76,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col">
         <JsonLd data={orgSchema} />
         <JsonLd data={websiteSchema} />
+        <PreBookingWidgets />
         <SiteNav />
         {children}
         <SiteFooter />

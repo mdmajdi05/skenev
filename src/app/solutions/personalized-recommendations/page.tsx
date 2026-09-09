@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import AboutHero from "@/components/about/AboutHero";
 import AboutCTA from "@/components/about/AboutCTA";
+import AudienceSection from "@/components/AudienceSection";
+import SeoFaqSection from "@/components/SeoFaqSection";
 import Reveal from "@/components/Reveal";
 import JsonLd from "@/components/JsonLd";
 import { buildMetadata } from "@/lib/seo";
@@ -67,6 +69,53 @@ const FEATURES = [
   },
 ];
 
+const FAQS = [
+  {
+    question: "How are recommendations personalized?",
+    answer:
+      "Every SKENEV scan feeds a recommendation engine that matches measured skin, scalp and hair findings to ingredients, products and routines — built for one unique beauty signature.",
+  },
+  {
+    question: "Do recommendations update over time?",
+    answer:
+      "Yes. Every follow-up scan refreshes the routine, so recommendations adapt as the client's skin and hair change.",
+  },
+  {
+    question: "Can salons and clinics sell through recommendations?",
+    answer:
+      "Yes. Routines connect directly to checkout, so recommended products can be purchased right from the recommendation report.",
+  },
+  {
+    question: "How trustworthy is each recommendation?",
+    answer:
+      "Each one carries a confidence score based on how clearly the scan data supports it — clients know exactly how much weight to give it.",
+  },
+  {
+    question: "Is SKENEV suitable for skincare retailers?",
+    answer:
+      "Yes. Retailers can pair personalized routines with their catalog, turning analysis into an in-store and online personalization experience.",
+  },
+];
+
+const AUDIENCE = [
+  {
+    title: "Dermatologists & Clinics",
+    copy: "Treatment-aligned routines clients can follow between visits, boosting adherence and outcomes.",
+  },
+  {
+    title: "Salons & Spas",
+    copy: "A signature personalization experience that increases ticket value and product retail.",
+  },
+  {
+    title: "E-commerce & Retailers",
+    copy: "Scan-driven product matching that lifts conversion and basket size on every recommendation.",
+  },
+  {
+    title: "Beauty Brands",
+    copy: "Recommendation data that reveals what shoppers actually need — and which to launch next.",
+  },
+];
+
 export default function PersonalizedRecommendationsPage() {
   return (
     <>
@@ -106,6 +155,18 @@ export default function PersonalizedRecommendationsPage() {
             </div>
           </div>
         </section>
+        <AudienceSection
+          heading="Personalization,"
+          accent="for every beauty business."
+          intro="Wherever products meet people — clinics, salons, stores or screens — SKENEV makes the match smarter."
+          items={AUDIENCE}
+        />
+        <SeoFaqSection
+          items={FAQS}
+          heading="Personalized routines,"
+          accent="questions answered."
+          intro="How clinics, salons and retailers turn analysis into recommendation-led revenue."
+        />
         <AboutCTA />
       </main>
     </>

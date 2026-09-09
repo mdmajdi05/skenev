@@ -23,8 +23,8 @@ const SOLUTIONS = [
 
 const SUPPORT = [
   { href: "/contact", label: "Book a Demo" },
-  { href: "/contact", label: "Privacy Policy" },
-  { href: "/contact", label: "Terms & Conditions" },
+  { href: "/privacy", label: "Privacy Policy" },
+  { href: "/terms", label: "Terms & Conditions" },
   { href: "/careers", label: "Join Our Team" },
 ];
 
@@ -39,7 +39,7 @@ export default function SiteFooter() {
       <div className={styles.footerTop}>
         <div className={styles.footerBrand}>
           <Link href="/" className={styles.brand} aria-label="SKENEV home">
-            <Image src="/logo.webp" alt="SKENEV" width={433} height={142} className={styles.brandLogo} />
+            <Image src="/logo-footer.webp" alt="SKENEV" width={433} height={142} className={styles.brandLogo} />
           </Link>
           <p className={styles.footerDescription}>
             AI-powered skin, scalp and beauty analysis that makes every
@@ -122,8 +122,8 @@ export default function SiteFooter() {
           </div>
           <span>Intelligent beauty technology · Made in India</span>
           <div className={styles.footerLegal}>
-            <Link href="/contact">Privacy</Link>
-            <Link href="/contact">Terms</Link>
+            <Link href="/privacy">Privacy</Link>
+            <Link href="/terms">Terms</Link>
           </div>
         </div>
       </div>
