@@ -10,7 +10,7 @@ interface PreBookingPopupProps {
 }
 
 export default function PreBookingPopup({ isOpen, onClose, onPrebook }: PreBookingPopupProps) {
-  const dialogRef = useRef<HTMLDivElement>(null);
+  const dialogRef = useRef<HTMLButtonElement>(null);
 
   const handlePrebook = useCallback(() => {
     onPrebook();
@@ -39,45 +39,35 @@ export default function PreBookingPopup({ isOpen, onClose, onPrebook }: PreBooki
       onClick={onClose}
       role="dialog"
       aria-modal="true"
-      aria-labelledby="popup-title"
+      aria-label="SKENEV pre-book offer — click to pre-book"
     >
-      <div
+      <button
         ref={dialogRef}
-        tabIndex={-1}
-        className={styles.prebookPopup}
-        onClick={(e) => e.stopPropagation()}
+        onClick={(e) => {
+          e.stopPropagation();
+          handlePrebook();
+        }}
+        className={styles.prebookPopupImageBtn}
+        aria-label="Pre-book the SKENEV AI scanner now"
       >
-        <button
-          onClick={onClose}
-          className={styles.prebookPopupClose}
-          aria-label="Close promotional popup"
-        >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
-            <line x1="18" y1="6" x2="6" y2="18" />
-            <line x1="6" y1="6" x2="18" y2="18" />
-          </svg>
-        </button>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/skenev-hero1.webp"
-          alt="SKENEV AI beauty scanner — launch offer, pre-book with 10% off"
+          alt="SKENEV AI beauty scanner — pre-book launch offer"
           className={styles.prebookPopupImage}
           loading="eager"
         />
-        <div className={styles.prebookPopupBody}>
-          <span className={styles.prebookPopupBadge}>Launch Offer</span>
-          <h2 id="popup-title">
-            The scanner is here — <em>reserve yours now.</em>
-          </h2>
-          <p>
-            Pre-book the SKENEV AI beauty scanner and lock in <strong>10% off</strong>{" "}
-            launch pricing, before it launches in India.
-          </p>
-          <button onClick={handlePrebook} className={styles.prebookPopupCta}>
-            Pre-book Now
-          </button>
-        </div>
-      </div>
+      </button>
+      <button
+        onClick={onClose}
+        className={styles.prebookPopupClose}
+        aria-label="Close promotional popup"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
     </div>
   );
 }
