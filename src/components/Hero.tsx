@@ -29,13 +29,16 @@ export default function Hero() {
           </div>
           <div className="hero-meta">
             <span className="hero-meta-item">
-              <strong>60s</strong> full analysis
+              <strong>60s</strong>
+              <span>full analysis</span>
             </span>
             <span className="hero-meta-item">
-              <strong>11+</strong> skin parameters
+              <strong>11+</strong>
+              <span>skin parameters</span>
             </span>
             <span className="hero-meta-item">
-              <strong>3</strong> intelligence modes
+              <strong>3</strong>
+              <span>intelligence modes</span>
             </span>
           </div>
         </Reveal>

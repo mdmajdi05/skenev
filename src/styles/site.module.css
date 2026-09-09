@@ -349,11 +349,12 @@
 
 .hero {
   position: relative;
-  min-height: 100vh;
+  height: 100svh;
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 150px 7vw 110px;
+  padding: 140px 7vw 90px;
   background: #f5f5dc;
   overflow: hidden;
 }
@@ -395,10 +396,10 @@
 .hero h1 {
   color: #241d18;
   font-family: var(--font-manrope), sans-serif;
-  font-size: clamp(3.4rem, 7.8vw, 6.6rem);
+  font-size: clamp(3rem, 6.4vw, 5.4rem);
   font-weight: 800;
   letter-spacing: -0.045em;
-  line-height: 1.04;
+  line-height: 1.05;
   margin: 0;
 }
 
@@ -2447,7 +2448,9 @@
   }
 
   .hero {
-    padding: 140px 7vw 120px;
+    height: 100svh;
+    min-height: 100svh;
+    padding: 120px 7vw 90px;
   }
 
   .heroCopy {
@@ -2953,7 +2956,192 @@
   border-radius: 12px;
 }
 
+/* ---------- Center promo popup ---------- */
+
+.prebookPopupOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 4000;
+  background: rgba(36, 29, 24, 0.55);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(16px, 4vw, 40px);
+  animation: prebookDialogOverlayIn 0.3s ease-out both;
+}
+
+.prebookPopup {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+  background: #fbfaed;
+  border: 1px solid rgba(36, 29, 24, 0.08);
+  border-radius: 30px;
+  box-shadow: 0 40px 120px rgba(36, 29, 24, 0.35);
+  outline: none;
+  animation: prebookPopupIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes prebookPopupIn {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.prebookPopupClose {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fbfaed;
+  border: 1px solid rgba(36, 29, 24, 0.12);
+  border-radius: 12px;
+  color: #241d18;
+  cursor: pointer;
+  z-index: 2;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.prebookPopupClose:hover {
+  background: #fff;
+  transform: rotate(90deg);
+}
+
+.prebookPopupImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 320px;
+  object-fit: cover;
+  border-radius: 30px 30px 0 0;
+}
+
+.prebookPopupBody {
+  padding: clamp(24px, 4vw, 36px);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.prebookPopupBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 18px;
+  background: linear-gradient(135deg, #c8ad7b 0%, #a88a57 100%);
+  color: #241d18;
+  border-radius: 100px;
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  box-shadow: 0 6px 20px rgba(200, 173, 123, 0.35);
+}
+
+.prebookPopupBody h2 {
+  color: #241d18;
+  font-family: var(--font-manrope), sans-serif;
+  font-size: clamp(1.7rem, 4.5vw, 2.5rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.prebookPopupBody h2 em {
+  font-weight: 300;
+  font-style: italic;
+  color: #a88a57;
+}
+
+.prebookPopupBody p {
+  color: #857a70;
+  font-size: 1rem;
+  line-height: 1.7;
+  margin: 0;
+  max-width: 460px;
+}
+
+.prebookPopupBody strong {
+  color: #a88a57;
+}
+
+.prebookPopupCta {
+  margin-top: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 44px;
+  background: #241d18;
+  color: #fbfaed;
+  border: none;
+  border-radius: 100px;
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.prebookPopupCta:hover {
+  background: #a88a57;
+  transform: translateY(-3px);
+  box-shadow: 0 20px 40px rgba(168, 138, 87, 0.35);
+}
+
 @media (max-width: 480px) {
+  .prebookPopup {
+    border-radius: 22px;
+  }
+
+  .prebookPopupImage {
+    max-height: 220px;
+    border-radius: 22px 22px 0 0;
+  }
+
+  .prebookPopupBody {
+    padding: 24px 20px;
+  }
+
+  .prebookPopupCta {
+    width: 100%;
+    padding: 15px 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    height: auto;
+    min-height: 100svh;
+    padding: 104px 20px 60px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.5rem, 10vw, 3.2rem);
+    letter-spacing: -0.04em;
+  }
+
+  .heroCopy h2 {
+    font-size: 1.05rem;
+  }
+
   .prebookDialog {
     max-height: 95vh;
     border-radius: 20px;
