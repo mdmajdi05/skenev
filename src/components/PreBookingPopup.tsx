@@ -52,7 +52,7 @@ export default function PreBookingPopup({ isOpen, onClose, onPrebook }: PreBooki
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/skenev-hero1.webp"
+          src="/prebooking-popup.webp"
           alt="SKENEV AI beauty scanner — pre-book launch offer"
           className={styles.prebookPopupImage}
           loading="eager"
