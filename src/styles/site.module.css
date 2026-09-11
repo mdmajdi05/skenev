@@ -1791,6 +1791,68 @@
   align-items: start;
 }
 
+.prebookForm {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 13px 14px;
+  padding: clamp(22px, 2.4vw, 32px);
+  max-width: 480px;
+  justify-self: center;
+  width: 100%;
+}
+
+.prebookForm h3 {
+  grid-column: 1 / -1;
+  font-size: 1.3rem;
+  margin: 0 0 2px;
+}
+
+.prebookForm .contactField:nth-child(2),
+.prebookForm .contactField:nth-child(4) {
+  grid-column: 1;
+}
+
+.prebookForm .contactField:nth-child(3),
+.prebookForm .contactField:nth-child(5) {
+  grid-column: 2;
+}
+
+.prebookForm .contactField:nth-child(6),
+.prebookForm .contactField:nth-child(7) {
+  grid-column: 1 / -1;
+}
+
+.prebookForm button[type="submit"],
+.prebookForm .contactStatus {
+  grid-column: 1 / -1;
+}
+
+.prebookForm label {
+  margin-bottom: 5px;
+}
+
+.prebookForm input[type="text"],
+.prebookForm input[type="tel"],
+.prebookForm input[type="email"],
+.prebookForm select {
+  padding: 10px 14px;
+  font-size: 0.9rem;
+  border-radius: 12px;
+}
+
+.prebookForm textarea {
+  min-height: 56px;
+  padding: 10px 14px;
+  font-size: 0.9rem;
+  border-radius: 12px;
+  resize: none;
+}
+
+.prebookForm button[type="submit"] {
+  padding: 12px 28px;
+  font-size: 13px;
+}
+
 .prebookInfo {
   display: grid;
   gap: 30px;
@@ -2661,6 +2723,10 @@
   .prebookInner {
     grid-template-columns: 1fr;
     gap: 40px;
+  }
+
+  .prebookForm {
+    grid-template-columns: 1fr;
   }
 
   .productShowcase {
