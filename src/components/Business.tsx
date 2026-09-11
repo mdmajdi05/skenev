@@ -31,7 +31,7 @@ const BUSINESS_CARDS = [
 
 export default function Business() {
   return (
-    <section className="site-section" id="business">
+    <section className="business site-section" id="business">
       <div className="container">
         <Reveal>
           <div className="section-header">

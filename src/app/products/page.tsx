@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import AboutHero from "@/components/about/AboutHero";
 import AboutCTA from "@/components/about/AboutCTA";
 import ProductShowcase from "@/components/about/ProductCards";
+import VideoReel from "@/components/VideoReel";
 import AudienceSection from "@/components/AudienceSection";
 import SeoFaqSection from "@/components/SeoFaqSection";
 import JsonLd from "@/components/JsonLd";
@@ -110,6 +111,7 @@ export default function ProductsPage() {
           }
         />
         <ProductShowcase />
+        <VideoReel />
         <AudienceSection
           heading="Built for,"
           accent="the professionals of beauty."

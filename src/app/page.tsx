@@ -1,4 +1,6 @@
 import Hero from "@/components/Hero";
+import VideoShowcase from "@/components/VideoShowcase";
+import VideoReel from "@/components/VideoReel";
 import Trust from "@/components/Trust";
 import Solutions from "@/components/Solutions";
 import Technology from "@/components/Technology";
@@ -40,6 +42,8 @@ export default function Home() {
       <JsonLd data={aboutSchema} />
       <main className="flex min-h-full flex-col">
         <Hero />
+        <VideoShowcase />
+        <VideoReel />
         <Trust />
         <Solutions />
         <Technology />
