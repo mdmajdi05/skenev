@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ShoppingBag } from "lucide-react";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
 import styles from "@/styles/site.module.css";
 import { useCart } from "@/components/product/store";
 
@@ -132,9 +132,19 @@ export default function SiteNav() {
         </nav>
       </div>
       <div className={`${styles.mobileMenu} ${open ? styles.open : ""}`}>
+        <button
+          className={styles.mobileMenuClose}
+          onClick={() => setOpen(false)}
+          aria-label="Close menu"
+        >
+          {"\u00d7"}
+        </button>
         <div className={styles.mobileMenuLinks}>
           <div className={styles.mobileDropdown}>
-            <div className={styles.mobileDropdownHeader}>
+            <div
+              className={styles.mobileDropdownHeader}
+              style={{ "--i": 0 } as CSSProperties}
+            >
               <Link
                 href="/solutions"
                 className={isActive("/solutions") ? styles.active : undefined}
@@ -143,21 +153,23 @@ export default function SiteNav() {
                 Solutions
               </Link>
               <button
-                className={styles.mobileDropdownBtn}
+                className={`${styles.mobileDropdownBtn} ${mobileSolutionsOpen ? styles.open : ""}`}
                 onClick={() => setMobileSolutionsOpen((o) => !o)}
                 aria-label="Toggle solutions submenu"
+                aria-expanded={mobileSolutionsOpen}
               >
-                {mobileSolutionsOpen ? "\u2212" : "\u002B"}
+                {"\u25BE"}
               </button>
             </div>
             <div className={`${styles.mobileSubmenu} ${mobileSolutionsOpen ? styles.show : ""}`}>
               <div className={styles.mobileSubmenuInner}>
-                {SOLUTIONS_SUB.map((s) => (
+                {SOLUTIONS_SUB.map((s, i) => (
                   <Link
                     key={s.href}
                     href={s.href}
                     className={isActive(s.href) ? styles.active : undefined}
                     onClick={() => setOpen(false)}
+                    style={{ "--i": i } as CSSProperties}
                   >
                     {s.label}
                   </Link>
@@ -165,22 +177,17 @@ export default function SiteNav() {
               </div>
             </div>
           </div>
-          <Link
-            href="/products"
-            className={isActive("/products") ? styles.active : undefined}
-            onClick={() => setOpen(false)}
-          >
-            Product
-          </Link>
-          <Link href="/about" className={isActive("/about") ? styles.active : undefined} onClick={() => setOpen(false)}>
-            About Us
-          </Link>
-          <Link href="/careers" className={isActive("/careers") ? styles.active : undefined} onClick={() => setOpen(false)}>
-            Careers
-          </Link>
-          <Link href="/contact" className={isActive("/contact") ? styles.active : undefined} onClick={() => setOpen(false)}>
-            Contact
-          </Link>
+          {LINKS.filter((l) => !l.dropdown).map((l, i) => (
+            <Link
+              key={l.href}
+              href={l.href}
+              className={isActive(l.href) ? styles.active : undefined}
+              onClick={() => setOpen(false)}
+              style={{ "--i": i + 1 } as CSSProperties}
+            >
+              {l.label}
+            </Link>
+          ))}
         </div>
       </div>
     </>

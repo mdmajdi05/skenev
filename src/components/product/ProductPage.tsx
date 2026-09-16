@@ -8,6 +8,8 @@ import {
   ArrowRight,
   Check,
   ChevronDown,
+  ChevronLeft,
+  ChevronRight,
   Minus,
   Plus,
   ShoppingBag,
@@ -77,6 +79,10 @@ export default function ProductPage() {
   const [detailsIdx, setDetailsIdx] = useState<number | null>(0);
   const [faqIdx, setFaqIdx] = useState<number | null>(0);
 
+  const prevImage = () =>
+    setActive((i) => (i - 1 + product.gallery.length) % product.gallery.length);
+  const nextImage = () => setActive((i) => (i + 1) % product.gallery.length);
+
   const { pack, setPack, qty, setQty, setOpen, setDemo } = useCart();
 
   const details = [];
@@ -124,20 +130,50 @@ export default function ProductPage() {
                   <div className="absolute bottom-5 right-5 rounded-full bg-[#081226]/90 text-white px-3 py-2 text-[10px] font-bold">
                     {product.gallery[active].label}
                   </div>
+                  <div className="absolute bottom-5 left-5 rounded-full bg-white/90 border border-[#dfe4ed] px-3 py-2 text-[10px] font-extrabold">
+                    {active + 1} / {product.gallery.length}
+                  </div>
+                  <button
+                    onClick={prevImage}
+                    aria-label="Previous image"
+                    className="absolute left-3 top-1/2 -translate-y-1/2 grid place-items-center w-10 h-10 rounded-full bg-white/90 border border-[#dfe4ed] text-[#081226] shadow hover:bg-white transition"
+                  >
+                    <ChevronLeft size={20} />
+                  </button>
+                  <button
+                    onClick={nextImage}
+                    aria-label="Next image"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 grid place-items-center w-10 h-10 rounded-full bg-white/90 border border-[#dfe4ed] text-[#081226] shadow hover:bg-white transition"
+                  >
+                    <ChevronRight size={20} />
+                  </button>
                 </div>
-                <div className="grid grid-cols-6 gap-2 mt-3">
-                  {product.gallery.map((g, i) => (
+                <div className="grid grid-cols-6 max-[700px]:gap-1.5 gap-2 mt-3">
+                  {product.gallery.slice(0, 5).map((g, i) => (
                     <button
                       key={g.src}
                       onClick={() => setActive(i)}
                       aria-label={g.alt}
-                      className={`relative aspect-square rounded-2xl overflow-hidden border bg-white ${
+                      className={`relative aspect-square max-[700px]:rounded-xl rounded-2xl overflow-hidden border bg-white ${
                         active === i ? "border-[#3e6ff5] ring-2 ring-[#3e6ff5]/20" : "border-[#dfe4ed]"
                       }`}
                     >
                       <Image src={g.src} alt={g.alt} fill className="object-cover" />
                     </button>
                   ))}
+                  {product.gallery.length > 5 && (
+                    <button
+                      onClick={nextImage}
+                      aria-label={`View ${product.gallery.length - 5} more images`}
+                      className="relative aspect-square max-[700px]:rounded-xl rounded-2xl overflow-hidden border border-[#dfe4ed] bg-white"
+                    >
+                      <Image src={product.gallery[5].src} alt="" fill className="object-cover" />
+                      <span className="absolute inset-0 flex flex-col items-center justify-center gap-0.5 bg-[#081226]/55 text-white">
+                        <Plus size={18} strokeWidth={3} />
+                        <span className="text-[11px] font-extrabold">+{product.gallery.length - 5}</span>
+                      </span>
+                    </button>
+                  )}
                 </div>
               </div>
 
@@ -635,7 +671,7 @@ export default function ProductPage() {
           Add to cart
         </button>
         <button onClick={() => setDemo(true)} className="productBtn blue">
-          Get Started
+          Book Now
         </button>
       </div>
     </div>
