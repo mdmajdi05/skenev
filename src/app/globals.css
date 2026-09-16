@@ -2696,6 +2696,7 @@ button {
 
 .productPage .productBtn.light {
   background: #fff;
+  color: var(--ink);
 }
 
 .productPage .quantity {
