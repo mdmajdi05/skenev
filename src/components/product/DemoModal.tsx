@@ -1,10 +1,38 @@
 "use client";
 
+import { FormEvent } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, X } from "lucide-react";
-import { product } from "@/data/product";
+import { site } from "@/lib/site";
 import { useCart } from "./store";
 import { BTN_BLUE, EYEBROW } from "./ui";
+
+const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  const data = new FormData(e.currentTarget);
+  const name = String(data.get("name") ?? "").trim();
+  const email = String(data.get("email") ?? "").trim();
+  const company = String(data.get("company") ?? "").trim();
+  const message = String(data.get("message") ?? "").trim();
+
+  const text = [
+    "Hi SKENEV! I'd like to book a demo / request pricing.",
+    "",
+    `Name: ${name}`,
+    `Email: ${email}`,
+    company ? `Clinic / Company: ${company}` : "",
+    "",
+    message,
+  ]
+    .filter((line) => line.length > 0)
+    .join("\n");
+
+  window.open(
+    `${site.whatsappLink}?text=${encodeURIComponent(text)}`,
+    "_blank",
+    "noopener,noreferrer"
+  );
+};
 
 export default function DemoModal() {
   const { demo, setDemo } = useCart();
@@ -36,29 +64,28 @@ export default function DemoModal() {
               Share your requirements and the SKENEV team can follow up with configuration and
               deployment details.
             </p>
-            <form
-              className="space-y-3 mt-7"
-              onSubmit={() => {
-                window.location.href = `mailto:${product.email}?subject=SKENEV Demo / Pricing Request&body=Please contact me regarding SKENEV.`;
-              }}
-            >
+            <form className="space-y-3 mt-7" onSubmit={onSubmit}>
               <input
                 required
+                name="name"
                 placeholder="Full name"
                 className="w-full h-12 rounded-xl border border-[#dfe4ed] bg-white px-4"
               />
               <input
                 required
                 type="email"
+                name="email"
                 placeholder="Work email"
                 className="w-full h-12 rounded-xl border border-[#dfe4ed] bg-white px-4"
               />
               <input
+                name="company"
                 placeholder="Clinic / company"
                 className="w-full h-12 rounded-xl border border-[#dfe4ed] bg-white px-4"
               />
               <textarea
                 rows={4}
+                name="message"
                 placeholder="Tell us what you need"
                 className="w-full rounded-xl border border-[#dfe4ed] bg-white p-4"
               />
