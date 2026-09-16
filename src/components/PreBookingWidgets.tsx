@@ -1,12 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import PreBookingBanner from "./PreBookingBanner";
 import PreBookingFloatCTA from "./PreBookingFloatCTA";
 import PreBookingDialog from "./PreBookingDialog";
 import PreBookingPopup from "./PreBookingPopup";
 
 export default function PreBookingWidgets() {
+  const pathname = usePathname();
   const [dialogOpen, setDialogOpen] = useState(false);
   const [popupOpen, setPopupOpen] = useState(false);
 
@@ -26,7 +28,7 @@ export default function PreBookingWidgets() {
       sessionStorage.setItem("prebook-popup-auto", "true");
     }, 2500);
     return () => clearTimeout(timer);
-  }, []);
+  }, [pathname]);
 
   return (
     <>

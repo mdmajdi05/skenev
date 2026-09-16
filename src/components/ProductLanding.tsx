@@ -190,9 +190,6 @@ export default function ProductLanding() {
               <Link href="/contact" className={styles.landingBtnPrimary}>
                 Pre-Order Now
               </Link>
-              <Link href="/products" className={styles.landingBtnSecondary}>
-                Explore Features
-              </Link>
             </div>
 
             <div className={styles.landingHeroTrust}>

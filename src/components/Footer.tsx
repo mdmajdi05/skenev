@@ -4,7 +4,6 @@ const FOOTER_COLUMNS = [
   {
     heading: "Product",
     links: [
-      { label: "SKENEV Scanner", href: "/products" },
       { label: "Skin AI", href: "/solutions/ai-skin-analysis" },
       { label: "Scalp AI", href: "/solutions/ai-scalp-analysis" },
       { label: "Beauty Intelligence", href: "/solutions/beauty-intelligence" },

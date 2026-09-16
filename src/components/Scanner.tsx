@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
-import Link from "next/link";
 import { IMG_SCALP } from "@/lib/images";
 
 const SCANNER_SPECS = [
@@ -33,9 +32,6 @@ export default function Scanner() {
             <a href="#contact" className="btn btn-secondary">
               Book a Demo →
             </a>
-            <Link href="/products" className="btn btn-ghost">
-              View Product
-            </Link>
           </div>
 
           <ul className="scanner-features">

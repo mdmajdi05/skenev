@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { site } from "@/lib/site";
@@ -5,7 +7,6 @@ import styles from "@/styles/site.module.css";
 
 const COMPANY = [
   { href: "/about", label: "About Us" },
-  { href: "/products", label: "Product" },
   { href: "/solutions", label: "Solutions" },
   { href: "/technology", label: "Technology" },
   { href: "/careers", label: "Careers" },

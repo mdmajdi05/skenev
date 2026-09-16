@@ -26,7 +26,6 @@ export default function WhatsAppButton() {
           fill="currentColor"
         />
       </svg>
-      <span className="whatsapp-float-label">WhatsApp</span>
     </a>
   );
 }

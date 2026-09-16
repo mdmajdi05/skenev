@@ -2,9 +2,11 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { ShoppingBag } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import styles from "@/styles/site.module.css";
+import { useCart } from "@/components/product/store";
 
 const SOLUTIONS_SUB = [
   { href: "/solutions/ai-skin-analysis", label: "AI Skin Analysis" },
@@ -28,6 +30,7 @@ export default function SiteNav() {
   const [open, setOpen] = useState(false);
   const [solutionsOpen, setSolutionsOpen] = useState(false);
   const [mobileSolutionsOpen, setMobileSolutionsOpen] = useState(false);
+  const { setOpen: setCartOpen } = useCart();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -105,9 +108,19 @@ export default function SiteNav() {
               )
             )}
           </div>
-          <Link href="/contact" className={styles.navCta}>
-            Get Started
-          </Link>
+          <div className={styles.navActions}>
+            <button
+              className={styles.navCart}
+              onClick={() => setCartOpen(true)}
+              aria-label="Open cart"
+            >
+              <ShoppingBag size={17} />
+              <span className={styles.navCartLabel}>Cart</span>
+            </button>
+            <Link href="/contact" className={styles.navCta}>
+              Get Started
+            </Link>
+          </div>
           <button
             className={styles.menuBtn}
             onClick={() => setOpen((o) => !o)}
@@ -152,7 +165,11 @@ export default function SiteNav() {
               </div>
             </div>
           </div>
-          <Link href="/products" className={isActive("/products") ? styles.active : undefined} onClick={() => setOpen(false)}>
+          <Link
+            href="/products"
+            className={isActive("/products") ? styles.active : undefined}
+            onClick={() => setOpen(false)}
+          >
             Product
           </Link>
           <Link href="/about" className={isActive("/about") ? styles.active : undefined} onClick={() => setOpen(false)}>

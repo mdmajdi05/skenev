@@ -46,10 +46,12 @@
    RESET
 ========================================================= */
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 }
 
 html {
@@ -1964,11 +1966,11 @@ button {
   right: 26px;
   bottom: 26px;
   z-index: 1500;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 18px 8px 8px;
-  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
   background: #25d366;
   color: #fff;
   box-shadow: 0 16px 40px rgba(37, 211, 102, 0.4);
@@ -1983,7 +1985,7 @@ button {
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: 999px;
+  border-radius: 50%;
   border: 2px solid rgba(37, 211, 102, 0.55);
   animation: whatsAppPulse 2.4s ease-out infinite;
   pointer-events: none;
@@ -1991,15 +1993,8 @@ button {
 
 .whatsapp-float svg {
   display: block;
-  width: 40px;
-  height: 40px;
-}
-
-.whatsapp-float-label {
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.3px;
-  white-space: nowrap;
+  width: 34px;
+  height: 34px;
 }
 
 .whatsapp-float:hover {
@@ -2510,5 +2505,283 @@ button {
   .copyright {
     flex-direction: column;
     gap: 10px;
+  }
+}
+
+/* =========================================================
+   PRODUCT PAGE (scoped under .productPage so it never
+   collides with the site-wide design system)
+========================================================= */
+
+.productPage {
+  --ink: #081226;
+  --blue: #3e6ff5;
+  --blue2: #617cff;
+  --yellow: #ffbe31;
+  --cream: #fbfaf6;
+  --line: #dfe4ed;
+  --muted: #68758b;
+  --card: #fff;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-dm-sans), Arial, Helvetica, sans-serif;
+  isolation: isolate;
+}
+
+.productPage a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.productPage button {
+  cursor: pointer;
+}
+
+.productPage .wrap {
+  width: min(1240px, calc(100% - 42px));
+  margin: auto;
+}
+
+.productPage .productOfferBar {
+  background: var(--ink);
+  color: #fff;
+  text-align: center;
+  font-size: 11px;
+  line-height: 1.4;
+  padding: 10px 12px;
+  letter-spacing: .02em;
+}
+
+.productPage .productOfferLabel {
+  color: #ffca45;
+  font-weight: 800;
+}
+
+.productPage .productHeader {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(251, 250, 246, .92);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(18px);
+}
+
+.productPage .productHeaderInner {
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.productPage .productBrand {
+  color: var(--ink);
+  font-size: 27px;
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: -.06em;
+  white-space: nowrap;
+}
+
+.productPage .productBrand span {
+  color: #cdb38b;
+}
+
+.productPage .productHeaderNav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.productPage .productHeaderActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.productPage .productCartButton {
+  height: 44px;
+  padding: 0 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #cfd6e2;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--ink);
+  font-weight: 800;
+}
+
+.productPage .productGetStarted {
+  height: 44px;
+  padding: 0 20px;
+}
+
+.productPage .productHero {
+  padding-top: 28px;
+}
+
+.productPage .productFooter {
+  padding: 40px 0;
+  color: #fff;
+  background: var(--ink);
+}
+
+.productPage .productFooterInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  font-size: 13px;
+}
+
+.productPage .productFooter p {
+  color: rgba(255, 255, 255, .5);
+  margin: 8px 0 0;
+}
+
+.productPage .productMobileBar {
+  display: none;
+}
+
+.productPage .eyebrow {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: #6688ff;
+  margin: 0;
+}
+
+.productPage .eyebrow::before {
+  content: none;
+}
+
+.productPage .section {
+  padding: 110px 0;
+}
+
+.productPage .productBtn {
+  height: 54px;
+  border-radius: 999px;
+  padding: 0 23px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  font-weight: 800;
+  border: 1px solid var(--ink);
+  background: none;
+  transition: 0.2s;
+}
+
+.productPage .productBtn.dark {
+  background: var(--ink);
+  color: #fff;
+}
+
+.productPage .productBtn.dark:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 30px #08122620;
+}
+
+.productPage .productBtn.blue {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: #fff;
+}
+
+.productPage .productBtn.light {
+  background: #fff;
+}
+
+.productPage .quantity {
+  display: flex;
+  align-items: center;
+  border: 1px solid #cfd6e2;
+  border-radius: 999px;
+  background: #fff;
+  height: 54px;
+  padding: 4px;
+}
+
+.productPage .quantity button {
+  height: 44px;
+  width: 44px;
+  border: 0;
+  background: #f2f5f9;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+
+.productPage .quantity span {
+  width: 42px;
+  text-align: center;
+  font-weight: 800;
+}
+
+.productPage .softGlow {
+  background: radial-gradient(circle at 65% 25%, #dfe8ff 0, transparent 28%),
+    linear-gradient(145deg, #fbfaf6, #f3f6ff);
+}
+
+/* Site-wide `img { width: 100% }` would otherwise override Tailwind w-[78%];
+   keep the AI-engine shot at its intended 78% inside the product scope. */
+.productPage .aiShot {
+  width: 78%;
+}
+
+@media (max-width: 700px) {
+  .productPage .wrap {
+    width: calc(100% - 26px);
+  }
+
+  .productPage .section {
+    padding: 72px 0;
+  }
+
+  .productPage .productHeaderInner {
+    height: 64px;
+  }
+
+  .productPage .productHeaderNav,
+  .productPage .productGetStarted {
+    display: none;
+  }
+
+  .productPage .productBrand {
+    font-size: 24px;
+  }
+
+  .productPage .productFooter {
+    margin-bottom: 68px;
+  }
+
+  .productPage .productFooterInner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .productPage .productMobileBar {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 60;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    padding: 12px;
+    background: rgba(255, 255, 255, .95);
+    border-top: 1px solid var(--line);
+    backdrop-filter: blur(12px);
+  }
+
+  .productPage .productMobileBar .productBtn {
+    height: 48px;
   }
 }

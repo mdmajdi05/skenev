@@ -137,7 +137,7 @@
   white-space: nowrap;
   transition:
     background 0.35s ease,
-    transform 0.35s ease,
+transform 0.35s ease,
     box-shadow 0.35s ease;
 }
 
@@ -300,6 +300,47 @@
   background: #a88a57;
   transform: translateY(-2px);
   box-shadow: 0 12px 30px rgba(168, 138, 87, 0.3);
+}
+
+.navActions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.navCart {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 42px;
+  height: 42px;
+  padding: 0 14px;
+  background: #ffffff;
+  border: 1px solid rgba(36, 29, 24, 0.12);
+  border-radius: 100px;
+  color: #241d18;
+  cursor: pointer;
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.navCart:hover {
+  background: #f5f5dc;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(36, 29, 24, 0.08);
+}
+
+.navCartLabel {
+  display: none;
+}
+
+@media (min-width: 760px) {
+  .navCartLabel {
+    display: inline;
+  }
 }
 
 .menuBtn {
@@ -1728,6 +1769,7 @@
   border-radius: 100px;
   font-size: 0.85rem;
   color: rgba(245, 245, 220, 0.9);
+  text-decoration: none;
   animation: prebookUrgencyIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.6s both;
 }
 

@@ -5,6 +5,9 @@ import SiteNav from "@/components/SiteNav";
 import SiteFooter from "@/components/SiteFooter";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import PreBookingWidgets from "@/components/PreBookingWidgets";
+import { CartProvider } from "@/components/product/store";
+import CartDrawer from "@/components/product/CartDrawer";
+import DemoModal from "@/components/product/DemoModal";
 import { buildMetadata } from "@/lib/seo";
 import { SITE_URL, site } from "@/lib/site";
 import "./globals.css";
@@ -76,11 +79,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col">
         <JsonLd data={orgSchema} />
         <JsonLd data={websiteSchema} />
-        <PreBookingWidgets />
-        <SiteNav />
-        {children}
-        <SiteFooter />
-        <WhatsAppButton />
+        <CartProvider>
+          <PreBookingWidgets />
+          <SiteNav />
+          {children}
+          <SiteFooter />
+          <WhatsAppButton />
+          <CartDrawer />
+          <DemoModal />
+        </CartProvider>
       </body>
     </html>
   );

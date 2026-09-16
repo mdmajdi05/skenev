@@ -10,6 +10,10 @@ export default function PreBookingOffer() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
+  const prebookLink = `${site.whatsappLink}?text=${encodeURIComponent(
+    "Hi SKENEV! I want to PRE-BOOK the SKENEV AI scanner at the 10% launch discount."
+  )}`;
+
   const validateForm = (data: FormData) => {
     const newErrors: Record<string, string> = {};
     const name = String(data.get("name") ?? "").trim();
@@ -71,31 +75,37 @@ export default function PreBookingOffer() {
   return (
     <section id="prebooking" className={styles.prebook} aria-labelledby="prebook-heading">
       <div className={styles.prebookBanner}>
-        <Image
-          src="/banner.webp"
-          alt="SKENEV AI beauty scanner launch offer"
-          fill
-          sizes="100vw"
-          style={{ objectFit: "cover" }}
-        />
-        <div className={styles.prebookOverlay} />
-        <div className={styles.prebookRibbon} aria-hidden="true">
-          <span className={styles.prebookRibbonText}>🔥 LAUNCH OFFER</span>
-          <span className={styles.prebookRibbonPercent}>10% OFF</span>
+          <Image
+            src="/banner.webp"
+            alt="SKENEV AI beauty scanner launch offer"
+            fill
+            sizes="100vw"
+            style={{ objectFit: "cover" }}
+          />
+          <div className={styles.prebookOverlay} />
+          <div className={styles.prebookRibbon} aria-hidden="true">
+            <span className={styles.prebookRibbonText}>🔥 LAUNCH OFFER</span>
+            <span className={styles.prebookRibbonPercent}>10% OFF</span>
+          </div>
+          <div className={styles.prebookBadge}>Limited time · Launch offer</div>
+          <h2 id="prebook-heading">
+            Pre-book the SKENEV scanner & get <em>10% off.</em>
+          </h2>
+          <p>
+            Reserve your unit now, pay only at delivery — and lock in guaranteed
+            launch pricing on India&rsquo;s first all-in-one AI beauty scanner.
+          </p>
+          <a
+            href={prebookLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Offer valid for first 100 pre-bookings only — secure yours on WhatsApp"
+            className={styles.prebookUrgency}
+          >
+            <span className={styles.prebookUrgencyIcon} aria-hidden="true">⏳</span>
+            <span>Offer valid for first <strong>100 pre-bookings</strong> only</span>
+          </a>
         </div>
-        <div className={styles.prebookBadge}>Limited time · Launch offer</div>
-        <h2 id="prebook-heading">
-          Pre-book the SKENEV scanner & get <em>10% off.</em>
-        </h2>
-        <p>
-          Reserve your unit now, pay only at delivery — and lock in guaranteed
-          launch pricing on India&rsquo;s first all-in-one AI beauty scanner.
-        </p>
-        <div className={styles.prebookUrgency}>
-          <span className={styles.prebookUrgencyIcon} aria-hidden="true">⏳</span>
-          <span>Offer valid for first <strong>100 pre-bookings</strong> only</span>
-        </div>
-      </div>
 
       <div className={styles.prebookInner}>
         <div className={styles.prebookInfo}>
