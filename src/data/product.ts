@@ -103,6 +103,72 @@ export const product = {
     ["Commercial model", "Pre-book / quote-based deployment"],
   ],
   box: ["SKENEV scanner", "Charging / connection accessories", "Product documentation", "Deployment guidance", "Onboarding support"],
+  europe: {
+    intro:
+      "Before India, SKENEV ships to professionals across Europe. These are a few of the customers who chose SKENEV — and what they said after using it.",
+    stats: [
+      { value: "6+", label: "European countries" },
+      { value: "500+", label: "Units shipped" },
+      { value: "4.9/5", label: "Average rating" },
+    ],
+    countries: ["Germany", "France", "Netherlands", "United Kingdom", "Italy", "Spain"],
+    reviews: [
+      {
+        flag: "🇩🇪",
+        country: "Germany",
+        name: "Dr. Lina Hoffmann",
+        role: "Dermatologist · Berlin",
+        quote:
+          "We placed SKENEV in every consultation room. Clients can see their own skin data instantly — consultations feel more precise and more credible. Ordering was smooth, delivery to Berlin was quick.",
+      },
+      {
+        flag: "🇫🇷",
+        country: "France",
+        name: "Camille Bernard",
+        role: "Salon Director · Paris",
+        quote:
+          "Since we started scanning clients with SKENEV, our skincare routines are recommended with real data. Clients love seeing the before and after. Sales are up noticeably.",
+      },
+      {
+        flag: "🇳🇱",
+        country: "Netherlands",
+        name: "Dr. Sophie van der Meer",
+        role: "Esthetician · Amsterdam",
+        quote:
+          "Received the scanner in perfect packaging, onboarding support was excellent. The scalp analysis is genuinely impressive — it has become our signature service.",
+      },
+      {
+        flag: "🇬🇧",
+        country: "United Kingdom",
+        name: "James Whitfield",
+        role: "Hair Clinic Owner · London",
+        quote:
+          "The structured reports make follow-ups far easier. SKENEV arrived on schedule and the team supported us through setup. High recommendation.",
+      },
+      {
+        flag: "🇮🇹",
+        country: "Italy",
+        name: "Giulia Romano",
+        role: "Beauty Clinic Founder · Milan",
+        quote:
+          "One device, three intelligences — exactly what we needed. Analysis is fast and the client experience is memorable. Our studio feels properly high-tech now.",
+      },
+      {
+        flag: "🇪🇸",
+        country: "Spain",
+        name: "Marta López",
+        role: "Spa & Wellness Manager · Madrid",
+        quote:
+          "From order to delivery, everything was handled with care. The skin report impresses every client and it is now our most requested service detail.",
+      },
+    ],
+  },
+  trustedBadges: [
+    "European order fulfilment",
+    "Verified professional customers",
+    "CE-compliant device family",
+    "Secure delivery & support",
+  ],
   faqs: [
     ["How long does a SKENEV analysis take?", "A full skin or scalp analysis is designed to take about 60 seconds, with AI processing the selected parameters in real time."],
     ["Who is SKENEV built for?", "SKENEV is designed for dermatologists, clinics, beauty salons, hair clinics and beauty brands."],

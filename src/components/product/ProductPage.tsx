@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import { product } from "@/data/product";
 import { useCart } from "./store";
+import EuropeReviews from "./EuropeReviews";
 
 const money = (n: number | null) =>
   n == null
@@ -270,6 +271,8 @@ export default function ProductPage() {
               ))}
             </div>
           </section>
+
+          <EuropeReviews />
 
           <section className={SECTION_PAD} id="intelligence">
             <div className={WRAP_CLS}>
