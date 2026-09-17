@@ -83,7 +83,7 @@ export default function ProductPage() {
     setActive((i) => (i - 1 + product.gallery.length) % product.gallery.length);
   const nextImage = () => setActive((i) => (i + 1) % product.gallery.length);
 
-  const { pack, setPack, qty, setQty, setOpen, setDemo } = useCart();
+  const { qty, setQty, setOpen, setDemo } = useCart();
 
   const details = [];
   for (let i = 0; i < DESIGN_SYSTEM.length; i += 2) {
@@ -106,17 +106,19 @@ export default function ProductPage() {
 
         <main>
           <section id="product" className={`${WRAP_CLS} pt-7`}>
-            <div className="text-[11px] text-[#748198] flex gap-2 mb-7">
+            <div className="productMuted text-[11px] flex gap-2 mb-7">
               <Link href="/">Home</Link>
               <span>/</span>
               <span>Product</span>
               <span>/</span>
-              <span className="text-[#081226]">SKENEV Scanner</span>
+              <span className="font-semibold" style={{ color: "#1f1814" }}>
+                SKENEV Scanner
+              </span>
             </div>
 
             <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-10 xl:gap-16 items-start">
               <div>
-                <div className="relative overflow-hidden rounded-[28px] border border-[#dfe4ed] bg-white softGlow aspect-square">
+                <div className="relative overflow-hidden rounded-[28px] border border-[#ddd3c0] bg-white softGlow aspect-square">
                   <Image
                     src={product.gallery[active].src}
                     alt={product.gallery[active].alt}
@@ -124,26 +126,23 @@ export default function ProductPage() {
                     priority={active === 0}
                     className="object-contain p-4"
                   />
-                  <div className="absolute top-5 left-5 rounded-full bg-white/90 border border-[#dfe4ed] px-3 py-2 text-[10px] font-extrabold uppercase tracking-[0.14em]">
-                    SKENEV scanner
-                  </div>
-                  <div className="absolute bottom-5 right-5 rounded-full bg-[#081226]/90 text-white px-3 py-2 text-[10px] font-bold">
+                  <div className="productDark absolute bottom-5 right-5 rounded-full px-3 py-2 text-[10px] font-bold">
                     {product.gallery[active].label}
                   </div>
-                  <div className="absolute bottom-5 left-5 rounded-full bg-white/90 border border-[#dfe4ed] px-3 py-2 text-[10px] font-extrabold">
+                  <div className="absolute bottom-5 left-5 rounded-full bg-white border border-[#d4c6ad] px-3 py-2 text-[10px] font-extrabold text-[#1f1814]">
                     {active + 1} / {product.gallery.length}
                   </div>
                   <button
                     onClick={prevImage}
                     aria-label="Previous image"
-                    className="absolute left-3 top-1/2 -translate-y-1/2 grid place-items-center w-10 h-10 rounded-full bg-white/90 border border-[#dfe4ed] text-[#081226] shadow hover:bg-white transition"
+                    className="absolute left-3 top-1/2 -translate-y-1/2 grid place-items-center w-10 h-10 rounded-full bg-white/90 border border-[#ddd3c0] text-[#30261f] shadow hover:bg-white transition"
                   >
                     <ChevronLeft size={20} />
                   </button>
                   <button
                     onClick={nextImage}
                     aria-label="Next image"
-                    className="absolute right-3 top-1/2 -translate-y-1/2 grid place-items-center w-10 h-10 rounded-full bg-white/90 border border-[#dfe4ed] text-[#081226] shadow hover:bg-white transition"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 grid place-items-center w-10 h-10 rounded-full bg-white/90 border border-[#ddd3c0] text-[#30261f] shadow hover:bg-white transition"
                   >
                     <ChevronRight size={20} />
                   </button>
@@ -155,7 +154,7 @@ export default function ProductPage() {
                       onClick={() => setActive(i)}
                       aria-label={g.alt}
                       className={`relative aspect-square max-[700px]:rounded-xl rounded-2xl overflow-hidden border bg-white ${
-                        active === i ? "border-[#3e6ff5] ring-2 ring-[#3e6ff5]/20" : "border-[#dfe4ed]"
+                        active === i ? "border-[#b89a68] ring-2 ring-[#b89a68]/20" : "border-[#ddd3c0]"
                       }`}
                     >
                       <Image src={g.src} alt={g.alt} fill className="object-cover" />
@@ -165,10 +164,10 @@ export default function ProductPage() {
                     <button
                       onClick={nextImage}
                       aria-label={`View ${product.gallery.length - 5} more images`}
-                      className="relative aspect-square max-[700px]:rounded-xl rounded-2xl overflow-hidden border border-[#dfe4ed] bg-white"
+                      className="relative aspect-square max-[700px]:rounded-xl rounded-2xl overflow-hidden border border-[#ddd3c0] bg-white"
                     >
                       <Image src={product.gallery[5].src} alt="" fill className="object-cover" />
-                      <span className="absolute inset-0 flex flex-col items-center justify-center gap-0.5 bg-[#081226]/55 text-white">
+                      <span className="productDark absolute inset-0 flex flex-col items-center justify-center gap-0.5 bg-[#241d18]/70">
                         <Plus size={18} strokeWidth={3} />
                         <span className="text-[11px] font-extrabold">+{product.gallery.length - 5}</span>
                       </span>
@@ -182,54 +181,26 @@ export default function ProductPage() {
                 <h1 className="text-[39px] sm:text-[52px] leading-[0.99] tracking-[-0.055em] font-semibold mt-3">
                   {product.name}
                 </h1>
-                <p className="text-[18px] leading-8 text-[#647188] mt-5">{product.tagline}</p>
-                <p className="text-[15px] leading-7 text-[#6d7789] mt-2">{product.description}</p>
+                <p className="productMuted text-[18px] leading-8 mt-5">{product.tagline}</p>
+                <p className="productMuted text-[15px] leading-7 mt-2">{product.description}</p>
 
                 <div className="flex flex-wrap gap-2 mt-6">
                   {product.highlights.map((h, i) => (
-                    <span key={h} className="rounded-full bg-white border border-[#dfe4ed] px-3 py-2 text-xs font-bold">
-                      <span className="text-[#3e6ff5]">0{i + 1}</span> {h}
+                    <span key={h} className="productCard rounded-full border border-[#d4c6ad] px-3 py-2 text-xs font-bold">
+                      <span className="productGold">0{i + 1}</span> {h}
                     </span>
                   ))}
                 </div>
 
-                <div className="mt-7 rounded-[24px] border border-[#dfe4ed] bg-white p-5 sm:p-6 shadow-[0_18px_50px_rgba(8,18,38,0.06)]">
+                <div className="productCard mt-7 rounded-[24px] border border-[#d4c6ad] p-5 sm:p-6 shadow-[0_18px_50px_rgba(48,38,31,0.08)]">
                   <div className="flex items-start justify-between gap-4">
                     <div>
                       <div className="text-2xl font-semibold">{money(product.price)}</div>
-                      <p className="text-xs text-[#738096] mt-1">{product.shipping}</p>
+                      <p className="productMuted text-xs mt-1">{product.shipping}</p>
                     </div>
-                    <span className="rounded-full bg-[#fff5d8] text-[#8c6200] px-3 py-1.5 text-[10px] font-extrabold uppercase tracking-wide">
+                    <span className="productGold rounded-full bg-[#efe3c4] px-3 py-1.5 text-[10px] font-extrabold uppercase tracking-wide">
                       Pre-book
                     </span>
-                  </div>
-
-                  <div className="mt-6">
-                    <div className="flex items-center justify-between mb-3">
-                      <h2 className="font-extrabold text-sm">Choose your setup</h2>
-                      <span className="text-xs text-[#7a879a]">Configuration</span>
-                    </div>
-                    <div className="grid grid-cols-2 gap-2">
-                      {product.packs.map((p) => (
-                        <button
-                          key={p.id}
-                          onClick={() => setPack(p.id)}
-                          className={`text-left p-4 rounded-2xl border transition ${
-                            pack === p.id
-                              ? "border-[#3e6ff5] bg-[#f2f5ff] shadow-[0_8px_25px_rgba(62,111,245,0.10)]"
-                              : "border-[#dfe4ed] bg-[#fff]"
-                          }`}
-                        >
-                          <div className="font-extrabold text-sm">{p.title}</div>
-                          <div className="text-xs text-[#738096] mt-1">{p.sub}</div>
-                          {pack === p.id && (
-                            <div className="mt-2 text-[10px] font-bold text-[#3e6ff5] flex items-center gap-1">
-                              <Check size={12} /> Selected
-                            </div>
-                          )}
-                        </button>
-                      ))}
-                    </div>
                   </div>
 
                   <div className="flex gap-3 mt-5">
@@ -256,13 +227,13 @@ export default function ProductPage() {
                   <div className="grid grid-cols-3 gap-2 mt-3">
                     <button
                       onClick={() => setDemo(true)}
-                      className="h-11 rounded-full border border-[#dfe4ed] bg-white text-xs font-bold"
+                      className="productCard h-11 rounded-full border border-[#d4c6ad] text-xs font-bold"
                     >
                       Book Demo
                     </button>
                     <a
                       href={`mailto:${product.email}`}
-                      className="h-11 rounded-full border border-[#dfe4ed] bg-white text-xs font-bold grid place-items-center"
+                      className="productCard h-11 rounded-full border border-[#d4c6ad] text-xs font-bold grid place-items-center"
                     >
                       Email
                     </a>
@@ -270,16 +241,16 @@ export default function ProductPage() {
                       href={WA_LINK}
                       target="_blank"
                       rel="noreferrer"
-                      className="h-11 rounded-full border border-[#dfe4ed] bg-white text-xs font-bold grid place-items-center"
+                      className="productCard h-11 rounded-full border border-[#d4c6ad] text-xs font-bold grid place-items-center"
                     >
                       WhatsApp
                     </a>
                   </div>
 
-                  <div className="grid grid-cols-3 border-t border-[#e4e8ef] mt-5 pt-5 gap-2">
+                  <div className="grid grid-cols-3 border-t border-[#e0d6c4] mt-5 pt-5 gap-2">
                     {TRUST_ITEMS.map(({ label, Icon }) => (
-                      <div key={label} className="text-center text-[10px] font-bold text-[#68758b]">
-                        <Icon size={17} className="mx-auto mb-1.5 text-[#3e6ff5]" />
+                      <div key={label} className="productMuted text-center text-[10px] font-bold">
+                        <Icon size={17} className="productGold mx-auto mb-1.5" />
                         {label}
                       </div>
                     ))}
@@ -290,10 +261,10 @@ export default function ProductPage() {
           </section>
 
           <section className={`${WRAP_CLS} mt-10`}>
-            <div className="rounded-[28px] bg-[#081226] text-white grid sm:grid-cols-4 overflow-hidden">
+            <div className="productDark rounded-[28px] grid sm:grid-cols-4 overflow-hidden">
               {product.highlights.map((x, i) => (
-                <div key={x} className="p-6 border-b sm:border-b-0 sm:border-r last:border-0 border-white/10">
-                  <div className="text-[#7f9bff] text-[10px] font-black">0{i + 1}</div>
+                <div key={x} className="p-6 border-b sm:border-b-0 sm:border-r last:border-0 border-white/15">
+                  <div className="productGold text-[10px] font-black">0{i + 1}</div>
                   <div className="font-bold mt-2">{x}</div>
                 </div>
               ))}
@@ -307,7 +278,7 @@ export default function ProductPage() {
                 <h2 className="text-4xl sm:text-6xl tracking-[-0.05em] font-semibold mt-3">
                   Everything SKENEV reads.
                 </h2>
-                <p className="text-[#68758b] text-lg leading-8 mt-5">
+                <p className="productMuted text-lg leading-8 mt-5">
                   One scanner, three deep intelligences — built to give professionals greater
                   precision and every customer a more personal beauty journey.
                 </p>
@@ -317,16 +288,16 @@ export default function ProductPage() {
                   <motion.div
                     whileHover={{ y: -6 }}
                     key={m.num}
-                    className="rounded-[28px] bg-white border border-[#dfe4ed] p-7 min-h-[310px] shadow-[0_18px_50px_rgba(8,18,38,0.05)]"
+                    className="productCard rounded-[28px] border border-[#d4c6ad] p-7 min-h-[310px] shadow-[0_18px_50px_rgba(48,38,31,0.06)]"
                   >
-                    <div className="text-[10px] tracking-[0.16em] font-black text-[#3e6ff5]">
+                    <div className="productGold text-[10px] tracking-[0.16em] font-black">
                       {m.num} / {m.name}
                     </div>
-                    <div className="w-12 h-12 rounded-2xl bg-[#edf2ff] grid place-items-center mt-12 text-[#3e6ff5]">
+                    <div className="productGold w-12 h-12 rounded-2xl bg-[#efe3c4] grid place-items-center mt-12">
                       <Sparkles size={20} />
                     </div>
                     <h3 className="text-2xl font-semibold mt-5">{m.title}</h3>
-                    <p className="text-[#68758b] leading-7 mt-3">{m.text}</p>
+                    <p className="productMuted leading-7 mt-3">{m.text}</p>
                   </motion.div>
                 ))}
               </div>
@@ -334,26 +305,26 @@ export default function ProductPage() {
           </section>
 
           <section className={SECTION_PB}>
-            <div className={`${WRAP_CLS} rounded-[34px] bg-[#edf3ff] border border-[#d7e1ff] overflow-hidden`}>
+            <div className={`${WRAP_CLS} rounded-[34px] bg-[#efe6d2] border border-[#d4c6ad] overflow-hidden`}>
               <div className="grid lg:grid-cols-[0.75fr_1.25fr] items-center">
                 <div className="p-8 sm:p-12">
                   <p className="eyebrow">THE AI ENGINE</p>
                   <h2 className="text-4xl sm:text-5xl font-semibold tracking-[-0.05em] mt-3">
                     From a single image to deep intelligence.
                   </h2>
-                  <p className="text-[#65738b] leading-7 mt-5">
+                  <p className="productMuted leading-7 mt-5">
                     The SKENEV AI engine transforms one scan into structured beauty intelligence —
                     measured, comparable and ready for real decisions.
                   </p>
                   <div className="flex flex-wrap gap-2 mt-8">
                     {product.ai.map((x) => (
-                      <span key={x} className="rounded-full bg-white border border-[#d5def5] px-3 py-2 text-xs font-bold">
+                      <span key={x} className="productCard rounded-full border border-[#d4c6ad] px-3 py-2 text-xs font-bold">
                         {x}
                       </span>
                     ))}
                   </div>
                 </div>
-                <div className="bg-white h-full min-h-[520px] relative flex items-center justify-center overflow-hidden">
+                <div className="productCard h-full min-h-[520px] relative flex items-center justify-center overflow-hidden">
                   <Image
                     src="/ai-powered-skin-analysis-solution.webp"
                     alt="SKENEV AI analysis engine"
@@ -366,15 +337,15 @@ export default function ProductPage() {
             </div>
           </section>
 
-          <section className={`${SECTION_PAD} bg-[#081226] text-white`} id="how">
+          <section className={`${SECTION_PAD} productDark`} id="how">
             <div className={WRAP_CLS}>
               <div className="grid lg:grid-cols-[0.75fr_1.25fr] gap-14 items-start">
                 <div className="lg:sticky lg:top-28">
-                  <p className="eyebrow !text-[#7f9bff]">HOW IT WORKS</p>
+                  <p className="eyebrow">HOW IT WORKS</p>
                   <h2 className="text-4xl sm:text-6xl tracking-[-0.05em] font-semibold mt-3">
                     From scan to personal plan in four steps.
                   </h2>
-                  <p className="text-[#aab4c6] leading-7 mt-5">
+                  <p className="productMuted leading-7 mt-5">
                     Designed to make advanced beauty technology effortless for professionals — and
                     unforgettable for their customers.
                   </p>
@@ -387,12 +358,12 @@ export default function ProductPage() {
                     <motion.div
                       whileHover={{ x: 6 }}
                       key={n}
-                      className="rounded-[24px] border border-white/10 bg-white/[0.04] p-7 grid grid-cols-[56px_1fr] gap-5"
+                      className="productStep rounded-[24px] p-7 grid grid-cols-[56px_1fr] gap-5"
                     >
-                      <div className="text-[#7f9bff] font-black">{n}</div>
+                      <div className="productGold font-black">{n}</div>
                       <div>
                         <h3 className="text-2xl font-semibold">{t}</h3>
-                        <p className="text-[#aab4c6] leading-7 mt-2">{d}</p>
+                        <p className="productMuted leading-7 mt-2">{d}</p>
                       </div>
                     </motion.div>
                   ))}
@@ -407,13 +378,13 @@ export default function ProductPage() {
               <h2 className="text-4xl sm:text-5xl tracking-[-0.05em] font-semibold mt-3">
                 See the result, not just the scan.
               </h2>
-              <p className="text-[#68758b] max-w-2xl leading-7 mt-4">
+              <p className="productMuted max-w-2xl leading-7 mt-4">
                 Examples below are visual references from the current SKENEV website. Final
                 product-report screens should be connected to the approved live application output.
               </p>
               <div className="grid md:grid-cols-3 gap-4 mt-10">
                 {ANALYSIS_SAMPLES.map(([src, title, desc]) => (
-                  <div key={title} className="rounded-[28px] overflow-hidden bg-white border border-[#dfe4ed]">
+                  <div key={title} className="productCard rounded-[28px] overflow-hidden border border-[#d4c6ad]">
                     <Image
                       src={src}
                       alt={title}
@@ -423,7 +394,7 @@ export default function ProductPage() {
                     />
                     <div className="p-5">
                       <div className="font-extrabold">{title}</div>
-                      <div className="text-sm text-[#68758b] mt-1">{desc}</div>
+                      <div className="productMuted text-sm mt-1">{desc}</div>
                     </div>
                   </div>
                 ))}
@@ -431,18 +402,18 @@ export default function ProductPage() {
             </div>
           </section>
 
-          <section className={`${SECTION_PAD} bg-[#f0f4ff]`}>
+          <section className={`${SECTION_PAD} bg-[#efe6d2]`}>
             <div className={WRAP_CLS}>
               <p className="eyebrow">ANALYSIS TIMELINE</p>
               <h2 className="text-4xl sm:text-5xl tracking-[-0.05em] font-semibold mt-3">
                 A 60-second journey from capture to insight.
               </h2>
-              <div className="grid md:grid-cols-4 mt-10 rounded-[28px] overflow-hidden border border-[#d8e0f2] bg-white">
+              <div className="productCard grid md:grid-cols-4 mt-10 rounded-[28px] overflow-hidden border border-[#d4c6ad]">
                 {product.resultTimeline.map(([t, time, d]) => (
-                  <div key={t} className="p-6 border-b md:border-b-0 md:border-r last:border-0 border-[#dfe4ed]">
-                    <div className="text-[#3e6ff5] text-xs font-black">{time}</div>
+                  <div key={t} className="p-6 border-b md:border-b-0 md:border-r last:border-0 border-[#d4c6ad]">
+                    <div className="productGold text-xs font-black">{time}</div>
                     <h3 className="text-xl font-semibold mt-8">{t}</h3>
-                    <p className="text-sm text-[#68758b] leading-6 mt-2">{d}</p>
+                    <p className="productMuted text-sm leading-6 mt-2">{d}</p>
                   </div>
                 ))}
               </div>
@@ -461,14 +432,13 @@ export default function ProductPage() {
                 {product.benefits.map(([n, t, d]) => (
                   <div
                     key={n}
-                    className="group rounded-[28px] overflow-hidden border border-[#dfe4ed] bg-white min-h-[270px] relative"
+                    className="group rounded-[28px] overflow-hidden border border-[#d4c6ad] bg-[#241d18] min-h-[270px] relative"
                   >
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#081226] via-[#08122630] to-transparent opacity-0 group-hover:opacity-100 transition" />
-                    <Image src={BENEFIT_IMG[n]} alt={t} fill className="object-cover opacity-90" />
-                    <div className="absolute inset-x-0 bottom-0 p-5 bg-gradient-to-t from-[#081226e8] to-transparent text-white">
-                      <div className="text-[10px] font-black text-[#9db0ff]">{n}</div>
+                    <Image src={BENEFIT_IMG[n]} alt={t} fill className="object-cover opacity-80" />
+                    <div className="productBenefitCap absolute inset-x-0 bottom-0 p-5">
+                      <div className="productGold text-[10px] font-black">{n}</div>
                       <h3 className="font-bold mt-1">{t}</h3>
-                      <p className="text-xs text-white/75 leading-5 mt-1">{d}</p>
+                      <p className="productMuted text-xs leading-5 mt-1">{d}</p>
                     </div>
                   </div>
                 ))}
@@ -482,13 +452,13 @@ export default function ProductPage() {
               <h2 className="text-4xl sm:text-5xl tracking-[-0.05em] font-semibold mt-3">
                 A new standard in structured beauty analysis.
               </h2>
-              <div className="mt-10 overflow-x-auto rounded-[26px] border border-[#cfd6e2] bg-white">
+              <div className="mt-10 overflow-x-auto rounded-[26px] border border-[#d4c6ad] productCard">
                 <table className="w-full min-w-[760px] text-sm">
                   <thead>
-                    <tr className="bg-[#f2f5f9]">
+                    <tr className="bg-[#efe3c4]">
                       {["BASIS", "SKENEV", "VISUAL ASSESSMENT", "BASIC CAMERA", "QUESTIONNAIRE"].map(
                         (x) => (
-                          <th key={x} className="p-5 text-left text-[10px] tracking-[0.12em]">
+                          <th key={x} className="p-5 text-left text-[10px] tracking-[0.12em] text-[#1f1814]">
                             {x}
                           </th>
                         )
@@ -497,12 +467,12 @@ export default function ProductPage() {
                   </thead>
                   <tbody>
                     {product.comparison.map((r) => (
-                      <tr key={r[0]} className="border-t border-[#e1e5eb]">
+                      <tr key={r[0]} className="border-t border-[#d4c6ad]">
                         {r.map((x, i) => (
                           <td
                             key={i}
                             className={`p-5 ${i === 0 ? "font-extrabold" : ""} ${
-                              i === 1 ? "bg-[#eef3ff] text-[#244dbd]" : ""
+                              i === 1 ? "bg-[#f6edd8] productGold font-semibold" : ""
                             }`}
                           >
                             {i === 1 && x === "Yes" ? (
@@ -523,7 +493,7 @@ export default function ProductPage() {
             </div>
           </section>
 
-          <section className={`${SECTION_PAD} bg-white border-y border-[#e2e6ed]`} id="details">
+          <section className={`${SECTION_PAD} productCard border-y border-[#d4c6ad]`} id="details">
             <div className={WRAP_CLS}>
               <div className="grid lg:grid-cols-[0.55fr_1.45fr] gap-16">
                 <div>
@@ -531,13 +501,13 @@ export default function ProductPage() {
                   <h2 className="text-4xl sm:text-5xl tracking-[-0.05em] font-semibold mt-3">
                     Product details, made simple.
                   </h2>
-                  <p className="text-[#68758b] leading-7 mt-5">
+                  <p className="productMuted leading-7 mt-5">
                     Everything from the scanner itself to the analysis workflow and deployment.
                   </p>
                 </div>
-                <div className="border-t border-[#dfe4ed]">
+                <div className="border-t border-[#d4c6ad]">
                   {details.map(([q, a], i) => (
-                    <div key={q} className="border-b border-[#dfe4ed]">
+                    <div key={q} className="border-b border-[#d4c6ad]">
                       <button
                         className="w-full py-5 flex justify-between items-center text-left font-bold"
                         onClick={() => setDetailsIdx(detailsIdx === i ? null : i)}
@@ -553,7 +523,7 @@ export default function ProductPage() {
                             exit={{ height: 0, opacity: 0 }}
                             className="overflow-hidden"
                           >
-                            <p className="pb-5 text-[#68758b] leading-7 max-w-3xl">{a}</p>
+                            <p className="productMuted pb-5 leading-7 max-w-3xl">{a}</p>
                           </motion.div>
                         )}
                       </AnimatePresence>
@@ -573,14 +543,14 @@ export default function ProductPage() {
                     Built for professional environments.
                   </h2>
                 </div>
-                <div className="rounded-[26px] border border-[#dfe4ed] bg-white overflow-hidden">
+                <div className="productCard rounded-[26px] border border-[#d4c6ad] overflow-hidden">
                   {product.specs.map(([a, b]) => (
                     <div
                       key={a}
-                      className="grid grid-cols-[0.8fr_1.2fr] gap-5 p-5 border-b last:border-0 border-[#e1e5eb] text-sm"
+                      className="grid grid-cols-[0.8fr_1.2fr] gap-5 p-5 border-b last:border-0 border-[#d4c6ad] text-sm"
                     >
                       <span className="font-extrabold">{a}</span>
-                      <span className="text-[#68758b]">{b}</span>
+                      <span className="productMuted">{b}</span>
                     </div>
                   ))}
                 </div>
@@ -588,19 +558,19 @@ export default function ProductPage() {
             </div>
           </section>
 
-          <section className={`${SECTION_PAD} bg-[#081226] text-white`}>
+          <section className={`${SECTION_PAD} productDark`}>
             <div className={WRAP_CLS}>
               <div className="grid lg:grid-cols-[0.7fr_1.3fr] gap-12">
                 <div>
-                  <p className="eyebrow !text-[#7f9bff]">WHAT&rsquo;S IN THE BOX</p>
+                  <p className="eyebrow">WHAT&rsquo;S IN THE BOX</p>
                   <h2 className="text-4xl sm:text-5xl tracking-[-0.05em] font-semibold mt-3">
                     Everything you need to start.
                   </h2>
                 </div>
                 <div className="grid sm:grid-cols-2 gap-3">
                   {product.box.map((x, i) => (
-                    <div key={x} className="rounded-[22px] border border-white/10 bg-white/[0.04] p-6">
-                      <div className="text-[#7f9bff] font-black text-xs">0{i + 1}</div>
+                    <div key={x} className="productStep rounded-[22px] p-6">
+                      <div className="productGold font-black text-xs">0{i + 1}</div>
                       <div className="font-bold mt-8">{x}</div>
                     </div>
                   ))}
@@ -615,9 +585,9 @@ export default function ProductPage() {
               <h2 className="text-4xl sm:text-5xl tracking-[-0.05em] font-semibold mt-3">
                 Answers, before you even ask.
               </h2>
-              <div className="mt-10 border-t border-[#dfe4ed]">
+              <div className="mt-10 border-t border-[#d4c6ad]">
                 {product.faqs.map(([q, a], i) => (
-                  <div key={q} className="border-b border-[#dfe4ed]">
+                  <div key={q} className="border-b border-[#d4c6ad]">
                     <button
                       onClick={() => setFaqIdx(faqIdx === i ? null : i)}
                       className="w-full py-6 flex justify-between text-left font-bold"
@@ -633,7 +603,7 @@ export default function ProductPage() {
                           exit={{ height: 0, opacity: 0 }}
                           className="overflow-hidden"
                         >
-                          <p className="pb-6 text-[#68758b] leading-7">{a}</p>
+                          <p className="productMuted pb-6 leading-7">{a}</p>
                         </motion.div>
                       )}
                     </AnimatePresence>
@@ -644,12 +614,12 @@ export default function ProductPage() {
           </section>
 
           <section className={`${SECTION_PAD} softGlow`}>
-            <div className={`${WRAP_CLS} rounded-[34px] bg-[#eaf0ff] border border-[#d4defa] p-8 sm:p-14 text-center`}>
+            <div className={`${WRAP_CLS} rounded-[34px] bg-[#efe3c4] border border-[#cbb992] p-8 sm:p-14 text-center`}>
               <p className="eyebrow">TAKE THE NEXT STEP</p>
               <h2 className="text-4xl sm:text-6xl tracking-[-0.06em] font-semibold mt-3">
                 Ready to see beauty more clearly?
               </h2>
-              <p className="text-[#68758b] max-w-2xl mx-auto leading-7 mt-5">
+              <p className="productMuted max-w-2xl mx-auto leading-7 mt-5">
                 Book a demo, request pricing or discuss a multi-location deployment with the SKENEV
                 team.
               </p>
@@ -666,7 +636,7 @@ export default function ProductPage() {
         </main>
       </div>
 
-      <div className="fixed bottom-0 left-0 right-0 z-[60] lg:hidden bg-white/95 backdrop-blur border-t border-[#dfe4ed] p-3 grid grid-cols-2 gap-2">
+      <div className="fixed bottom-0 left-0 right-0 z-[60] lg:hidden bg-[#fffdf8]/95 backdrop-blur border-t border-[#d4c6ad] p-3 grid grid-cols-2 gap-2">
         <button onClick={() => setOpen(true)} className="productBtn light">
           Add to cart
         </button>

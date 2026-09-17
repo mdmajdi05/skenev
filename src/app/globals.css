@@ -26,6 +26,7 @@
   --muted-light: #a49a90;
 
   --gold: #b89a68;
+  --gold-text: #84652a;
   --gold-light: #d8c39d;
 
   --line: rgba(48, 38, 31, 0.12);
@@ -205,7 +206,7 @@ button {
 }
 
 .logo > span:not(.logo-mark) {
-  color: var(--gold);
+  color: var(--gold-text);
 }
 
 /* =========================================================
@@ -323,7 +324,7 @@ button {
 .nav-dropdown-arrow {
   font-size: 9px;
   margin-left: 5px;
-  color: var(--gold);
+  color: var(--gold-text);
   transition: transform 0.3s ease;
 }
 
@@ -460,7 +461,7 @@ button {
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--gold-text);
   margin-bottom: 25px;
 }
 
@@ -487,7 +488,7 @@ button {
 
 .hero h1 span {
   display: block;
-  color: var(--gold);
+  color: var(--gold-text);
   font-style: italic;
   font-weight: 600;
 }
@@ -633,7 +634,7 @@ button {
 }
 
 .score span {
-  color: var(--gold);
+  color: var(--gold-text);
 }
 
 /* =========================================================
@@ -767,7 +768,7 @@ button {
 }
 
 .heading-accent {
-  color: var(--gold);
+  color: var(--gold-text);
   font-style: italic;
   font-weight: 600;
 }
@@ -1000,8 +1001,8 @@ button {
 }
 
 .btn-ghost:hover {
-  border-color: var(--gold);
-  color: var(--gold-light);
+  border-color: var(--gold-text);
+  color: var(--gold-text);
   transform: translateY(-3px);
 }
 
@@ -1031,7 +1032,7 @@ button {
   height: 20px;
   border-radius: 50%;
   background: rgba(216, 195, 157, 0.15);
-  color: var(--gold-light);
+  color: var(--gold-text);
   font-size: 11px;
   flex-shrink: 0;
 }
@@ -1094,7 +1095,7 @@ button {
 }
 
 .testimonial-stars {
-  color: var(--gold);
+  color: var(--gold-text);
   font-size: 15px;
   letter-spacing: 3px;
 }
@@ -1168,7 +1169,7 @@ button {
 }
 
 .faq-heading p a {
-  color: var(--gold);
+  color: var(--gold-text);
   font-weight: 600;
 }
 
@@ -1218,7 +1219,7 @@ button {
   border-radius: 50%;
   background: var(--cream);
   border: 1px solid rgba(48, 38, 31, 0.12);
-  color: var(--gold);
+  color: var(--gold-text);
   font-size: 17px;
   transition:
     background 0.3s ease,
@@ -1226,7 +1227,7 @@ button {
 }
 
 .faq-item.open .faq-icon {
-  background: var(--gold);
+  background: #84652a;
   color: var(--cream);
   transform: rotate(180deg);
 }
@@ -1289,7 +1290,7 @@ button {
   font-size: 34px;
   font-weight: 800;
   letter-spacing: -2px;
-  color: var(--gold);
+  color: var(--gold-text);
 }
 
 .case-metric span {
@@ -1415,7 +1416,7 @@ button {
 }
 
 .solution-number {
-  color: var(--gold);
+  color: var(--gold-text);
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 1.8px;
@@ -1447,7 +1448,7 @@ button {
 }
 
 .text-link:hover {
-  color: var(--gold);
+  color: var(--gold-text);
   gap: 12px;
 }
 
@@ -1507,7 +1508,7 @@ button {
 }
 
 .parameter span {
-  color: var(--gold);
+  color: var(--gold-text);
   font-weight: 700;
   font-size: 11px;
   letter-spacing: 1px;
@@ -1547,7 +1548,7 @@ button {
 }
 
 .scanner .eyebrow {
-  color: var(--gold-light);
+  color: var(--gold-text);
 }
 
 .scanner h2 {
@@ -1861,7 +1862,7 @@ button {
 }
 
 .cta .eyebrow {
-  color: var(--gold-light);
+  color: var(--gold-text);
   justify-content: center;
 }
 
@@ -1931,7 +1932,7 @@ button {
 }
 
 .footer-address strong {
-  color: var(--gold-light);
+  color: var(--gold-text);
   font-size: 12px;
   letter-spacing: 0.5px;
   text-transform: uppercase;
@@ -2165,7 +2166,7 @@ button {
 }
 
 .footer-column a:hover {
-  color: var(--gold-light);
+  color: var(--gold-text);
   transform: translateX(3px);
 }
 
@@ -2634,18 +2635,65 @@ button {
 ========================================================= */
 
 .productPage {
-  --ink: #081226;
-  --blue: #3e6ff5;
-  --blue2: #617cff;
-  --yellow: #ffbe31;
-  --cream: #fbfaf6;
-  --line: #dfe4ed;
-  --muted: #68758b;
+  --ink: #1f1814;
+  --blue: #b89a68;
+  --blue2: #d8c39d;
+  --yellow: #d2a33c;
+  --cream: #faf6ea;
+  --line: #d4c6ad;
+  --muted: #5c534c;
   --card: #fff;
+  --on-dark: #fffaf2;
+  --gold-on-light: #6b5224;
+  --gold-on-dark: #e8c98a;
   background: var(--cream);
   color: var(--ink);
   font-family: var(--font-dm-sans), Arial, Helvetica, sans-serif;
   isolation: isolate;
+}
+
+.productPage h1,
+.productPage h2,
+.productPage h3 {
+  color: var(--ink);
+}
+
+.productPage .productMuted {
+  color: var(--muted);
+}
+
+.productPage .productGold {
+  color: var(--gold-on-light);
+}
+
+.productPage .productCard,
+.productPage .productPanel {
+  background: #fff;
+  color: var(--ink);
+}
+
+.productPage th {
+  color: var(--ink);
+}
+
+.productPage .productDark {
+  background: #241d18;
+  color: var(--on-dark);
+}
+
+.productPage .productDark h1,
+.productPage .productDark h2,
+.productPage .productDark h3 {
+  color: var(--on-dark);
+}
+
+.productPage .productDark .productMuted {
+  color: #e4d4b8;
+}
+
+.productPage .productDark .productGold,
+.productPage .productDark .eyebrow {
+  color: var(--gold-on-dark);
 }
 
 .productPage a {
@@ -2673,7 +2721,7 @@ button {
 }
 
 .productPage .productOfferLabel {
-  color: #ffca45;
+  color: #e5c47c;
   font-weight: 800;
 }
 
@@ -2681,7 +2729,7 @@ button {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(251, 250, 246, .92);
+  background: rgba(255, 253, 244, .92);
   border-bottom: 1px solid var(--line);
   backdrop-filter: blur(18px);
 }
@@ -2727,7 +2775,7 @@ button {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  border: 1px solid #cfd6e2;
+  border: 1px solid #ddd1bd;
   border-radius: 999px;
   background: #fff;
   color: var(--ink);
@@ -2772,7 +2820,7 @@ button {
   letter-spacing: 0.18em;
   text-transform: uppercase;
   font-weight: 800;
-  color: #6688ff;
+  color: var(--gold-on-light);
   margin: 0;
 }
 
@@ -2794,7 +2842,8 @@ button {
   gap: 9px;
   font-weight: 800;
   border: 1px solid var(--ink);
-  background: none;
+  background: #fff;
+  color: var(--ink);
   transition: 0.2s;
 }
 
@@ -2805,13 +2854,13 @@ button {
 
 .productPage .productBtn.dark:hover {
   transform: translateY(-1px);
-  box-shadow: 0 12px 30px #08122620;
+  box-shadow: 0 12px 30px #30261f20;
 }
 
 .productPage .productBtn.blue {
-  background: var(--blue);
-  border-color: var(--blue);
-  color: #fff;
+  background: linear-gradient(135deg, #c4a274, #a58859);
+  border-color: #a58859;
+  color: #2c2115;
 }
 
 .productPage .productBtn.light {
@@ -2822,7 +2871,7 @@ button {
 .productPage .quantity {
   display: flex;
   align-items: center;
-  border: 1px solid #cfd6e2;
+  border: 1px solid #ddd3c0;
   border-radius: 999px;
   background: #fff;
   height: 54px;
@@ -2833,7 +2882,8 @@ button {
   height: 44px;
   width: 44px;
   border: 0;
-  background: #f2f5f9;
+  background: #efe8d8;
+  color: var(--ink);
   border-radius: 50%;
   display: grid;
   place-items: center;
@@ -2843,11 +2893,34 @@ button {
   width: 42px;
   text-align: center;
   font-weight: 800;
+  color: var(--ink);
+}
+
+.productPage .productBenefitCap {
+  color: #fffaf2;
+  background: linear-gradient(to top, rgba(28, 22, 18, 0.94) 12%, rgba(28, 22, 18, 0.35) 70%, transparent);
+}
+
+.productPage .productBenefitCap h3 {
+  color: #fffaf2;
+}
+
+.productPage .productBenefitCap .productGold {
+  color: var(--gold-on-dark);
+}
+
+.productPage .productBenefitCap .productMuted {
+  color: rgba(255, 250, 242, 0.82);
+}
+
+.productPage .productStep {
+  background: rgba(255, 250, 242, 0.08);
+  border: 1px solid rgba(255, 250, 242, 0.16);
 }
 
 .productPage .softGlow {
-  background: radial-gradient(circle at 65% 25%, #dfe8ff 0, transparent 28%),
-    linear-gradient(145deg, #fbfaf6, #f3f6ff);
+  background: radial-gradient(circle at 65% 25%, #ecd9b6 0, transparent 28%),
+    linear-gradient(145deg, #fffdf4, #f3ecdc);
 }
 
 /* Site-wide `img { width: 100% }` would otherwise override Tailwind w-[78%];

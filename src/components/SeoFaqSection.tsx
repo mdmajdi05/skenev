@@ -48,7 +48,7 @@ export default function SeoFaqSection({
           <Reveal className="faq-heading">
             <div className="eyebrow">FAQ</div>
             <h2>
-              {heading} <em style={{ color: "var(--gold)" }}>{accent}</em>
+              {heading} <em style={{ color: "var(--gold-text)" }}>{accent}</em>
             </h2>
             <p>
               {intro ?? "Everything you need to know."}{" "}

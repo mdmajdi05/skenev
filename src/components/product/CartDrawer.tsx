@@ -28,31 +28,31 @@ export default function CartDrawer() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setOpen(false)}
-            className="absolute inset-0 bg-[#081226]/45"
+            className="absolute inset-0 bg-[#30261f]/45"
           />
           <motion.aside
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
-            className="absolute right-0 top-0 h-full w-full max-w-[480px] bg-[#fbfaf6] p-6 overflow-y-auto shadow-2xl"
+            className="absolute right-0 top-0 h-full w-full max-w-[480px] bg-[#fffdf4] p-6 overflow-y-auto shadow-2xl"
           >
             <div className="flex justify-between items-center">
-              <h2 className="text-2xl font-semibold">Your SKENEV selection</h2>
-              <button onClick={() => setOpen(false)} aria-label="Close cart">
+              <h2 className="text-2xl font-semibold text-[#1f1814]">Your SKENEV selection</h2>
+              <button onClick={() => setOpen(false)} aria-label="Close cart" className="text-[#1f1814]">
                 <X />
               </button>
             </div>
 
-            <div className="rounded-[24px] border border-[#dfe4ed] bg-white p-4 mt-7 flex gap-4">
-              <div className="w-24 h-24 rounded-2xl bg-[#eef3ff] overflow-hidden relative flex-shrink-0">
+            <div className="rounded-[24px] border border-[#ddd3c0] bg-white p-4 mt-7 flex gap-4">
+              <div className="w-24 h-24 rounded-2xl bg-[#f3ecdc] overflow-hidden relative flex-shrink-0">
                 <Image src={product.productShot} alt="SKENEV scanner" fill className="object-cover" />
               </div>
               <div className="flex-1">
-                <div className="font-extrabold">{selected.title}</div>
-                <div className="text-sm text-[#68758b] mt-1">{selected.sub}</div>
+                <div className="font-extrabold text-[#1f1814]">{selected.title}</div>
+                <div className="text-sm text-[#5c534c] mt-1">{selected.sub}</div>
                 <div className="flex items-center gap-2 mt-4">
                   <button
-                    className="w-8 h-8 rounded-full bg-[#eef2f7] grid place-items-center"
+                    className="w-8 h-8 rounded-full bg-[#efe8d8] grid place-items-center text-[#1f1814]"
                     onClick={() => setQty(Math.max(1, qty - 1))}
                     aria-label="Decrease quantity"
                   >
@@ -60,7 +60,7 @@ export default function CartDrawer() {
                   </button>
                   <b>{qty}</b>
                   <button
-                    className="w-8 h-8 rounded-full bg-[#eef2f7] grid place-items-center"
+                    className="w-8 h-8 rounded-full bg-[#efe8d8] grid place-items-center text-[#1f1814]"
                     onClick={() => setQty(qty + 1)}
                     aria-label="Increase quantity"
                   >
@@ -70,9 +70,9 @@ export default function CartDrawer() {
               </div>
             </div>
 
-            <div className="rounded-[22px] bg-[#edf3ff] p-5 mt-5">
-              <div className="font-extrabold">Checkout-ready interface</div>
-              <p className="text-sm text-[#68758b] leading-6 mt-2">
+            <div className="rounded-[22px] bg-[#f1ead9] p-5 mt-5">
+              <div className="font-extrabold text-[#1f1814]">Checkout-ready interface</div>
+              <p className="text-sm text-[#5c534c] leading-6 mt-2">
                 The live price and payment gateway are intentionally configurable. Add your approved
                 commercial terms before accepting online orders.
               </p>
