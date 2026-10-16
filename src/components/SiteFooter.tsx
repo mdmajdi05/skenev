@@ -126,6 +126,12 @@ export default function SiteFooter() {
             <Link href="/privacy">Privacy</Link>
             <Link href="/terms">Terms</Link>
           </div>
+          <span className={styles.footerCredit}>
+            Designed &amp; Developed by{" "}
+            <a href="https://negbuy.com" target="_blank" rel="noopener noreferrer">
+              Negbuy
+            </a>
+          </span>
         </div>
       </div>
     </footer>

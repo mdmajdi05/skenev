@@ -1469,10 +1469,15 @@ button {
   align-items: center;
 }
 
+.analysis-layout > * {
+  min-width: 0;
+}
+
 .analysis-visual {
   border-radius: 40px;
   overflow: hidden;
   aspect-ratio: 4/5;
+  width: 100%;
   min-height: 650px;
   background: #ddd4bc;
   box-shadow: var(--shadow-md);
@@ -1685,7 +1690,7 @@ button {
 
 .business-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 14px;
 }
 

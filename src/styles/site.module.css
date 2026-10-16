@@ -1671,6 +1671,23 @@ transform 0.35s ease,
   color: #c8ad7b;
 }
 
+.footerCredit {
+  flex-basis: 100%;
+  text-align: center;
+  color: rgba(245, 245, 220, 0.55);
+}
+
+.footerCredit a {
+  color: #c8ad7b;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footerCredit a:hover {
+  color: #fbfaed;
+  text-decoration: underline;
+}
+
 /* =========================================================
    ANIMATIONS
 ========================================================= */
