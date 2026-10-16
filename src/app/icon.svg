@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="SKENEV">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#463629" />
+      <stop offset="1" stop-color="#1a130f" />
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f0e0bb" />
+      <stop offset="0.55" stop-color="#cbb184" />
+      <stop offset="1" stop-color="#a8834a" />
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="116" fill="url(#bg)" />
+  <rect x="11" y="11" width="490" height="490" rx="105" fill="none" stroke="#b89a68" stroke-opacity="0.28" stroke-width="4" />
+  <path
+    d="M340 164C340 116 300 92 256 92C205 92 168 126 168 176C168 228 210 242 256 258C302 274 344 288 344 340C344 390 306 424 256 424C212 424 172 400 168 352"
+    fill="none"
+    stroke="url(#gold)"
+    stroke-width="76"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>
